@@ -1,0 +1,3 @@
+CREATE DATABASE  IF NOT EXISTS `gamovie` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `gamovie`;
+INSERT INTO `movies` VALUES (1,'Crimen',NULL,'Quentin Tarantino','Warner Bros','pulpfiction.jpg',0,'Pulp Fiction',0,'La vida de un boxeador, dos sicarios, la esposa de un gánster y dos bandidos se entrelaza en una historia de violencia y redención.','1992')
