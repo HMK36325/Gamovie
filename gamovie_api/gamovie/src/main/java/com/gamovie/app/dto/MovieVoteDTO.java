@@ -1,8 +1,10 @@
 package com.gamovie.app.dto;
 
+import java.time.LocalDate;
 
-public class MovieDTO {
+public class MovieVoteDTO {
 	private int id;
+	private int movie_id;
 	private String name;
 	private String director;
 	private String year;
@@ -12,12 +14,22 @@ public class MovieDTO {
 	private String image;
 	private long n_votes;
 	private int note;
+	private float userNote;
+	private LocalDate voted_at;
+	
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getMovie_id() {
+		return movie_id;
+	}
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
 	}
 	public String getName() {
 		return name;
@@ -73,7 +85,18 @@ public class MovieDTO {
 	public void setNote(int note) {
 		this.note = note;
 	}
-
+	public float getUserNote() {
+		return userNote;
+	}
+	public void setUserNote(float userNote) {
+		this.userNote = userNote;
+	}
+	public LocalDate getVoted_at() {
+		return voted_at;
+	}
+	public void setVoted_at(LocalDate voted_at) {
+		this.voted_at = voted_at;
+	}
 	
-
+	
 }

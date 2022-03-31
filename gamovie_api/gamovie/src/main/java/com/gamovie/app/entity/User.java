@@ -39,9 +39,6 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	@OneToMany(mappedBy = "user")
-	private Set<Vote> votes;
-
 	/**
 	 * Instantiates a new user.
 	 */
@@ -152,15 +149,6 @@ public class User {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-
-	public Set<Vote> getVotes() {
-		return votes;
-	}
-
-	public void setVotes(Set<Vote> votes) {
-		this.votes = votes;
 	}
 
 }

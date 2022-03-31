@@ -76,8 +76,6 @@ public class Movie {
 	@Column(name = "date") // LocalDate date = LocalDate.now(); syso(date)=2021/03/05
 	private LocalDate date;
 	
-	@OneToMany(mappedBy="movie")
-	private Set<Vote> votes;
 
 	/**
 	 * Instantiates a new movie.
@@ -290,16 +288,6 @@ public class Movie {
 	public void setNote(int note) {
 		this.note = note;
 	}
-
-	public Set<Vote> getVotes() {
-		return votes;
-	}
-
-	public void setVotes(Set<Vote> votes) {
-		this.votes = votes;
-	}
-	
-	
 	
 
 }

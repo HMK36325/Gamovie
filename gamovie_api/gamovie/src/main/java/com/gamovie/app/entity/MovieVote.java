@@ -16,14 +16,14 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="votes")
-public class Vote {
+@Table(name="movie_votes")
+public class MovieVote {
 	
 	/** The id. */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private Long id;
+	private int id;
 	
 	/** The movie_id. */
 	@ManyToOne(fetch=FetchType.LAZY,cascade= CascadeType.ALL)
@@ -42,12 +42,12 @@ public class Vote {
 	/** The voted_at. */
 	@Column(name="voted_at")
 	private LocalDate voted_at;
-
-	public Long getId() {
+	
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

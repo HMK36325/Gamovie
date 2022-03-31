@@ -1,5 +1,11 @@
 package com.gamovie.app.repository;
 
-public interface MovieRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.gamovie.app.entity.Movie;
+
+@Repository
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 }
