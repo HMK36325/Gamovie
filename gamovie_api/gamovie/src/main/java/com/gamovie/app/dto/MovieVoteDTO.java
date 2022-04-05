@@ -2,21 +2,15 @@ package com.gamovie.app.dto;
 
 import java.time.LocalDate;
 
+import com.gamovie.app.entity.Movie;
+import com.gamovie.app.entity.User;
+
 public class MovieVoteDTO {
 	private int id;
-	private int movie_id;
-	private String name;
-	private String director;
-	private String year;
-	private String category;
-	private String distributor;
-	private String synopsis;
-	private String image;
-	private long n_votes;
+	private User user;
+	private Movie movie;
 	private int note;
-	private float userNote;
 	private LocalDate voted_at;
-	
 	
 	public int getId() {
 		return id;
@@ -24,60 +18,17 @@ public class MovieVoteDTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public int getMovie_id() {
-		return movie_id;
+	public User getUser() {
+		return user;
 	}
-	public void setMovie_id(int movie_id) {
-		this.movie_id = movie_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public String getName() {
-		return name;
+	public Movie getMovie() {
+		return movie;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDirector() {
-		return director;
-	}
-	public void setDirector(String director) {
-		this.director = director;
-	}
-	public String getYear() {
-		return year;
-	}
-	public void setYear(String year) {
-		this.year = year;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getDistributor() {
-		return distributor;
-	}
-	public void setDistributor(String distributor) {
-		this.distributor = distributor;
-	}
-	public String getSynopsis() {
-		return synopsis;
-	}
-	public void setSynopsis(String synopsis) {
-		this.synopsis = synopsis;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public long getN_votes() {
-		return n_votes;
-	}
-	public void setN_votes(long n_votes) {
-		this.n_votes = n_votes;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	public int getNote() {
 		return note;
@@ -85,18 +36,13 @@ public class MovieVoteDTO {
 	public void setNote(int note) {
 		this.note = note;
 	}
-	public float getUserNote() {
-		return userNote;
-	}
-	public void setUserNote(float userNote) {
-		this.userNote = userNote;
-	}
 	public LocalDate getVoted_at() {
 		return voted_at;
 	}
 	public void setVoted_at(LocalDate voted_at) {
 		this.voted_at = voted_at;
 	}
+	
 	
 	
 }

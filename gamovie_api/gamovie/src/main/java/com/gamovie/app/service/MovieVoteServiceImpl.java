@@ -1,12 +1,14 @@
 package com.gamovie.app.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.entity.MovieVote;
+import com.gamovie.app.entity.User;
 import com.gamovie.app.repository.MovieVoteRepository;
 
 @Service
@@ -36,6 +38,12 @@ public class MovieVoteServiceImpl implements MovieVoteService {
 	public void deleteBy(int id) {
 		movieVoteRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<MovieVote> allVotesByUserId(User user) {
+		
+		return movieVoteRepository.allVotesByUserId(user);
 	}
 
 }

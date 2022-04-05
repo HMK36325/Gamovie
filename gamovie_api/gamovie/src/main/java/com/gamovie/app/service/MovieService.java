@@ -3,6 +3,7 @@ package com.gamovie.app.service;
 import java.util.List;
 
 import com.gamovie.app.entity.Movie;
+import com.gamovie.app.entity.MovieVote;
 
 public interface MovieService {
 	/**
@@ -33,4 +34,5 @@ public interface MovieService {
 	 * @param theId the the id
 	 */
 	public void deleteBy(int theId);
+
 }

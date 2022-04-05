@@ -1,7 +1,6 @@
 package com.gamovie.app.entity;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

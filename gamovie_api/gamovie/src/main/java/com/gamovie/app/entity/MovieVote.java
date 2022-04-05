@@ -12,11 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
 @Entity
-@Table(name="movie_votes")
+@Table(name="movie_votes", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"movie_id", "user_id"})
+})
 public class MovieVote {
 	
 	/** The id. */
@@ -26,13 +31,15 @@ public class MovieVote {
 	private int id;
 	
 	/** The movie_id. */
-	@ManyToOne(fetch=FetchType.LAZY,cascade= CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
 	@JoinColumn(name="movie_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Movie movie;
 	
 	/** The user_id. */
-	@ManyToOne(fetch=FetchType.LAZY,cascade= CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
 	@JoinColumn(name="user_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private User  user;
 	
 	/** The vote. */

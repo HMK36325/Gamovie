@@ -1,5 +1,6 @@
 package com.gamovie.app.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,7 @@ public class MovieFacade {
 
 	public Movie addMovie(MovieDTO moviedto) {
 		Movie movie = convertToMovie(moviedto);
+		movie.setDate(LocalDate.now());
 		movieService.save(movie);
 		return movie;
 	}

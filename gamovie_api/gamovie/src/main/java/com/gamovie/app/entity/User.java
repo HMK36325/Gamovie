@@ -1,13 +1,10 @@
 package com.gamovie.app.entity;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -32,7 +29,7 @@ public class User {
 	private String last_name;
 
 	/** The email. */
-	@Column(name = "email")
+	@Column(name = "email", unique=true)
 	private String email;
 
 	/** The password. */
