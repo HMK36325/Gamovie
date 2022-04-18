@@ -3,7 +3,6 @@ package com.gamovie.app.service;
 import java.util.List;
 
 import com.gamovie.app.entity.Movie;
-import com.gamovie.app.entity.MovieVote;
 
 public interface MovieService {
 	/**
@@ -16,10 +15,10 @@ public interface MovieService {
 	/**
 	 * Find by id.
 	 *
-	 * @param theId the the id
+	 * @param id the the id
 	 * @return the movie
 	 */
-	public Movie findById(int theId);
+	public Movie findById(int id);
 
 	/**
 	 * Save.

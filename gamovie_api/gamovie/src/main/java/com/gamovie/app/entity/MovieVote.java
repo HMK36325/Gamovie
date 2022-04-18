@@ -44,7 +44,7 @@ public class MovieVote {
 	
 	/** The vote. */
 	@Column(name="note")
-	private int note;
+	private float note;
 	
 	/** The voted_at. */
 	@Column(name="voted_at")
@@ -74,11 +74,11 @@ public class MovieVote {
 		this.user = user;
 	}
 
-	public int getVote() {
+	public float getVote() {
 		return note;
 	}
 
-	public void setVote(int note) {
+	public void setVote(float note) {
 		this.note = note;
 	}
 

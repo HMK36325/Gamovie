@@ -1,11 +1,9 @@
 package com.gamovie.app.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.*;
 
 /**
  * The Class User.
@@ -24,10 +22,6 @@ public class User {
 	@Column(name = "name")
 	private String name;
 
-	/** The last name. */
-	@Column(name = "last_name")
-	private String last_name;
-
 	/** The email. */
 	@Column(name = "email", unique=true)
 	private String email;
@@ -35,6 +29,11 @@ public class User {
 	/** The password. */
 	@Column(name = "password")
 	private String password;
+	
+	/** The roles. */
+	@ManyToMany(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
+	@JoinTable(name="users_roles",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="role_id"))
+	private List<Role> roles;
 
 	/**
 	 * Instantiates a new user.
@@ -51,11 +50,23 @@ public class User {
 	 * @param email     the email
 	 * @param password  the password
 	 */
-	public User(String name, String last_name, String email, String password) {
+	public User(String name, String email, String password) {
 		this.name = name;
-		this.last_name = last_name;
 		this.email = email;
 		this.password = password;
+	}
+	
+	/**
+	 * Adds the role.
+	 *
+	 * @param theRole the the role
+	 */
+	//metodo para añadir roles
+	public void addRole(Role theRole) {
+		if(roles==null) {
+			roles=new ArrayList<>();
+		}
+		roles.add(theRole);
 	}
 
 	/**
@@ -99,18 +110,6 @@ public class User {
 	 *
 	 * @return the last name
 	 */
-	public String getlast_name() {
-		return last_name;
-	}
-
-	/**
-	 * Sets the last name.
-	 *
-	 * @param last_name the new last name
-	 */
-	public void setlast_name(String last_name) {
-		this.last_name = last_name;
-	}
 
 	/**
 	 * Gets the email.
@@ -147,5 +146,15 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	
 
 }
