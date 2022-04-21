@@ -1,5 +1,6 @@
 package com.gamovie.app.service;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class MovieVoteFacade {
 	public MovieVote addMovieVote(int user_id, int movie_id, int user_note) {
 		User theUser= userService.findById(user_id);
 		Movie theMovie= movieService.findById(movie_id);
+		long n_votes= theMovie.getN_votes();
+		double note = theMovie.getNote();
+		theMovie.setN_votes(n_votes+1);
+		double new_note=(n_votes*note+user_note)/(n_votes+1);
+		theMovie.setNote((double)Math.round(new_note *10)/10);
 		LocalDate voted_at= LocalDate.now();
 		MovieVote theMovieVote= new MovieVote();
 		theMovieVote.setMovie(theMovie);

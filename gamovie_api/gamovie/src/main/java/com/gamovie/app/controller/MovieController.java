@@ -42,7 +42,12 @@ public class MovieController {
 
 	@PostMapping()
 	public Movie addMovie(@RequestBody MovieDTO moviedto) {
-		moviedto.setId(0);
+		Movie movie = movieFacade.addMovie(moviedto);
+		return movie;
+	}
+	
+	@PutMapping()
+	public Movie updateMovie(@RequestBody MovieDTO moviedto) {
 		Movie movie = movieFacade.addMovie(moviedto);
 		return movie;
 	}
@@ -58,7 +63,7 @@ public class MovieController {
 	}
 	
 	@GetMapping("/votes/user/{id}")
-	public List<MovieVote> getMovieVotesList(@PathVariable int id) {
+	public List<MovieVote> getMovieVotesDTOList(@PathVariable int id) {
 		return movieVoteFacade.allVotesByUserId(id);
 	}
 	

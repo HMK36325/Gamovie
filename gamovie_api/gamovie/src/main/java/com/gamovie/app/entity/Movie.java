@@ -69,7 +69,7 @@ public class Movie {
 	/** The note. */
 	@NotNull
 	@Column(name = "note")
-	private int note;
+	private double note;
 
 	/** The date. */
 	@Column(name = "date") // LocalDate date = LocalDate.now(); syso(date)=2021/03/05
@@ -280,11 +280,11 @@ public class Movie {
 		this.n_votes = n_votes;
 	}
 
-	public int getNote() {
+	public double getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
+	public void setNote(double note) {
 		this.note = note;
 	}
 	

@@ -16,8 +16,6 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
-
 @Entity
 @Table(name="movie_votes", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"movie_id", "user_id"})

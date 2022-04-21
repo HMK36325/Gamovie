@@ -11,7 +11,7 @@ public class MovieDTO {
 	private String synopsis;
 	private String image;
 	private long n_votes;
-	private int note;
+	private double note;
 	
 	public int getId() {
 		return id;
@@ -67,10 +67,10 @@ public class MovieDTO {
 	public void setN_votes(long n_votes) {
 		this.n_votes = n_votes;
 	}
-	public int getNote() {
+	public double getNote() {
 		return note;
 	}
-	public void setNote(int note) {
+	public void setNote(double note) {
 		this.note = note;
 	}
 

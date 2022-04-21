@@ -35,6 +35,7 @@ public class UserController {
 	 */
 
 	@GetMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public List<UserDTO> getUserDTOList() {
 		return userFacade.getAllUsers();
 	}
@@ -46,6 +47,7 @@ public class UserController {
 	 * @return the user DTO
 	 */
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public UserDTO getUserDTO(@PathVariable int id) {
 		return userFacade.findById(id);
 	}
@@ -57,6 +59,7 @@ public class UserController {
 	 * @return the user
 	 */
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public User addUser(@RequestBody UserDTO userdto) {
 		User user = userFacade.addUser(userdto);
 		return user;
@@ -70,6 +73,7 @@ public class UserController {
 	 * @return the user
 	 */
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public User UpdateUser(@RequestBody UserDTO userdto) {
 		User user = userFacade.addUser(userdto);
 		return user;

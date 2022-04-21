@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.gamovie.app.entity.Movie;
 import com.gamovie.app.entity.User;
 
+
 public class MovieVoteDTO {
 	private int id;
 	private User user;

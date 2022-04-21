@@ -24,7 +24,7 @@ public class MovieVoteServiceImpl implements MovieVoteService {
 			return result.get();
 		}
 		else {
-			throw new RuntimeException("Did not found movie id: "+theId);
+			throw new RuntimeException("Did not found LIST OF VOTES WITH ID: "+theId);
 		}
 	}
 
