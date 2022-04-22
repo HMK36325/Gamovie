@@ -24,7 +24,7 @@ public class MovieVoteServiceImpl implements MovieVoteService {
 			return result.get();
 		}
 		else {
-			throw new RuntimeException("Did not found LIST OF VOTES WITH ID: "+theId);
+			throw new RuntimeException("Did not found the vote with the id: "+theId);
 		}
 	}
 
@@ -43,7 +43,13 @@ public class MovieVoteServiceImpl implements MovieVoteService {
 	@Override
 	public List<MovieVote> allVotesByUserId(User user) {
 		
-		return movieVoteRepository.allVotesByUserId(user);
+		List<MovieVote> result =movieVoteRepository.allVotesByUserId(user);
+		
+		if(!result.isEmpty()) {
+			return result;
+		}else {
+			throw new RuntimeException("Did not found votes for this user");
+		}
 	}
 
 }
