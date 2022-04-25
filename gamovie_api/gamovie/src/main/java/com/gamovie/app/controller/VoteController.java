@@ -18,7 +18,7 @@ import com.gamovie.app.service.MovieVoteFacade;
 
 @RestController
 @RequestMapping("/votes")
-public class VotesController {
+public class VoteController {
 	
 	@Autowired
 	private MovieVoteFacade movieVoteFacade;

@@ -1,5 +1,6 @@
 package com.gamovie.app.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class User {
 	/** The password. */
 	@Column(name = "password")
 	private String password;
+	
+	/** The banned_at. */
+	@Column(name = "banned_at")
+	private LocalDate banned_at = null;
 	
 	/** The roles. */
 	@ManyToMany(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
@@ -154,6 +159,16 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	public LocalDate getBanned_at() {
+		return banned_at;
+	}
+
+	public void setBanned_at(LocalDate banned_at) {
+		this.banned_at = banned_at;
+	}
+	
+	
 	
 	
 

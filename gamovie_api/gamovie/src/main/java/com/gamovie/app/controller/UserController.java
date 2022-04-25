@@ -67,6 +67,32 @@ public class UserController {
 	}
 
 	/**
+	 * ban user.
+	 *
+	 * @param int user_id
+	 * @return string
+	 */
+	@PutMapping("/ban/{user_id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String banUser(@PathVariable int user_id) {
+		return userFacade.userBan(user_id);
+
+	}
+
+	/**
+	 * Unban user.
+	 *
+	 * @param int user_id
+	 * @return string
+	 */
+	@PutMapping("unban/{user_id}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public String UnBanUser(@PathVariable int user_id) {
+		return userFacade.userUnBan(user_id);
+
+	}
+
+	/**
 	 * Update user.
 	 *
 	 * @param userdto the userdto

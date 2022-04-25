@@ -23,7 +23,7 @@ public class MovieReviewServiceImpl implements MovieReviewService {
 		if (result.isPresent()) {
 			return result.get();
 		} else {
-			throw new RuntimeException("Did not found the vote with the id: " + theId);
+			throw new RuntimeException("Did not found the Review with the id: " + theId);
 		}
 	}
 
