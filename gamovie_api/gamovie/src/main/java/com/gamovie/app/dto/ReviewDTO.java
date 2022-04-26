@@ -2,7 +2,7 @@ package com.gamovie.app.dto;
 
 import java.time.LocalDate;
 
-public class MovieReviewDTO {
+public class ReviewDTO {
 	private int id;
 	private String review;
 	private LocalDate reviewed_at;

@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gamovie.app.dto.GameVoteDTO;
 import com.gamovie.app.dto.MovieVoteDTO;
+import com.gamovie.app.entity.GameVote;
 import com.gamovie.app.entity.MovieVote;
+import com.gamovie.app.service.GameVoteFacade;
 import com.gamovie.app.service.MovieVoteFacade;
 
 @RestController
@@ -22,6 +25,11 @@ public class VoteController {
 	
 	@Autowired
 	private MovieVoteFacade movieVoteFacade;
+	
+	@Autowired 
+	private GameVoteFacade gameVoteFacade;
+	
+	//MOVIES
 	
 	@GetMapping("/movies/user/{id}")
 	public List<MovieVote> getMovieVotesByUserList(@PathVariable int id) {
@@ -45,7 +53,37 @@ public class VoteController {
 	public String deleteMovieVote(@PathVariable int id) {
 		MovieVoteDTO theMovieVote = movieVoteFacade.findById(id);
 		if (theMovieVote == null) {
-			throw new RuntimeException("Movie is not found " + id);
+			throw new RuntimeException("Vote is not found " + id);
+		}
+		movieVoteFacade.deleteById(id);
+		return "Vote deleted";
+	}
+	
+	//GAMES
+	
+	@GetMapping("/games/user/{id}")
+	public List<GameVote> getGameVotesByUserList(@PathVariable int id) {
+		return gameVoteFacade.allVotesByUserId(id);
+	}
+	
+	
+	@PostMapping("/games/{user_id}/{game_id}")
+	public GameVote addGameVote(@PathVariable int user_id, @PathVariable int game_id, @RequestParam int user_note) {
+
+		return gameVoteFacade.addGameVote(user_id, game_id, user_note);
+
+	}
+	
+	@PutMapping("/games/{id}")
+	public GameVote updateGameVote(@PathVariable int id, @RequestParam int user_note) {
+		return gameVoteFacade.updateGameVote(id, user_note);
+	}
+
+	@DeleteMapping("/games/{id}")
+	public String deleteGameVote(@PathVariable int id) {
+		GameVoteDTO theGameVote = gameVoteFacade.findById(id);
+		if (theGameVote == null) {
+			throw new RuntimeException("Vote is not found " + id);
 		}
 		movieVoteFacade.deleteById(id);
 		return "Vote deleted";

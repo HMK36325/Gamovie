@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gamovie.app.dto.MovieReviewDTO;
+import com.gamovie.app.dto.ReviewDTO;
 import com.gamovie.app.entity.Movie;
 import com.gamovie.app.entity.MovieReview;
 import com.gamovie.app.entity.User;
@@ -37,7 +37,7 @@ public class MovieReviewFacade {
 		return movieReviewService.allReviewsByMovie(movie);
 	}
 
-	public MovieReview addMovieReview(int user_id, int movie_id, MovieReviewDTO review) {
+	public MovieReview addMovieReview(int user_id, int movie_id, ReviewDTO review) {
 		User theUser = userService.findById(user_id);
 		Movie theMovie = movieService.findById(movie_id);
 		MovieReview theMovieReview = new MovieReview();
@@ -50,7 +50,7 @@ public class MovieReviewFacade {
 		return theMovieReview;
 	}
 
-	public MovieReview updateMovieReview(int id, MovieReviewDTO review) {
+	public MovieReview updateMovieReview(int id, ReviewDTO review) {
 		MovieReview theMovieReview = movieReviewService.findById(id);
 		theMovieReview.setReview(review.getReview());
 		movieReviewService.save(theMovieReview);

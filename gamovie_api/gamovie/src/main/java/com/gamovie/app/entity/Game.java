@@ -23,7 +23,7 @@ public class Game {
 	/** The name. */
 	@NotNull
 	@Size(min = 3)
-	@Column(name = "name")
+	@Column(name = "name", unique=true)
 	private String name;
 	
 	/** The year. */
