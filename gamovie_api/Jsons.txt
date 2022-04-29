@@ -1,0 +1,44 @@
+Movie
+{
+    "name": "La Comunidad del Anillo",
+    "director": "Peter Jackson",
+    "year": "2001",
+    "category": "Fantasia",
+    "distributor": "Line Cinema",
+    "synopsis": "Hobbit hoobit",
+    "image": "comunidad.jpg",
+    "n_votes": 10,
+    "note": 9
+}
+
+singUp
+{
+    "username" : "vanluar",
+    "email" : "vanlu@gmail.com",
+    "role" : [
+        "user"
+    ],
+    "password" : "juasjuas"
+}
+
+sigIn
+{
+    "username" : "admin",
+    "password" : "juasjuas"
+}
+
+Review
+{
+    "review" : "Una trilogía mágica que estalla desde esta primera entrega, asombrosa, impecable (…) un relato al tiempo épico y sutil, gigantesco y emotivo. Una auténtica maravilla."
+}
+
+Game
+{
+    "name": "Elden Ring",
+    "year": "2022",
+    "category": "RPG",
+    "distributor": "Fromt Software",
+    "image": "elden.jpg",
+    "n_votes": 10,
+    "note": 10
+}
