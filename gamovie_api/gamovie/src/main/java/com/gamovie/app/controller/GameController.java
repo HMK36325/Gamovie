@@ -3,6 +3,7 @@ package com.gamovie.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,18 +35,21 @@ public class GameController {
 	}
 
 	@PostMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public Game addGame(@RequestBody GameDTO gameDTO) {
 		Game game = gameFacade.addGame(gameDTO);
 		return game;
 	}
 
 	@PutMapping()
+	@PreAuthorize("hasRole('ADMIN')")
 	public Game updateGame(@RequestBody GameDTO gameDTO) {
 		Game game = gameFacade.addGame(gameDTO);
 		return game;
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String deleteGame(@PathVariable int id) {
 		GameDTO theGame = gameFacade.findById(id);
 		if (theGame == null) {

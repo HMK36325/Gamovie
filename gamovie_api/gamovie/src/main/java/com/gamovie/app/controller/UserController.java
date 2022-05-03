@@ -106,6 +106,12 @@ public class UserController {
 
 	}
 
+	@PutMapping("/premium/{user_id}")
+	@PreAuthorize("hasRole('USER')")
+	public String addRolePremiun(@PathVariable int user_id) {
+		return userFacade.addRolePremiun(user_id);
+	}
+
 	/**
 	 * Delete user.
 	 *

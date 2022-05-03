@@ -1,0 +1,14 @@
+form{
+    width: 15%;
+    border: 1px solid #212529;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+label{
+    font-weight: bold !important;
+}
+.login-title{
+    text-align: center;
+}
+

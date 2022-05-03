@@ -1,6 +1,5 @@
 import React from "react";
 import styledComponents from "styled-components";
-import MyNav from "components/MyNav";
 
 const Section = styledComponents.section`
     display : flex;
@@ -10,7 +9,6 @@ const Section = styledComponents.section`
 export default function Home() {
     return (
         <>
-            <MyNav />
             <Section>
                 <h1>
                     Hellow Friends

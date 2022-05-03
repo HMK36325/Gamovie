@@ -9,13 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.dto.UserDTO;
+import com.gamovie.app.entity.Role;
 import com.gamovie.app.entity.User;
+import com.gamovie.app.repository.RoleRepository;
 
 @Service
 public class UserFacade {
 	/** The user service. */
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 
 	/** The model mapper. */
 	@Autowired
@@ -84,6 +89,19 @@ public class UserFacade {
 		theUser.setBanned_at(null);
 		userService.save(theUser);
 		return "User Unbanned";
+	}
+	
+	public String addRolePremiun(int user_id) {
+		User theUser = userService.findById(user_id);
+		if(theUser ==null) {
+			throw new RuntimeException("Did not found user id: " + user_id);
+		}
+		Role premRole = roleRepository.findByName("ROLE_PREMIUM")
+				.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		theUser.addRole(premRole);
+
+		userService.save(theUser);
+		return "Role premium added to user with id: " + user_id;
 	}
 
 	/**

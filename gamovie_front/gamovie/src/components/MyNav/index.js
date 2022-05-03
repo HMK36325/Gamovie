@@ -1,29 +1,44 @@
-import React from "react";
-import { Navbar, Container, NavDropdown, Nav } from "react-bootstrap";
+import Context from "context/userContext";
+import React, { useContext } from "react";
+import { Navbar, Container, NavDropdown, Nav, Button, ButtonGroup } from "react-bootstrap";
+import useUser from "hooks/useUser";
 
 export default function MyNav() {
+    const {isLogged, logout}=useUser();
+    const {currentUser}= useContext(Context);
+
+    const handleClick = e => {
+        e.preventDefault();
+        logout();
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="/">GAMOVIE</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link href="#features">Videojuegos</Nav.Link>
+                        <Nav.Link href="#pricing">Peliculas</Nav.Link>
+                        <Nav.Link href="#pricing">Support</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
+                        {
+                            isLogged ?
+                                <NavDropdown title={currentUser.username} id="collasible-nav-dropdown">
+                                    <NavDropdown.Item href="#action/3.1">Mis Votaciones</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.2">Mis Reviews</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="#" onClick={handleClick}>LogOut</NavDropdown.Item>
+                                </NavDropdown>
+                                :
+                                <ButtonGroup aria-label="Button group">
+                                    <Button href="/login" variant="secondary">Login</Button>
+                                    <Button href="/register" variant="secondary">Register</Button>
+                                </ButtonGroup>
+                        }
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

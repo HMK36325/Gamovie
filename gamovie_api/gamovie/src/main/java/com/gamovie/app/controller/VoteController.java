@@ -3,6 +3,7 @@ package com.gamovie.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,12 +33,14 @@ public class VoteController {
 	//MOVIES
 	
 	@GetMapping("/movies/user/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public List<MovieVote> getMovieVotesByUserList(@PathVariable int id) {
 		return movieVoteFacade.allVotesByUserId(id);
 	}
 	
 	
 	@PostMapping("/movies/{user_id}/{movie_id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public MovieVote addMovieVote(@PathVariable int user_id, @PathVariable int movie_id, @RequestParam int user_note) {
 
 		return movieVoteFacade.addMovieVote(user_id, movie_id, user_note);
@@ -45,11 +48,13 @@ public class VoteController {
 	}
 	
 	@PutMapping("/movies/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public MovieVote updateMovieVote(@PathVariable int id, @RequestParam int user_note) {
 		return movieVoteFacade.updateMovieVote(id, user_note);
 	}
 
 	@DeleteMapping("/movies/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public String deleteMovieVote(@PathVariable int id) {
 		MovieVoteDTO theMovieVote = movieVoteFacade.findById(id);
 		if (theMovieVote == null) {
@@ -62,12 +67,14 @@ public class VoteController {
 	//GAMES
 	
 	@GetMapping("/games/user/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public List<GameVote> getGameVotesByUserList(@PathVariable int id) {
 		return gameVoteFacade.allVotesByUserId(id);
 	}
 	
 	
 	@PostMapping("/games/{user_id}/{game_id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public GameVote addGameVote(@PathVariable int user_id, @PathVariable int game_id, @RequestParam int user_note) {
 
 		return gameVoteFacade.addGameVote(user_id, game_id, user_note);
@@ -75,11 +82,13 @@ public class VoteController {
 	}
 	
 	@PutMapping("/games/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public GameVote updateGameVote(@PathVariable int id, @RequestParam int user_note) {
 		return gameVoteFacade.updateGameVote(id, user_note);
 	}
 
 	@DeleteMapping("/games/{id}")
+	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
 	public String deleteGameVote(@PathVariable int id) {
 		GameVoteDTO theGameVote = gameVoteFacade.findById(id);
 		if (theGameVote == null) {

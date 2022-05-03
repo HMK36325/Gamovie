@@ -53,7 +53,7 @@ public class Movie {
 	/** The synopsis. */
 	@NotNull
 	@Size(min = 3)
-	@Column(name = "synopsis")
+	@Column(name = "synopsis", length = 1000)
 	private String synopsis;
 
 	/** The image. */
