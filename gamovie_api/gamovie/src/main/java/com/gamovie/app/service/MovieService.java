@@ -34,4 +34,6 @@ public interface MovieService {
 	 */
 	public void deleteBy(int theId);
 
+	List<Movie> allMoviesByCategory(String cat);
+
 }

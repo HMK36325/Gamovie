@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.gamovie.app.dto.MovieDTO;
 import com.gamovie.app.entity.Movie;
 
-
 @Service
 public class MovieFacade {
 
@@ -29,6 +28,9 @@ public class MovieFacade {
 		return convertToMovieDTO(movieService.findById(id));
 	}
 
+	public List<MovieDTO> allMoviesByCategory(String cat) {
+		return movieService.allMoviesByCategory(cat).stream().map(this::convertToMovieDTO).collect(Collectors.toList());
+	}
 
 	public Movie addMovie(MovieDTO moviedto) {
 		Movie movie = convertToMovie(moviedto);

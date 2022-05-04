@@ -42,4 +42,14 @@ public class GameServiceImpl implements GameService {
 
 	}
 
+	@Override
+	public List<Game> allGamesByCategory(String cat) {
+		List<Game> result = gameRepository.allGamesByCategory(cat);
+		if (!result.isEmpty()) {
+			return result;
+		} else {
+			throw new RuntimeException("Did not found games for that Category");
+		}
+	}
+
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gamovie.app.dto.MovieDTO;
@@ -33,6 +33,10 @@ public class MovieController {
 	@GetMapping("/{id}")
 	public MovieDTO getMovieDTO(@PathVariable int id) {
 		return movieFacade.findById(id);
+	}
+	@GetMapping("/category")
+	public List<MovieDTO> getAllMoviesByCategory(@RequestParam String cat){
+		return movieFacade.allMoviesByCategory(cat);
 	}
 
 	@PostMapping()

@@ -33,4 +33,6 @@ public interface GameService {
 	 * @param theId the the id
 	 */
 	public void deleteBy(int theId);
+	
+	List<Game> allGamesByCategory(String cat);
 }

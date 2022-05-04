@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gamovie.app.dto.GameDTO;
@@ -33,7 +34,12 @@ public class GameController {
 	public GameDTO getGameDTO(@PathVariable int id) {
 		return gameFacade.findById(id);
 	}
-
+	
+	@GetMapping("/category")
+	public List<GameDTO> getAllGamesByCategory(@RequestParam String cat){
+		return gameFacade.getAllGamesByCategory(cat);
+	}
+	
 	@PostMapping()
 	@PreAuthorize("hasRole('ADMIN')")
 	public Game addGame(@RequestBody GameDTO gameDTO) {

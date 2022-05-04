@@ -27,6 +27,10 @@ public class GameFacade {
 	public GameDTO findById(int id) {
 		return convertToGameDTO(gameService.findById(id));
 	}
+	
+	public List<GameDTO> getAllGamesByCategory(String cat){
+		return gameService.allGamesByCategory(cat).stream().map(this::convertToGameDTO).collect(Collectors.toList());
+	}
 
 
 	public Game addGame(GameDTO gameDTO) {

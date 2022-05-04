@@ -43,4 +43,14 @@ public class MovieServiceImpl implements MovieService {
 		movieRepository.deleteById(theId);
 	}
 
+	@Override
+	public List<Movie> allMoviesByCategory(String cat) {
+		List<Movie> result = movieRepository.allMoviesByCategory(cat);
+		if(!result.isEmpty()) {
+			return result;
+		}else {
+			throw new RuntimeException("Did not found movies for that Category");
+		}
+	}
+
 }
