@@ -8,9 +8,10 @@ export default function useUser() {
     const [state, setState] = useState({ loading: false, error: false });
 
     const login = useCallback(({ username, password }) => {
+        setState({ loading: true, error: false })
         loginService({ username, password })
             .then(currentUser => {
-                setState({ loading: true, error: false })
+                setState({ loading: false, error: false })
                 setCurrentUser(currentUser);
             })
             .catch(err => {

@@ -71,7 +71,7 @@ INSERT INTO `gamovie`.`movies` (`category`, `date`, `director`, `distributor`, `
 
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'From Software', 'eldenRing.jpg', '10', 'Elden Ring', '9.4', '2022');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'Nintendo', 'botw.jpg', '10', 'The Legend of Zelda: Breath of the Wild', '9.2', '2017');
-INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Mundo Abierto', '2022-05-05', 'Rockstar', 'botw.jpg', '10', 'Grand Theft Auto V', '9.0', '2013');
+INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Mundo Abierto', '2022-05-05', 'Rockstar', 'gta.jpg', '10', 'Grand Theft Auto V', '9.0', '2013');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'From Software', 'sekiro.jpg', '10', 'Sekiro™: Shadows Die Twice', '9.1', '2019');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'Nintendo', 'windWaker.jpg', '10', 'The Legend of Zelda: Wind Waker', '9.0', '2002');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Indie', '2022-05-05', 'Team Cherry', 'hollow.jpg', '10', 'Hollow Knight', '9.2', '2017');

@@ -1,7 +1,5 @@
 .App-content{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+margin-bottom: 5%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

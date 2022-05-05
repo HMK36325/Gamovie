@@ -1,27 +1,52 @@
 .footer {
-  position: absolute;
+  position: relative;
   left: 0;
   bottom: 0;
   right: 0;
   width: 100%;
 }
 
-.info-foot{
-    text-align: center;
-    background-color: #32363b !important;
-    color: white;
+.info-foot {
+  text-align: center;
+  background-color: #32363b !important;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.copy-foot{
-    color: white;
-    text-align: center;
+.copy-foot {
+  color: white;
+  text-align: center;
 }
 
-.social{
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2em;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5em;
+  padding: 1em;
+}
+
+@media (max-width: 766px) {
+  .social,
+  .title {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5em;
-    margin-left: 1em;
-    padding-bottom: 2em;
+    margin-right: 0;
+  }
 }
 
+@media (max-width: 425px) {
+  .social,
+  .title {
+    gap: 1em;
+  }
+}
