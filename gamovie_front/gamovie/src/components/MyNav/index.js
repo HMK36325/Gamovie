@@ -19,9 +19,9 @@ export default function MyNav() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Videojuegos</Nav.Link>
-                        <Nav.Link href="#pricing">Peliculas</Nav.Link>
-                        <Nav.Link href="#pricing">Support</Nav.Link>
+                        <Nav.Link href="/games">Videojuegos</Nav.Link>
+                        <Nav.Link href="/movies">Peliculas</Nav.Link>
+                        <Nav.Link href="/">Support</Nav.Link>
                     </Nav>
                     <Nav>
                         {

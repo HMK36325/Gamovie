@@ -1,6 +1,6 @@
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useLocation } from "wouter";
 
@@ -24,8 +24,8 @@ export default function Login() {
     <>
       {isLoginLoading && <Spinner animation="border" className="loading" />}
       {!isLoginLoading && (
-        <Container className="d-flex justify-content-center">
-          <Form onSubmit={handleSubmit} className="mt-5 w-25">
+        <div className="d-flex justify-content-center">
+          <Form onSubmit={handleSubmit} className="mt-5 login-form">
             <div className="login-title mt-3 mb-3">
               <h3>Log In</h3>
             </div>
@@ -56,7 +56,7 @@ export default function Login() {
               Login
             </Button>
           </Form>
-        </Container>
+        </div>
       )}
     </>
   );

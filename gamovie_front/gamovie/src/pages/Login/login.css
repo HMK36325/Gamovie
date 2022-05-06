@@ -3,6 +3,7 @@ form {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 1em;
   padding: 1em;
+  margin-bottom: 15.5%;
 }
 
 label {
@@ -12,11 +13,17 @@ label {
   text-align: center;
 }
 
-.loading{
+.loading {
   width: 50px;
   height: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
   margin: -25px 0 0 -25px;
+}
+
+@media (min-width: 1200px) {
+  form {
+    width: 20%;
+  }
 }

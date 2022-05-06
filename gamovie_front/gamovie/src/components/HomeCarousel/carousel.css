@@ -1,3 +1,15 @@
-.carousel-link :hover{
-    color: #656b70;
+.carousel-link :hover {
+  color: #656b70;
+}
+.Home-carousel {
+  width: 75%;
+}
+
+@media (max-width: 768px) {
+  .Home-carousel {
+    width: 100% !important;
+  }
+  .carousel-link{
+      display: none;
+  }
 }

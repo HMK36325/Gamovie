@@ -2,7 +2,6 @@ import React from "react";
 import Card from "components/Card";
 import HomeCarousel from "components/HomeCarousel";
 import { Container, Col, Row } from "react-bootstrap";
-import "./home.css";
 
 export default function Home() {
   return (

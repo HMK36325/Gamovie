@@ -1,4 +1,6 @@
-const ENDPOINT = 'http://localhost:8080/auth/signin'
+import config from 'config.json';
+
+const ENDPOINT =  `${config.apiUrl}auth/signin`
 
 export default function login({ username, password }) {
     return fetch(ENDPOINT, {

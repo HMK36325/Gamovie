@@ -11,6 +11,8 @@ import MyNav from "components/MyNav";
 import Footer from "components/Footer";
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Movies from "pages/movies";
+import Games from "pages/Games";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -24,6 +26,8 @@ function App() {
             <Switch>
               <Route component={HomePage} path="/" />
               <Route component={Login} path="/login" />
+              <Route component={Movies} path="/movies" />
+              <Route component={Games} path="/games" />
             </Switch>
           </div>
         </Suspense>

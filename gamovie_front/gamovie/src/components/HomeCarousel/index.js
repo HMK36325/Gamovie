@@ -5,7 +5,7 @@ import './carousel.css';
 
 export default function HomeCarousel() {
   return (
-    <Carousel className="mt-4 w-75" fade>
+    <Carousel className="mt-4 Home-carousel" fade>
       <Carousel.Item>
         <img
           className="d-block w-100"
