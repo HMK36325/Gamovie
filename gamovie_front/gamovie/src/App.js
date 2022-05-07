@@ -13,6 +13,7 @@ import Footer from "components/Footer";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Movies from "pages/movies";
 import Games from "pages/Games";
+import Details from "pages/Details";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -28,6 +29,8 @@ function App() {
               <Route component={Login} path="/login" />
               <Route component={Movies} path="/movies" />
               <Route component={Games} path="/games" />
+              <Route component={Details} path="/games/:id" />
+              <Route component={Details} path="/movies/:id" />
             </Switch>
           </div>
         </Suspense>

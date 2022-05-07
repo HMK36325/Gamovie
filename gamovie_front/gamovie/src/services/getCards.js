@@ -1,6 +1,6 @@
 import config from "config.json";
 
-export default async function getMovies({content}) {
+export default async function getCards({content}) {
   const ENDPOINT = `${config.apiUrl}${content}`;
   return await fetch(ENDPOINT, {
     method: "GET",

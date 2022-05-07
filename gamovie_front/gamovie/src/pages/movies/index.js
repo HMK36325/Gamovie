@@ -1,14 +1,14 @@
 import ListOfCards from "components/ListOfCards";
-import { useState, useEffect } from "react";
-import getMovies from "services/getMovies";
+import useCards from "hooks/useCards";
+import { Spinner } from "react-bootstrap";
 import React from "react";
 
 export default function Movies() {
-  const [cards, setCards] = useState([]);
-
-  useEffect(function () {
-    getMovies({content:'movies'}).then((cards) => setCards(cards));
-  }, []);
+  const { loading, cards } = useCards({ content: "movies" });
   
-  return <ListOfCards cards={cards}/>;
+  return <>{loading 
+    ? <Spinner className="loading"/> 
+    : <ListOfCards cards={cards} contentType='movies'/>
+    }
+    </>;
 }

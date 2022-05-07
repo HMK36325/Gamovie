@@ -18,14 +18,16 @@ max-width:214px;
   }
 `;
 
-export default function Card({ url, title, year }) {
+export default function Card({ url, title, year, id, contentType }) {
   const src = "images/" + url;
   return (
     <Box>
-      <Link to="/" className="card-link">
+      <Link to={`${contentType}/${id}`} className="card-link">
         <img alt={title} src={src} />
-        <p>{title}</p>
-        <small>{year}</small>
+        <div className="card-info">
+          <p>{title}</p>
+          <small>{year}</small>
+        </div>
       </Link>
     </Box>
   );

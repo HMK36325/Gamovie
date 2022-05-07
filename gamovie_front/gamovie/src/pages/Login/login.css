@@ -13,15 +13,6 @@ label {
   text-align: center;
 }
 
-.loading {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -25px 0 0 -25px;
-}
-
 @media (min-width: 1200px) {
   form {
     width: 20%;

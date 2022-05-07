@@ -21,3 +21,9 @@ small {
   padding: 0.2em;
 }
 
+.card-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

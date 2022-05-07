@@ -1,0 +1,12 @@
+.form{
+    display: block;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width:992px) {
+    .form{
+        padding: 1em;
+    }
+}

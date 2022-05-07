@@ -19,6 +19,7 @@ export default function Home() {
           </h2>
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -31,6 +32,7 @@ export default function Home() {
           />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -39,6 +41,7 @@ export default function Home() {
           <Card url={"theBatman.jpg"} year="2022" title={"The Batman"} />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -51,6 +54,7 @@ export default function Home() {
           />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -64,6 +68,7 @@ export default function Home() {
           </h2>
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -72,6 +77,7 @@ export default function Home() {
           <Card url={"eldenRing.jpg"} year="2022" title={"Elden Ring"} />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
@@ -84,18 +90,16 @@ export default function Home() {
           />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
           className="d-flex justify-content-center mt-3"
         >
-          <Card
-            url={"gta.jpg"}
-            year="2013"
-            title={"Grand Theft Auto V"}
-          />
+          <Card url={"gta.jpg"} year="2013" title={"Grand Theft Auto V"} />
         </Col>
         <Col
+          xs="6"
           sm="6"
           md="4"
           lg="3"
