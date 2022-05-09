@@ -13,7 +13,7 @@ export default function HomeCarousel() {
           alt="First slide"
         />
         <Carousel.Caption>
-          <Link to="/" className="text-decoration-none text-light carousel-link">
+          <Link to="/games/1" className="text-decoration-none text-light carousel-link">
             <h3>Elden Ring</h3>
             <p>El increible mundo abierto de los creadores de Dark Souls.</p>
           </Link>
@@ -27,7 +27,7 @@ export default function HomeCarousel() {
         />
 
         <Carousel.Caption>
-          <Link to="/" className="text-decoration-none text-light carousel-link">
+          <Link to="/movies/1" className="text-decoration-none text-light carousel-link">
             <h3>The Batman</h3>
             <p>Robert Pattinson como un Batman nunca antes visto.</p>
           </Link>
@@ -41,7 +41,7 @@ export default function HomeCarousel() {
         />
 
         <Carousel.Caption>
-        <Link to="/" className="text-decoration-none text-light carousel-link">
+        <Link to="/games/2" className="text-decoration-none text-light carousel-link">
             <h3>Breath of The Wild</h3>
             <p>El impresionante mundo abierto de nintendo.</p>
           </Link>
