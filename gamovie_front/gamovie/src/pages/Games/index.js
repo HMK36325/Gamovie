@@ -7,7 +7,7 @@ export default function Games() {
   const { loading, cards } = useCards({ content: "games" });
 
   return <>{loading 
-  ? <Spinner className="loading"/> 
+  ? <Spinner animation="border" className="loading"/> 
   : <ListOfCards cards={cards} contentType='games' />
   }
   </>;

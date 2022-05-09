@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "wouter";
 
 export default function Details(){
@@ -8,4 +8,9 @@ export default function Details(){
     fetch(`http://localhost:8080/${cardInfo}`)
     .then(res => res.json())
     .then(res => console.log(res))
+
+    return(
+        <div>
+        </div>
+    );
 }

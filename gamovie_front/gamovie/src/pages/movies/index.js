@@ -5,9 +5,8 @@ import React from "react";
 
 export default function Movies() {
   const { loading, cards } = useCards({ content: "movies" });
-  
   return <>{loading 
-    ? <Spinner className="loading"/> 
+    ? <Spinner animation="border" className="loading"/> 
     : <ListOfCards cards={cards} contentType='movies'/>
     }
     </>;

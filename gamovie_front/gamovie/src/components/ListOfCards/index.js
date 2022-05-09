@@ -2,13 +2,14 @@ import React from "react";
 import { Row, Container, Col } from "react-bootstrap";
 import Card from "components/Card";
 
-export default function ListOfCards({ cards , contentType }) {
+export default function ListOfCards({ cards, contentType }) {
   return (
     <Container className="d-flex flex-column">
       <Row>
         {cards.map(function (card) {
           return (
             <Col
+              key={card.id}
               xs="6"
               sm="6"
               md="4"
