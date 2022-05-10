@@ -3,6 +3,7 @@ package com.gamovie.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +35,14 @@ public class MovieController {
 	public MovieDTO getMovieDTO(@PathVariable int id) {
 		return movieFacade.findById(id);
 	}
+
+	@GetMapping("/{offset}/{pageSize}")
+	public Page<Movie> getMoviesPaginated(@PathVariable int offset, @PathVariable int pageSize) {
+		return movieFacade.moviesWithPagination(offset, pageSize);
+	}
+
 	@GetMapping("/category")
-	public List<MovieDTO> getAllMoviesByCategory(@RequestParam String cat){
+	public List<MovieDTO> getAllMoviesByCategory(@RequestParam String cat) {
 		return movieFacade.allMoviesByCategory(cat);
 	}
 
@@ -45,7 +52,7 @@ public class MovieController {
 		Movie movie = movieFacade.addMovie(moviedto);
 		return movie;
 	}
-	
+
 	@PutMapping()
 	@PreAuthorize("hasRole('ADMIN')")
 	public Movie updateMovie(@RequestBody MovieDTO moviedto) {
@@ -63,5 +70,5 @@ public class MovieController {
 		movieFacade.deleteById(id);
 		return "Movie deleted";
 	}
-	
+
 }

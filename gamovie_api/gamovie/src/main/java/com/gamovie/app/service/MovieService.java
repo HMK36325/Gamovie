@@ -2,6 +2,8 @@ package com.gamovie.app.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.gamovie.app.entity.Movie;
 
 public interface MovieService {
@@ -35,5 +37,7 @@ public interface MovieService {
 	public void deleteBy(int theId);
 
 	List<Movie> allMoviesByCategory(String cat);
+
+	public Page<Movie> getMoviesWithPagination(int offset, int pageSize);
 
 }

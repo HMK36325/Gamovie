@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import useDetails from "hooks/useDetails";
+import { Spinner } from "react-bootstrap";
 import { useLocation } from "wouter";
 
-export default function Details(){
+export default function Details() {
     const [path,] = useLocation();
-    const cardInfo = path.slice(1);
-    
-    fetch(`http://localhost:8080/${cardInfo}`)
-    .then(res => res.json())
-    .then(res => console.log(res))
+    const { loading, details } = useDetails({ path: path.slice(1) })
 
-    return(
-        <div>
-        </div>
+    console.log(details)
+
+    return (
+        <>
+            {
+                loading ? <Spinner animation="border" className="loading" />
+                    : <p>CONTENT</p>
+            }
+        </>
     );
 }

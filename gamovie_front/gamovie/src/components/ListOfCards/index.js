@@ -1,10 +1,15 @@
 import React from "react";
-import { Row, Container, Col } from "react-bootstrap";
+import { Row, Container, Col, Button } from "react-bootstrap";
 import Card from "components/Card";
 
-export default function ListOfCards({ cards, contentType }) {
+export default function ListOfCards({ cards, contentType, setPage, lastPage }) {
+
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1);
+  }
+
   return (
-    <Container className="d-flex flex-column">
+    <Container className="d-flex flex-column mt-4">
       <Row>
         {cards.map(function (card) {
           return (
@@ -28,6 +33,13 @@ export default function ListOfCards({ cards, contentType }) {
           );
         })}
       </Row>
+      <div className="show-more">
+        {
+          lastPage
+            ? <p>No hay más contenido...</p>
+            : <Button onClick={handleNextPage} variant="secondary">Ver más...</Button>
+        }
+      </div>
     </Container>
   );
 }

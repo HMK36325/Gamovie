@@ -1,7 +1,7 @@
 import config from "config.json";
 
-export default async function getCards({content}) {
-  const ENDPOINT = `${config.apiUrl}${content}`;
+export default async function getCards({ content, page = 0 }) {
+  const ENDPOINT = `${config.apiUrl}${content}/${page}/12`;
   return await fetch(ENDPOINT, {
     method: "GET",
     headers: {
@@ -11,7 +11,9 @@ export default async function getCards({content}) {
   })
     .then((res) => res.json())
     .then((response) => {
-      const data = response;
-      return data;
+      console.log(response)
+      const cards = response.content;
+      const isLast = response.last
+      return {cards, isLast};
     });
 }

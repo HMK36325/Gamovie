@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.entity.Movie;
@@ -14,7 +16,7 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	private MovieRepository movieRepository;
-	
+
 	@Override
 	public List<Movie> findAll() {
 		// TODO Auto-generated method stub
@@ -23,19 +25,18 @@ public class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie findById(int theId) {
-		Optional<Movie>result=movieRepository.findById(theId);
-		if(result.isPresent()) {
+		Optional<Movie> result = movieRepository.findById(theId);
+		if (result.isPresent()) {
 			return result.get();
-		}
-		else {
-			throw new RuntimeException("Did not found movie id: "+theId);
+		} else {
+			throw new RuntimeException("Did not found movie id: " + theId);
 		}
 	}
 
 	@Override
 	public void save(Movie theMovie) {
 		movieRepository.save(theMovie);
-		
+
 	}
 
 	@Override
@@ -46,10 +47,20 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> allMoviesByCategory(String cat) {
 		List<Movie> result = movieRepository.allMoviesByCategory(cat);
-		if(!result.isEmpty()) {
+		if (!result.isEmpty()) {
 			return result;
-		}else {
+		} else {
 			throw new RuntimeException("Did not found movies for that Category");
+		}
+	}
+
+	@Override
+	public Page<Movie> getMoviesWithPagination(int offset, int pageSize) {
+		Page<Movie> movies = movieRepository.findAll(PageRequest.of(offset, pageSize));
+		if (!movies.isEmpty()) {
+			return movies;
+		} else {
+			throw new RuntimeException("Did not found movies");
 		}
 	}
 

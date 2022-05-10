@@ -3,6 +3,7 @@ package com.gamovie.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,12 +35,17 @@ public class GameController {
 	public GameDTO getGameDTO(@PathVariable int id) {
 		return gameFacade.findById(id);
 	}
-	
+
+	@GetMapping("/{offset}/{pageSize}")
+	public Page<Game> getGamesWithPagination(@PathVariable int offset, @PathVariable int pageSize) {
+		return gameFacade.getGamesWithPagination(offset, pageSize);
+	}
+
 	@GetMapping("/category")
-	public List<GameDTO> getAllGamesByCategory(@RequestParam String cat){
+	public List<GameDTO> getAllGamesByCategory(@RequestParam String cat) {
 		return gameFacade.getAllGamesByCategory(cat);
 	}
-	
+
 	@PostMapping()
 	@PreAuthorize("hasRole('ADMIN')")
 	public Game addGame(@RequestBody GameDTO gameDTO) {

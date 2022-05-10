@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.dto.MovieDTO;
@@ -30,6 +31,10 @@ public class MovieFacade {
 
 	public List<MovieDTO> allMoviesByCategory(String cat) {
 		return movieService.allMoviesByCategory(cat).stream().map(this::convertToMovieDTO).collect(Collectors.toList());
+	}
+	
+	public Page<Movie> moviesWithPagination(int offset, int pageSize){
+		return movieService.getMoviesWithPagination(offset, pageSize);
 	}
 
 	public Movie addMovie(MovieDTO moviedto) {

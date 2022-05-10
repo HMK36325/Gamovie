@@ -34,7 +34,7 @@ function App() {
             </Switch>
           </div>
         </Suspense>
-        <Footer></Footer>
+        <Footer />
       </div>
     </UserContextProvider>
   );

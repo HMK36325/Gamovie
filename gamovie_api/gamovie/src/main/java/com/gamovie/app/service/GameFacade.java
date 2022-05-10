@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.dto.GameDTO;
@@ -30,6 +31,10 @@ public class GameFacade {
 	
 	public List<GameDTO> getAllGamesByCategory(String cat){
 		return gameService.allGamesByCategory(cat).stream().map(this::convertToGameDTO).collect(Collectors.toList());
+	}
+	
+	public Page<Game> getGamesWithPagination(int offset, int pageSize){
+		return gameService.getGamesWithPagination(offset, pageSize);
 	}
 
 

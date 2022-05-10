@@ -19,7 +19,7 @@ max-width:214px;
 `;
 
 export default function Card({ url, title, year, id, contentType }) {
-  const src = url.startsWith('http') ? url : 'images/'+url;
+  const src = url.startsWith('http') ? url : 'images/' + url;
   return (
     <Box>
       <Link to={`${contentType}/${id}`} className="card-link">
