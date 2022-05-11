@@ -11,7 +11,6 @@ export default async function getCards({ content, page = 0 }) {
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log(response)
       const cards = response.content;
       const isLast = response.last
       return {cards, isLast};

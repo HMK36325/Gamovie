@@ -1,18 +1,17 @@
+import React from "react";
 import ListOfCards from "components/ListOfCards";
 import useCards from "hooks/useCards";
-import { Spinner, Button } from "react-bootstrap";
-import React from "react";
+import { Spinner} from "react-bootstrap";
 
 export default function Movies() {
-  const { loading, loadginNextPage, cards, setPage, lastPage } = useCards({ content: "movies" });
+  const { loading, loadginNextPage, cards, lastPage, page, setPage } = useCards({ content: "movies" });
 
-  return <>{loading
+  return <>{loading || loadginNextPage
     ? <Spinner animation="border" className="loading" />
-    : <>
-      <ListOfCards cards={cards} contentType='movies' setPage={setPage} lastPage={lastPage}/>
+    : <ListOfCards cards={cards} contentType='movies' setPage={setPage} lastPage={lastPage} page={page} />
 
 
-    </>
+
   }
   </>;
 }

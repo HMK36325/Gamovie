@@ -13,21 +13,20 @@ export default function useCards({ content }) {
   useEffect(function () {
     setLoading(true);
     getCards({ content }).then(({ cards }) => {
-      console.log(cards)
       setCards(cards);
       setLoading(false);
     });
   }, [content]);
 
   useEffect(function () {
-    if (page === INITIAL_PAGE) return
+    if (page < INITIAL_PAGE) return
     setLoadingNextPage(true)
     getCards({ content, page }).then(({ cards, isLast }) => {
-      if (isLast) setLastPage(true);
-      setCards(prevCards => prevCards.concat(cards));
+      isLast ? setLastPage(true) : setLastPage(false);
+      setCards(cards);
       setLoadingNextPage(false);
     });
   }, [content, page])
 
-  return { loading, loadginNextPage, cards, setPage, lastPage };
+  return { loading, loadginNextPage, lastPage, cards, page, setPage };
 }
