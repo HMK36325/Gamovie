@@ -9,9 +9,6 @@ export default function Movies() {
   return <>{loading || loadginNextPage
     ? <Spinner animation="border" className="loading" />
     : <ListOfCards cards={cards} contentType='movies' setPage={setPage} lastPage={lastPage} page={page} />
-
-
-
   }
   </>;
 }

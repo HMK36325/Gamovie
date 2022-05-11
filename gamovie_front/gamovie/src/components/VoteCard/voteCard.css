@@ -1,0 +1,22 @@
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.5em;
+  gap: 0.5em;
+  border-top: 5px solid #121416;
+}
+.note {
+  font-size: 130%;
+}
+.votes {
+  font-size: 85%;
+  text-align: center;
+}
+.votes p {
+  margin: 0;
+  padding: 0;
+}
+@media (max-width:992px){
+  
+}

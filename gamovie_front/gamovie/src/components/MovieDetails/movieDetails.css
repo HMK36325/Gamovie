@@ -1,0 +1,28 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1em;
+  padding: 0.4em;
+  border-bottom: 3px solid #212529;
+}
+.description-item {
+  justify-self: flex-end;
+  font-weight: bold;
+  font-size: 105%;
+  grid-column: 1/3;
+}
+
+.info-item {
+  grid-column: 3/-1;
+  align-self: center;
+}
+
+@media (max-width:992px) {
+  .description-item{
+    grid-column: 1/4;
+    font-size: 90%;
+  }
+  .info-item {
+    grid-column: 4/-1;
+  }
+}

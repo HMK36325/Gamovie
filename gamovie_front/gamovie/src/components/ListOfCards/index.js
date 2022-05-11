@@ -15,9 +15,11 @@ export default function ListOfCards({ cards, contentType, page, setPage, lastPag
 
   const handleNextPage = () => {
     setPage(prevPage => prevPage + 1);
+    window.scrollTo(0, 0);
   }
   const handlePrevPage = () => {
     setPage(prevPage => prevPage - 1)
+    window.scrollTo(0, 0);
   }
 
   return (
