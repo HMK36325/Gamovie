@@ -72,8 +72,13 @@ public class Movie {
 	private double note;
 
 	/** The date. */
-	@Column(name = "date") // LocalDate date = LocalDate.now(); syso(date)=2021/03/05
+	@Column(name = "date") 
 	private LocalDate date;
+	
+	@NotNull
+	@Size(min = 3)
+	@Column(name = "content")
+	private String content;
 	
 
 	/**
@@ -97,7 +102,7 @@ public class Movie {
 	 * @param date        the date
 	 */
 	public Movie(String name, String director, String year, String category, String distributor, String synopsis,
-			String image, long n_votes, int note, LocalDate date) {
+			String image, long n_votes, int note, LocalDate date, String content) {
 		this.name = name;
 		this.director = director;
 		this.year = year;
@@ -108,6 +113,7 @@ public class Movie {
 		this.n_votes = n_votes;
 		this.note = note;
 		this.date = date;
+		this.content = content;
 	}
 
 	/**
@@ -287,6 +293,18 @@ public class Movie {
 	public void setNote(double note) {
 		this.note = note;
 	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+
+	
+	
 	
 
 }

@@ -8,14 +8,14 @@ export default function Home() {
     <Container className="d-flex flex-column">
       <Row>
         <Col sm="12" className="mt-3">
-          <h1 className="text-center p-3">WELCOME TO GAMOVIE!</h1>
+          <h1 className="text-center p-3">BIENVENIDOS A GAMOVIE!</h1>
         </Col>
         <Col sm="12" className="d-flex justify-content-center mt-3">
           <HomeCarousel className="home-carousel" />
         </Col>
         <Col sm="12">
           <h2 className="text-center p-3">
-            Most Popular <strong>Movies!</strong>
+            <strong>Películas</strong> más populares!
           </h2>
         </Col>
         <Col
@@ -66,7 +66,7 @@ export default function Home() {
         </Col>
         <Col sm="12" className="mt-3">
           <h2 className="text-center p-3">
-            Most Popular <strong>Games!</strong>
+          <strong>Juegos</strong> más populares!
           </h2>
         </Col>
         <Col

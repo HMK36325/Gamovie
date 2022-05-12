@@ -10,7 +10,7 @@ public class GameDTO {
 	private String image;
 	private long n_votes;
 	private double note;
-	
+	private String content;
 	public int getId() {
 		return id;
 	}
@@ -65,6 +65,15 @@ public class GameDTO {
 	public void setNote(double note) {
 		this.note = note;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+	
+	
 
 
 	

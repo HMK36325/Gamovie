@@ -7,7 +7,8 @@ import { useLocation } from "wouter";
 export default function Details() {
     const [path,] = useLocation();
     const movieOrGame = path.includes('movies')
-    const { loading, details } = useDetails({ path: path.slice(1) })
+    const apiRoute = path.split('/').slice(-2);
+    const { loading, details } = useDetails({ path: `${apiRoute[0]}/${apiRoute[1]}` })
 
     return (
         <>

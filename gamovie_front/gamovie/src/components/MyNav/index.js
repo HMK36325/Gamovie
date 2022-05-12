@@ -11,10 +11,12 @@ import {
   FormControl,
 } from "react-bootstrap";
 import useUser from "hooks/useUser";
+import { useLocation } from "wouter";
 import './nav.css';
 
 export default function MyNav() {
   const { isLogged, logout } = useUser();
+  const [, navigate] = useLocation();
   const { currentUser } = useContext(Context);
   const [keyword, setKeyword] = useState("");
 
@@ -28,8 +30,8 @@ export default function MyNav() {
   };
 
   const handleSubmit = (e) => {
-    console.log(keyword);
     e.preventDefault();
+    navigate(`/search/${keyword}`);
   };
 
   return (
@@ -46,11 +48,12 @@ export default function MyNav() {
                 aria-label="Search"
                 value={keyword}
                 onChange={handleChange}
+                onSubmit={handleSubmit}
               />
             </Form>
             <Nav.Link href="/games">Videojuegos</Nav.Link>
             <Nav.Link href="/movies">Peliculas</Nav.Link>
-            <Nav.Link href="/">Support</Nav.Link>
+            <Nav.Link href="/">Soporte</Nav.Link>
           </Nav>
           <Nav>
             {isLogged ? (

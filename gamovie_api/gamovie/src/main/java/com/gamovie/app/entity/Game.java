@@ -67,10 +67,15 @@ public class Game {
 	/** The date. */
 	@Column(name = "date") // LocalDate date = LocalDate.now(); syso(date)=2021/03/05
 	private LocalDate date;
-
+	
+	@NotNull
+	@Size(min = 3)
+	@Column(name = "content")
+	private String content;
+	
 	public Game(int id, @NotNull @Size(min = 3) String name, @NotNull @Size(min = 3) String year,
 			@NotNull @Size(min = 3) String category, @NotNull @Size(min = 3) String distributor, @NotNull @Size(min = 3) String synopsis, @NotNull String image,
-			@NotNull long n_votes, @NotNull double note, LocalDate date) {
+			@NotNull long n_votes, @NotNull double note, LocalDate date, @NotNull @Size(min = 3) String content) {
 
 		this.id = id;
 		this.name = name;
@@ -82,6 +87,7 @@ public class Game {
 		this.n_votes = n_votes;
 		this.note = note;
 		this.date = date;
+		this.content = content;
 	}
 
 	public Game() {
@@ -127,7 +133,6 @@ public class Game {
 	public void setDistributor(String distributor) {
 		this.distributor = distributor;
 	}
-	
 
 	public String getSynopsis() {
 		return synopsis;
@@ -168,8 +173,14 @@ public class Game {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
-	
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
 	
 }

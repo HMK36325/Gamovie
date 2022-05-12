@@ -10,7 +10,7 @@ export default function login({ username, password }) {
         },
         body: JSON.stringify({ username, password })
     }).then(res => {
-        if (!res.ok) throw new Error('Response is NOT ok')
+        if (!res.ok) throw new Error('Response is NOT ok');
         return res.json()
     }).then(res => {
         const currentUser = res;
