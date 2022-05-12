@@ -26,7 +26,7 @@ max-width:214px;
 `;
 
 export default function VoteCard({ url, nVotes, note }) {
-    const src = url && url.startsWith('http') ? url : '../images/' + url;
+    const src = url && url.startsWith('http') ? url : '../../images/' + url;
     const [userNote, setUserNote] = useState(0);
 
     const handleChange = (e) => {
