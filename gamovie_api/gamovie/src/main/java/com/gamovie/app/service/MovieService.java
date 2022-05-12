@@ -37,6 +37,8 @@ public interface MovieService {
 	public void deleteBy(int theId);
 
 	List<Movie> allMoviesByCategory(String cat);
+	
+	List<Movie> findByName(String name);
 
 	public Page<Movie> getMoviesWithPagination(int offset, int pageSize);
 

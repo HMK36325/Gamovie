@@ -13,4 +13,7 @@ public interface GameRepository extends JpaRepository<Game, Integer> {
 	
 	@Query("select g from Game g where g.category like ?1")
 	List<Game> allGamesByCategory(String cat);
+	
+	@Query("select g from Game g where g.name like %?1%")
+	List<Game> findByName(String name);
 }

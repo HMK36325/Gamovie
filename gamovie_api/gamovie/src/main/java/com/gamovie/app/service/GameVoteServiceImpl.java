@@ -42,6 +42,10 @@ public class GameVoteServiceImpl implements GameVoteService {
 		List<GameVote> result = gameVoteRepository.allVotesByUserId(user);
 
 		if (!result.isEmpty()) {
+			result.stream().forEach((vote)->{
+				vote.getUser().setPassword(null);
+				vote.getUser().setEmail(null);
+			});
 			return result;
 		} else {
 			throw new RuntimeException("Did not found votes for this user");

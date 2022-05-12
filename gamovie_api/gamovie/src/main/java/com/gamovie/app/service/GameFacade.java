@@ -14,10 +14,10 @@ import com.gamovie.app.entity.Game;
 
 @Service
 public class GameFacade {
-	
+
 	@Autowired
 	GameService gameService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -25,18 +25,21 @@ public class GameFacade {
 		return gameService.findAll().stream().map(this::convertToGameDTO).collect(Collectors.toList());
 	}
 
+	public List<GameDTO> findByName(String name) {
+		return gameService.findByName(name).stream().map(this::convertToGameDTO).collect(Collectors.toList());
+	}
+
 	public GameDTO findById(int id) {
 		return convertToGameDTO(gameService.findById(id));
 	}
-	
-	public List<GameDTO> getAllGamesByCategory(String cat){
+
+	public List<GameDTO> getAllGamesByCategory(String cat) {
 		return gameService.allGamesByCategory(cat).stream().map(this::convertToGameDTO).collect(Collectors.toList());
 	}
-	
-	public Page<Game> getGamesWithPagination(int offset, int pageSize){
+
+	public Page<Game> getGamesWithPagination(int offset, int pageSize) {
 		return gameService.getGamesWithPagination(offset, pageSize);
 	}
-
 
 	public Game addGame(GameDTO gameDTO) {
 		Game game = convertToGame(gameDTO);

@@ -41,7 +41,7 @@ public class VoteController {
 	
 	@PostMapping("/movies/{user_id}/{movie_id}")
 	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
-	public MovieVote addMovieVote(@PathVariable int user_id, @PathVariable int movie_id, @RequestParam int user_note) {
+	public MovieVoteDTO addMovieVote(@PathVariable int user_id, @PathVariable int movie_id, @RequestParam int user_note) {
 
 		return movieVoteFacade.addMovieVote(user_id, movie_id, user_note);
 
@@ -75,7 +75,7 @@ public class VoteController {
 	
 	@PostMapping("/games/{user_id}/{game_id}")
 	@PreAuthorize("hasRole('USER')" + " || hasRole('ADMIN')")
-	public GameVote addGameVote(@PathVariable int user_id, @PathVariable int game_id, @RequestParam int user_note) {
+	public GameVoteDTO addGameVote(@PathVariable int user_id, @PathVariable int game_id, @RequestParam int user_note) {
 
 		return gameVoteFacade.addGameVote(user_id, game_id, user_note);
 

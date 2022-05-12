@@ -21,6 +21,10 @@ public class GameReviewServiceImpl implements GameReviewService {
 	public GameReview findById(int theId) {
 		Optional<GameReview> result = gameReviewRepository.findById(theId);
 		if (result.isPresent()) {
+			result.stream().forEach((element) -> {
+				element.getUser().setPassword(null);
+				element.getUser().setEmail(null);
+			});
 			return result.get();
 		} else {
 			throw new RuntimeException("Did not found the Review with the id: " + theId);
@@ -45,6 +49,10 @@ public class GameReviewServiceImpl implements GameReviewService {
 		List<GameReview> result = gameReviewRepository.allReviewsByUser(user);
 
 		if (!result.isEmpty()) {
+			result.stream().forEach((element)->{
+				element.getUser().setPassword(null);
+				element.getUser().setEmail(null);
+			});
 			return result;
 		} else {
 			throw new RuntimeException("Did not found Reviews for this user");
@@ -56,6 +64,10 @@ public class GameReviewServiceImpl implements GameReviewService {
 		List<GameReview> result = gameReviewRepository.allReviewsByGame(game);
 
 		if (!result.isEmpty()) {
+			result.stream().forEach((element)->{
+				element.getUser().setPassword(null);
+				element.getUser().setEmail(null);
+			});
 			return result;
 		} else {
 			throw new RuntimeException("Did not found Reviews for this game");

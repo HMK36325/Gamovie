@@ -24,6 +24,10 @@ public class MovieFacade {
 	public List<MovieDTO> getAllMovies() {
 		return movieService.findAll().stream().map(this::convertToMovieDTO).collect(Collectors.toList());
 	}
+	
+	public List<MovieDTO> findByName(String name) {
+		return movieService.findByName(name).stream().map(this::convertToMovieDTO).collect(Collectors.toList());
+	}
 
 	public MovieDTO findById(int id) {
 		return convertToMovieDTO(movieService.findById(id));

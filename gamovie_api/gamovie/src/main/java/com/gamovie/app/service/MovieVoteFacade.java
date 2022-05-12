@@ -39,7 +39,7 @@ public class MovieVoteFacade {
 		return movieVoteService.allVotesByUserId(user);
 	}
 	
-	public MovieVote addMovieVote(int user_id, int movie_id, int user_note) {
+	public MovieVoteDTO addMovieVote(int user_id, int movie_id, int user_note) {
 		User theUser= userService.findById(user_id);
 		Movie theMovie= movieService.findById(movie_id);
 		long n_votes= theMovie.getN_votes();
@@ -54,7 +54,7 @@ public class MovieVoteFacade {
 		theMovieVote.setVoted_at(voted_at);
 		theMovieVote.setVote(user_note);
 		movieVoteService.save(theMovieVote);
-		return theMovieVote;
+		return convertToMovieVoteDTO(theMovieVote);
 	}
 	
 	public MovieVote updateMovieVote(int id, int user_note) {
@@ -69,7 +69,13 @@ public class MovieVoteFacade {
 	}
 	
 	private MovieVoteDTO convertToMovieVoteDTO(MovieVote movieVote) {
-		MovieVoteDTO movieVoteDto = modelMapper.map(movieVote, MovieVoteDTO.class);
+		MovieVoteDTO movieVoteDto = new MovieVoteDTO();
+		movieVoteDto.setId(movieVote.getId());
+		movieVoteDto.setMovie(movieVote.getMovie());
+		movieVoteDto.setNote(movieVote.getVote());
+		movieVoteDto.setUser_id(movieVote.getUser().getId());
+		movieVoteDto.setVoted_at(movieVote.getVoted_at());
+		
 		return movieVoteDto;
 	}
 

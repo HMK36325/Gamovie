@@ -3,14 +3,18 @@ package com.gamovie.app.dto;
 import java.time.LocalDate;
 
 import com.gamovie.app.entity.Game;
-import com.gamovie.app.entity.User;
 
 public class GameVoteDTO {
 	private int id;
-	private User user;
+	private int user_id;
 	private Game game;
-	private int note;
+	private float note;
 	private LocalDate voted_at;
+	
+	
+
+	public GameVoteDTO() {
+	}
 
 	public int getId() {
 		return id;
@@ -20,27 +24,27 @@ public class GameVoteDTO {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
-	public Game getMovie() {
+	public Game getGame() {
 		return game;
 	}
 
-	public void setMovie(Game game) {
+	public void setGame(Game game) {
 		this.game = game;
 	}
 
-	public int getNote() {
+	public float getNote() {
 		return note;
 	}
 
-	public void setNote(int note) {
+	public void setNote(float note) {
 		this.note = note;
 	}
 

@@ -36,7 +36,7 @@ public class GameVoteFacade {
 		return gameVoteService.allVotesByUserId(user);
 	}
 
-	public GameVote addGameVote(int user_id, int game_id, int user_note) {
+	public GameVoteDTO addGameVote(int user_id, int game_id, int user_note) {
 		User theUser = userService.findById(user_id);
 		Game theGame = gameService.findById(game_id);
 		long n_votes = theGame.getN_votes();
@@ -51,7 +51,7 @@ public class GameVoteFacade {
 		theGameVote.setVoted_at(voted_at);
 		theGameVote.setVote(user_note);
 		gameVoteService.save(theGameVote);
-		return theGameVote;
+		return convertToGameVoteDTO(theGameVote);
 	}
 
 	public GameVote updateGameVote(int id, int user_note) {
@@ -66,7 +66,13 @@ public class GameVoteFacade {
 	}
 
 	private GameVoteDTO convertToGameVoteDTO(GameVote gameVote) {
-		GameVoteDTO gameVoteDto = modelMapper.map(gameVote, GameVoteDTO.class);
+		GameVoteDTO gameVoteDto = new GameVoteDTO();
+		gameVoteDto.setId(gameVote.getId());
+		gameVoteDto.setUser_id(gameVote.getUser().getId());
+		gameVoteDto.setGame(gameVote.getGame());
+		gameVoteDto.setNote(gameVote.getVote());
+		gameVoteDto.setVoted_at(gameVote.getVoted_at());
+		
 		return gameVoteDto;
 	}
 

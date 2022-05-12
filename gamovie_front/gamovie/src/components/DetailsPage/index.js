@@ -27,7 +27,8 @@ export default function DetailsPage({ details, movieOrGame }) {
                             name={details.name}
                             category={details.category}
                             year={details.year}
-                            distributor={details.distributor} />
+                            distributor={details.distributor}
+                            synopsis={details.synopsis} />
                     }
                 </Col>
             </Row>

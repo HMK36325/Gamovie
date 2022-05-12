@@ -41,12 +41,14 @@ public class MovieReviewFacade {
 		User theUser = userService.findById(user_id);
 		Movie theMovie = movieService.findById(movie_id);
 		MovieReview theMovieReview = new MovieReview();
-		LocalDate reviewed_at= LocalDate.now();
+		LocalDate reviewed_at = LocalDate.now();
 		theMovieReview.setReview(review.getReview());
 		theMovieReview.setMovie(theMovie);
 		theMovieReview.setUser(theUser);
 		theMovieReview.setReviewed_at(reviewed_at);
 		movieReviewService.save(theMovieReview);
+		theMovieReview.getUser().setPassword(null);
+		theMovieReview.getUser().setEmail(null);
 		return theMovieReview;
 	}
 
@@ -54,6 +56,8 @@ public class MovieReviewFacade {
 		MovieReview theMovieReview = movieReviewService.findById(id);
 		theMovieReview.setReview(review.getReview());
 		movieReviewService.save(theMovieReview);
+		theMovieReview.getUser().setPassword(null);
+		theMovieReview.getUser().setEmail(null);
 		return theMovieReview;
 	}
 

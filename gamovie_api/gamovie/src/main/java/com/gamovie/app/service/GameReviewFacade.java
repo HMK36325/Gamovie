@@ -46,6 +46,8 @@ public class GameReviewFacade {
 		theGameReview.setUser(theUser);
 		theGameReview.setReviewed_at(reviewed_at);
 		gameReviewService.save(theGameReview);
+		theGameReview.getUser().setPassword(null);
+		theGameReview.getUser().setEmail(null);
 		return theGameReview;
 	}
 
@@ -53,6 +55,8 @@ public class GameReviewFacade {
 		GameReview theGameReview = gameReviewService.findById(id);
 		theGameReview.setReview(review.getReview());
 		gameReviewService.save(theGameReview);
+		theGameReview.getUser().setPassword(null);
+		theGameReview.getUser().setEmail(null);
 		return theGameReview;
 	}
 

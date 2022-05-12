@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.entity.Movie;
@@ -55,8 +56,18 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
+	public List<Movie> findByName(String name) {
+		List<Movie> result = movieRepository.findByName(name);
+		if (!result.isEmpty()) {
+			return result;
+		} else {
+			throw new RuntimeException("Did not found movies for that name");
+		}
+	}
+
+	@Override
 	public Page<Movie> getMoviesWithPagination(int offset, int pageSize) {
-		Page<Movie> movies = movieRepository.findAll(PageRequest.of(offset, pageSize));
+		Page<Movie> movies = movieRepository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by("name")));
 		if (!movies.isEmpty()) {
 			return movies;
 		} else {

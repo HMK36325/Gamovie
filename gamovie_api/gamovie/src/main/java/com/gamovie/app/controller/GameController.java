@@ -30,6 +30,11 @@ public class GameController {
 	public List<GameDTO> getGameDTOList() {
 		return gameFacade.getAllGames();
 	}
+	
+	@GetMapping("/search/{name}")
+	public List<GameDTO> getGameDTOListByName(@PathVariable String name) {
+		return gameFacade.findByName(name);
+	}
 
 	@GetMapping("/{id}")
 	public GameDTO getGameDTO(@PathVariable int id) {

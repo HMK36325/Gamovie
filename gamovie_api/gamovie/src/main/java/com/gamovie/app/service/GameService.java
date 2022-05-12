@@ -38,5 +38,7 @@ public interface GameService {
 	
 	List<Game> allGamesByCategory(String cat);
 	
+	List<Game> findByName(String name);
+	
 	public Page<Game> getGamesWithPagination(int offset, int pageSize);
 }

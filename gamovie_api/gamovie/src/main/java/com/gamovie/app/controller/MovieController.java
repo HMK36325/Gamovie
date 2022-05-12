@@ -30,6 +30,11 @@ public class MovieController {
 	public List<MovieDTO> getMovieDTOList() {
 		return movieFacade.getAllMovies();
 	}
+	
+	@GetMapping("/search/{name}")
+	public List<MovieDTO> getMovieDTOListByName(@PathVariable String name) {
+		return movieFacade.findByName(name);
+	}
 
 	@GetMapping("/{id}")
 	public MovieDTO getMovieDTO(@PathVariable int id) {
