@@ -8,17 +8,21 @@ const Box = styledComponents.div`
 border: 5px solid #121416;
 background-color: #212529;
 justify-self: center;
-align-self: center;
+align-self: start !important;
 border-radius: 5px;
 color: #fff;
 max-width:214px;
+
     select{
         cursor: pointer;
         padding: 0.5em;
     }
-@media (max-width: 992px) {
-    align-self: start !important;
-    }
+
+@media (max-width: 768px) {
+    max-width:70%;
+    margin-bottom:3em !important;
+}
+
 `;
 
 export default function VoteCard({ url, nVotes, note }) {

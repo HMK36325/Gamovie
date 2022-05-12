@@ -44,6 +44,11 @@ public class Game {
 	@Column(name = "distributor")
 	private String distributor;
 	
+	@NotNull
+	@Size(min = 3)
+	@Column(name = "synopsis", length = 1500)
+	private String synopsis;
+	
 	/** The image. */
 	@NotNull
 	@Column(name = "image_address")
@@ -64,7 +69,7 @@ public class Game {
 	private LocalDate date;
 
 	public Game(int id, @NotNull @Size(min = 3) String name, @NotNull @Size(min = 3) String year,
-			@NotNull @Size(min = 3) String category, @NotNull @Size(min = 3) String distributor, @NotNull String image,
+			@NotNull @Size(min = 3) String category, @NotNull @Size(min = 3) String distributor, @NotNull @Size(min = 3) String synopsis, @NotNull String image,
 			@NotNull long n_votes, @NotNull double note, LocalDate date) {
 
 		this.id = id;
@@ -72,6 +77,7 @@ public class Game {
 		this.year = year;
 		this.category = category;
 		this.distributor = distributor;
+		this.synopsis = synopsis;
 		this.image = image;
 		this.n_votes = n_votes;
 		this.note = note;
@@ -120,6 +126,15 @@ public class Game {
 
 	public void setDistributor(String distributor) {
 		this.distributor = distributor;
+	}
+	
+
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
 	}
 
 	public String getImage() {

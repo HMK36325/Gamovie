@@ -17,6 +17,10 @@
   align-self: center;
 }
 
+.first{
+  border-top: 3px solid #212529;
+}
+
 @media (max-width:992px) {
   .description-item{
     grid-column: 1/4;

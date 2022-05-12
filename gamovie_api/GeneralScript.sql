@@ -81,7 +81,7 @@ INSERT INTO `gamovie`.`movies` (`category`, `date`, `director`, `distributor`, `
 
 #GAMES
 
-INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'From Software', 'eldenRing.jpg', '10', 'Elden Ring', '9.4', '2022');
+INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`,`synopsis`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'From Software','Elden Ring es un juego de fantasía, acción y mundo abierto con elementos de rol como estadísticas, armas y hechizos. Levántate, empañado, y déjate guiar por la gracia para blandir el poder del Elden Ring y convertirte en un Elden Lord en las Tierras Intermedias.', 'eldenRing.jpg', '10', 'Elden Ring', '9.4', '2022');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'Nintendo', 'botw.jpg', '10', 'The Legend of Zelda: Breath of the Wild', '9.2', '2017');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Mundo Abierto', '2022-05-05', 'Rockstar', 'gta.jpg', '10', 'Grand Theft Auto V', '9.0', '2013');
 INSERT INTO `gamovie`.`games` (`category`, `date`, `distributor`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('RPG', '2022-05-05', 'From Software', 'sekiro.jpg', '10', 'Sekiro™: Shadows Die Twice', '9.1', '2019');
