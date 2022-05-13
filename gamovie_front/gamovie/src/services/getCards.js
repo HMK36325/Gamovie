@@ -1,7 +1,7 @@
 import config from "config.json";
 
 export default async function getCards({ content, page = 0 }) {
-  const ENDPOINT = `${config.apiUrl}${content}/${page}/12`;
+  const ENDPOINT = `${config.apiUrl}${content}/${page}/20`;
   return await fetch(ENDPOINT, {
     method: "GET",
     headers: {
