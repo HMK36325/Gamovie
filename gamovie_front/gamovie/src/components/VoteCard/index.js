@@ -60,11 +60,11 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
     const handleChange = (e) => {
         if (!isLogged) return navigate('/login');
         setUserNote(e.target.value);
-        
-        isVoted
-            ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
-            : addVote({ content_id: id, contentType: content, note: e.target.value });
 
+        if (isVoted) {
+            window.location.reload();
+            updateVote({ vote_id: voteId, contentType: content, note: e.target.value });
+        } else addVote({ content_id: id, contentType: content, note: e.target.value });
     }
 
     return (

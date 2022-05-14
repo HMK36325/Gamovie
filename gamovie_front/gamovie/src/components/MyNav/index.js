@@ -61,7 +61,7 @@ export default function MyNav() {
                 title={currentUser.username}
                 id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item href="/votes">
                   Mis Votaciones
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">

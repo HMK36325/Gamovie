@@ -3,7 +3,7 @@
   min-height: 76.7vh;
 }
 
-body{
+body {
   background-color: #f5f8fa !important;
 }
 
@@ -16,17 +16,32 @@ body{
   margin: -25px 0 0 -25px;
 }
 
-.show-more{
+.show-more {
   display: flex;
   justify-content: center;
   margin-top: 2em;
   margin-bottom: 0;
 }
 
-.notFound{
+
+.notFound {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 2em;
+}
+
+.card-link {
+  color: #eee;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.change-list-button {
+  text-align: center;
   margin-top: 2em;
 }

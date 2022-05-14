@@ -15,6 +15,7 @@ import Movies from "pages/movies";
 import Games from "pages/Games";
 import Details from "pages/Details";
 import Search from "pages/Search";
+import Votes from "pages/Votes";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -35,6 +36,7 @@ function App() {
               <Route component={Details} path="/search/games/:id" />
               <Route component={Details} path="/search/movies/:id" />
               <Route component={Search} path="/search/:keyword" />
+              <Route component={Votes} path="/votes" />
             </Switch>
           </div>
         </Suspense>
