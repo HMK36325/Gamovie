@@ -63,7 +63,7 @@ export default function useUser() {
                         return prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote_id);
                     })
             });
-    }, [currentUser])
+    }, [currentUser, setMovieVotes, setGameVotes])
 
 
 
