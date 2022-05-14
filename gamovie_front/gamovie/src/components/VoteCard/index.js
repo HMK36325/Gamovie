@@ -33,7 +33,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
     const [voteId, setVoteId] = useState(0);
     const [isVoted, setIsVoted] = useState(false);
 
-    const { isLogged, movieVotes, gameVotes, addVote, updateVote } = useUser();
+    const { isLogged, movieVotes, gameVotes, addVote, updateVote, removeVote } = useUser();
     const [, navigate] = useLocation();
 
     useEffect(() => {
@@ -60,11 +60,12 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
     const handleChange = (e) => {
         if (!isLogged) return navigate('/login');
         setUserNote(e.target.value);
+        if (e.target.value === '0') {
+            removeVote({ vote_id: voteId, contentType: content });
+        } else isVoted
+            ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
+            : addVote({ content_id: id, contentType: content, note: e.target.value });
 
-        if (isVoted) {
-            window.location.reload();
-            updateVote({ vote_id: voteId, contentType: content, note: e.target.value });
-        } else addVote({ content_id: id, contentType: content, note: e.target.value });
     }
 
     return (

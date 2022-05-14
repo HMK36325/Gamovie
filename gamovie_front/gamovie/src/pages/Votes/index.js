@@ -7,9 +7,6 @@ import ListOfGameVotes from "components/ListOfGameVotes";
 export default function Votes() {
     const { movieVotes, gameVotes } = useUser()
 
-    console.log([...movieVotes].reverse())
-    console.log(gameVotes)
-
     const [showContent, setShowContent] = useState(false);
 
     const handleClick = () => {

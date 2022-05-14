@@ -3,7 +3,7 @@ import { useCallback, useContext, useState } from "react";
 import loginService from "services/login"
 import addVoteService from "services/addVote";
 import updateVoteService from "services/updateVote";
-
+import removeVoteService from "services/removeVote";
 
 export default function useUser() {
     const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setCurrentUser } = useContext(Context);
@@ -24,6 +24,8 @@ export default function useUser() {
             })
     }, [setCurrentUser]);
 
+    //-----------------VOTES FUNCTIONS----------------//
+
     const addVote = useCallback(({ content_id, contentType, note }) => {
         addVoteService({ content_id, currentUser, contentType, note })
             .then(vote => {
@@ -38,19 +40,45 @@ export default function useUser() {
     const updateVote = useCallback(({ vote_id, contentType, note }) => {
         updateVoteService({ vote_id, currentUser, contentType, note })
             .then(vote => {
-                contentType === 'movies' ? setMovieVotes(prevVotes => prevVotes.concat(vote))
-                    : setGameVotes(prevVotes => prevVotes.concat(vote))
+                contentType === 'movies' ?
+                    setMovieVotes((prevVotes) => {
+                        prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote.id);
+                        return prevVotes.concat(vote);
+                    })
+                    : setGameVotes((prevVotes) => {
+                        prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote.id);
+                        return prevVotes.concat(vote);
+                    })
             })
     }, [currentUser, setGameVotes, setMovieVotes])
+
+    const removeVote = useCallback(({ vote_id, contentType }) => {
+        removeVoteService({ vote_id, contentType, currentUser })
+            .then(res => {
+                contentType === 'movies' ?
+                    setMovieVotes((prevVotes) => {
+                        return prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote_id);
+                    })
+                    : setGameVotes((prevVotes) => {
+                        return prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote_id);
+                    })
+            });
+    }, [currentUser])
+
+
+
+    //-----------------REVIEWS FUNCTIONS--------------//
 
     const logout = useCallback(() => {
         window.localStorage.removeItem('currentUser');
         setCurrentUser(null);
     }, [setCurrentUser]);
 
+
     return {
         addVote,
         updateVote,
+        removeVote,
         movieVotes,
         gameVotes,
         isLogged: Boolean(currentUser),
