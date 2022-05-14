@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
+import useUser from "hooks/useUser";
+import { useLocation } from "wouter";
 import styledComponents from "styled-components";
 
 import './voteCard.css';
@@ -25,12 +27,44 @@ max-width:214px;
 
 `;
 
-export default function VoteCard({ url, nVotes, note }) {
+export default function VoteCard({ url, nVotes, note, id, content }) {
     const src = url && url.startsWith('http') ? url : '../../images/' + url;
     const [userNote, setUserNote] = useState(0);
+    const [voteId, setVoteId] = useState(0);
+    const [isVoted, setIsVoted] = useState(false);
+
+    const { isLogged, movieVotes, gameVotes, addVote, updateVote } = useUser();
+    const [, navigate] = useLocation();
+
+    useEffect(() => {
+        if (content === 'movies') {
+            movieVotes.forEach((vote) => {
+                if (vote.movie.id === id) {
+                    setUserNote(vote.vote);
+                    setVoteId(vote.id)
+                    setIsVoted(true);
+                }
+            })
+        } else {
+            gameVotes.forEach((vote) => {
+                if (vote.game.id === id) {
+                    setUserNote(vote.vote);
+                    setVoteId(vote.id)
+                    setIsVoted(true);
+                }
+            })
+        }
+
+    }, [id, content, movieVotes, gameVotes])
 
     const handleChange = (e) => {
+        if (!isLogged) return navigate('/login');
         setUserNote(e.target.value);
+        
+        isVoted
+            ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
+            : addVote({ content_id: id, contentType: content, note: e.target.value });
+
     }
 
     return (

@@ -9,13 +9,22 @@ export default function Search() {
     const keyword = path.split('/').pop()
     const { cards, loading, notFound } = useSearch({ keyword });
 
-    console.log(cards);
-    console.log(notFound);
 
     return <>
         {loading
             ? <Spinner animation="border" className="loading" />
-            : <ListOfSearch cards={cards} />
+            : <>
+                {
+                    notFound
+                        ?
+                            <div className="notFound">
+                                <h2>No se econtraron resultados...</h2>
+                                <iframe title="iframe" src="https://giphy.com/embed/Z9hZLKflOlXjo349De" width="100%" height="100%" frameBorder="0" className="giphy-embed" allowFullScreen></iframe>
+                            </div>
+
+                        : <ListOfSearch cards={cards} />
+                }
+            </>
         }
 
     </>

@@ -11,7 +11,7 @@ export default function useSearch({ keyword }) {
         setLoading(true)
         getSearchGames({ keyword }).then((cards) => {
             getSearchMovies({ keyword }).then((cards2) => {
-                if (cards.length === 0 && cards2.length === 0) setNotFound(true)
+                cards.length === 0 && cards2.length === 0 ? setNotFound(true) : setNotFound(false);
                 setCards(cards.concat(cards2))
                 setLoading(false);
             });

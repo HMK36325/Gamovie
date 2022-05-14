@@ -32,6 +32,11 @@ INSERT INTO `gamovie`.`users_roles`
 `user_id`)
 VALUES
 (2,5);
+INSERT INTO `gamovie`.`users_roles`
+(`role_id`,
+`user_id`)
+VALUES
+(3,5);
 
 #MOVIES
 

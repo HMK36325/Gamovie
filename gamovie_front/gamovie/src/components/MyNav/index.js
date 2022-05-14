@@ -31,7 +31,7 @@ export default function MyNav() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${keyword}`);
+    if (keyword.length > 0) navigate(`/search/${keyword}`);
   };
 
   return (
@@ -44,7 +44,7 @@ export default function MyNav() {
             <Form className="form w-100" onSubmit={handleSubmit}>
               <FormControl
                 type="text"
-                placeholder="Search"
+                placeholder="Busca aquí..."
                 aria-label="Search"
                 value={keyword}
                 onChange={handleChange}

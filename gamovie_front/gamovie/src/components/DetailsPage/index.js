@@ -11,7 +11,7 @@ export default function DetailsPage({ details, movieOrGame }) {
         <Container className="mt-5">
             <Row>
                 <Col xs="12" md="4" lg="3" className="d-flex justify-content-center">
-                    <VoteCard url={details.image} nVotes={details.n_votes} note={details.note} />
+                    <VoteCard url={details.image} nVotes={details.n_votes} note={details.note} content={details.content} id={details.id} />
                 </Col>
 
                 <Col xs="12" md="8" lg="9">
@@ -23,7 +23,7 @@ export default function DetailsPage({ details, movieOrGame }) {
                             year={details.year}
                             synopsis={details.synopsis}
                             distributor={details.distributor} />
-                        : <GameDetails 
+                        : <GameDetails
                             name={details.name}
                             category={details.category}
                             year={details.year}

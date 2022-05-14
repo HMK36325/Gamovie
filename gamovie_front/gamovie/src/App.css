@@ -22,3 +22,11 @@ body{
   margin-top: 2em;
   margin-bottom: 0;
 }
+
+.notFound{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
