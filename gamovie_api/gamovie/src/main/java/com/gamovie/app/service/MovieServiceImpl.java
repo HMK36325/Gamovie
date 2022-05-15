@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -46,8 +47,9 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<Movie> allMoviesByCategory(String cat) {
-		List<Movie> result = movieRepository.allMoviesByCategory(cat);
+	public Page<Movie> allMoviesByCategory (int offset, int pageSize, String cat) {
+		Pageable pageable = PageRequest.of(offset, pageSize).withSort(Sort.by("name"));
+		Page<Movie> result = movieRepository.allMoviesByCategory(cat, pageable);
 		if (!result.isEmpty()) {
 			return result;
 		} else {

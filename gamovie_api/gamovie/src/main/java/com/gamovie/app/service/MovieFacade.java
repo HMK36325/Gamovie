@@ -33,8 +33,8 @@ public class MovieFacade {
 		return convertToMovieDTO(movieService.findById(id));
 	}
 
-	public List<MovieDTO> allMoviesByCategory(String cat) {
-		return movieService.allMoviesByCategory(cat).stream().map(this::convertToMovieDTO).collect(Collectors.toList());
+	public Page<Movie> allMoviesByCategory(int offset, int pageSize, String cat) {
+		return movieService.allMoviesByCategory(pageSize, offset, cat);
 	}
 	
 	public Page<Movie> moviesWithPagination(int offset, int pageSize){

@@ -36,7 +36,7 @@ public interface GameService {
 	 */
 	public void deleteBy(int theId);
 	
-	List<Game> allGamesByCategory(String cat);
+	Page<Game> allGamesByCategory( int offset, int pageSize, String cat);
 	
 	List<Game> findByName(String name);
 	

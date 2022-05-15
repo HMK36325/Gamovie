@@ -33,8 +33,8 @@ public class GameFacade {
 		return convertToGameDTO(gameService.findById(id));
 	}
 
-	public List<GameDTO> getAllGamesByCategory(String cat) {
-		return gameService.allGamesByCategory(cat).stream().map(this::convertToGameDTO).collect(Collectors.toList());
+	public Page<Game> getAllGamesByCategory(int offset, int pageSize, String cat) {
+		return gameService.allGamesByCategory(pageSize, offset, cat);
 	}
 
 	public Page<Game> getGamesWithPagination(int offset, int pageSize) {

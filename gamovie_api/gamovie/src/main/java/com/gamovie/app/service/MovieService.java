@@ -36,7 +36,7 @@ public interface MovieService {
 	 */
 	public void deleteBy(int theId);
 
-	List<Movie> allMoviesByCategory(String cat);
+	Page<Movie> allMoviesByCategory( int offset, int pageSize, String cat);
 	
 	List<Movie> findByName(String name);
 

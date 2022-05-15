@@ -30,7 +30,7 @@ public class GameController {
 	public List<GameDTO> getGameDTOList() {
 		return gameFacade.getAllGames();
 	}
-	
+
 	@GetMapping("/search/{name}")
 	public List<GameDTO> getGameDTOListByName(@PathVariable String name) {
 		return gameFacade.findByName(name);
@@ -46,9 +46,10 @@ public class GameController {
 		return gameFacade.getGamesWithPagination(offset, pageSize);
 	}
 
-	@GetMapping("/category")
-	public List<GameDTO> getAllGamesByCategory(@RequestParam String cat) {
-		return gameFacade.getAllGamesByCategory(cat);
+	@GetMapping("/category/{offset}/{pageSize}")
+	public Page<Game> getAllGamesByCategory(@PathVariable int offset, @PathVariable int pageSize,
+			@RequestParam String cat) {
+		return gameFacade.getAllGamesByCategory(offset, pageSize, cat);
 	}
 
 	@PostMapping()

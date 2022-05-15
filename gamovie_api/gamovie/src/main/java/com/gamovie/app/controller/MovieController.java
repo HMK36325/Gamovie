@@ -46,9 +46,9 @@ public class MovieController {
 		return movieFacade.moviesWithPagination(offset, pageSize);
 	}
 
-	@GetMapping("/category")
-	public List<MovieDTO> getAllMoviesByCategory(@RequestParam String cat) {
-		return movieFacade.allMoviesByCategory(cat);
+	@GetMapping("/category/{offset}/{pageSize}")
+	public Page<Movie> getAllMoviesByCategory(@PathVariable int offset, @PathVariable int pageSize, @RequestParam String cat) {
+		return movieFacade.allMoviesByCategory(offset, pageSize, cat);
 	}
 
 	@PostMapping()
