@@ -1,7 +1,8 @@
 import React from "react";
-import { Row, Container, Col, Button, ButtonGroup } from "react-bootstrap";
+import { Row, Container, Col } from "react-bootstrap";
 import Card from "components/Card";
 import css from "styled-components";
+import ReactPaginate from "react-paginate";
 
 export const Overlay = css.div`
 ${({ lastPage }) => lastPage ? `
@@ -11,17 +12,12 @@ ${({ lastPage }) => lastPage ? `
 ` : ''}
 `
 
-export default function ListOfCards({ cards, contentType, page, setPage, lastPage }) {
+export default function ListOfCards({ cards, contentType, setPage, totalPages }) {
 
-  const handleNextPage = () => {
-    setPage(prevPage => prevPage + 1);
+  const handlePageClick = (data) => {
+    setPage(data.nextSelectedPage);
     window.scrollTo(0, 0);
   }
-  const handlePrevPage = () => {
-    setPage(prevPage => prevPage - 1)
-    window.scrollTo(0, 0);
-  }
-
   return (
     <Container className="d-flex flex-column mt-4">
       <Overlay>
@@ -48,19 +44,28 @@ export default function ListOfCards({ cards, contentType, page, setPage, lastPag
             );
           })}
         </Row>
-        <div className="show-more">
-          {page > 0 && !lastPage
-            ? <>
-              <ButtonGroup aria-label="Next and Prev buttons">
-                <Button onClick={handlePrevPage} variant="secondary">Prev</Button>
-                <Button onClick={handleNextPage} variant="secondary">Next</Button>
-              </ButtonGroup>
-            </>
-            : page === 0 && !lastPage ? <Button onClick={handleNextPage} variant="secondary">Next Page...</Button>
-              : <Button onClick={handlePrevPage} variant="secondary">Prev Page...</Button>
-          }
-        </div>
       </Overlay>
+      <div className="show-more">
+        <ReactPaginate
+          previousLabel={'Anterior'}
+          nextLabel={'Siguiente'}
+          breakLabel={'...'}
+          pageRangeDisplayed={5}
+          marginPagesDisplayed={3}
+          pageCount={totalPages}
+          onClick={handlePageClick}
+          containerClassName={'pagination'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          activeClassName={'active'}
+          renderOnZeroPageCount={null}
+          eventListener={'onClick'}
+        />
+      </div>
     </Container>
   );
 }
