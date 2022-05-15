@@ -1,7 +1,12 @@
 import config from "config.json";
 
-export default async function getCards({ content, page = 0 }) {
-  const ENDPOINT = `${config.apiUrl}${content}/${page}/20`;
+export default async function getCards({ content, page = 0, cat = 'not' }) {
+  let ENDPOINT = '';
+  if (cat === 'not') {
+    ENDPOINT = `${config.apiUrl}${content}/${page}/20`
+  } else ENDPOINT = `${config.apiUrl}${content}/category/20/${page}?cat=${cat}`
+
+
   return await fetch(ENDPOINT, {
     method: "GET",
     headers: {
@@ -11,7 +16,6 @@ export default async function getCards({ content, page = 0 }) {
   })
     .then((res) => res.json())
     .then((response) => {
-      console.log(response)
       const cards = response.content;
       const totalPages = response.totalPages
       return { cards, totalPages };

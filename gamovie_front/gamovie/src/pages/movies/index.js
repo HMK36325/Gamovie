@@ -4,12 +4,13 @@ import useCards from "hooks/useCards";
 import { Spinner } from "react-bootstrap";
 
 export default function Movies() {
-  const { loading, loadginNextPage, cards, totalPages, setPage } = useCards({ content: "movies" });
+  const { loading, loadginNextPage, cards, totalPages, page, setPage, setCat } = useCards({ content: "movies" });
 
   return <>
-    {(loading || loadginNextPage) && < Spinner animation="border" className="loading" />}
+    {loading
+      ? <Spinner animation="border" className="loading" />
 
-    <ListOfCards cards={cards} contentType='movies' setPage={setPage} totalPages={totalPages} />
-
+      : <ListOfCards cards={cards} contentType='movies' setPage={setPage} page={page} setCat={setCat} totalPages={totalPages} loadingNextPage={loadginNextPage} />
+    }
   </>;
 }

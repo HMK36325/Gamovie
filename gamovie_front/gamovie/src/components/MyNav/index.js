@@ -69,7 +69,7 @@ export default function MyNav() {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={handleClick}>
-                  LogOut
+                  LogOut💨
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
