@@ -8,7 +8,7 @@ export default function Categorys({ contentType, setCat, setPage }) {
     }
     return (
         <>
-            <h2>Categorias</h2>
+            <h2 className="head-title">Categorías</h2>
             <div onChange={handleCat} className="cat-group">
                 <input type="radio" id="todos" value="not" name="cat" className="form-check-input" />
                 <label className="form-check-label" htmlFor="todos">Todos</label>
@@ -44,6 +44,12 @@ export default function Categorys({ contentType, setCat, setPage }) {
                         <label className="form-check-label" htmlFor="aventura">Aventura</label>
                         <input type="radio" id="zombies" value="zombis" name="cat" className="form-check-input" />
                         <label className="form-check-label" htmlFor="zombies">Zombies</label>
+                        <input type="radio" id="shooter" value="shooter" name="cat" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="shooter">Shooter</label>
+                        <input type="radio" id="soulslike" value="soulslike" name="cat" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="soulslike">SoulsLike</label>
+                        <input type="radio" id="indie" value="indie" name="cat" className="form-check-input" />
+                        <label className="form-check-label" htmlFor="indie">Indie</label>
                     </>
                 }
             </div>

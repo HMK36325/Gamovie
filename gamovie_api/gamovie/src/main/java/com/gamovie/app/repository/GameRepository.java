@@ -13,7 +13,7 @@ import com.gamovie.app.entity.Game;
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer> {
 	
-	@Query("select g from Game g where g.category like ?1")
+	@Query("select g from Game g where g.category like %?1%")
 	Page<Game> allGamesByCategory(String cat, Pageable pageable);
 	
 	@Query("select g from Game g where g.name like %?1%")

@@ -50,7 +50,7 @@ export default function Login() {
               />
             </Form.Group>
             {hasLoginError && (
-              <Alert variant="danger">Credentials are invalid!</Alert>
+              <Alert variant="danger">Usuario y contraseña incorrectos!</Alert>
             )}
             <Button type="submit" className="mt-3 mb-3 w-100 btn-dark">
               Login
