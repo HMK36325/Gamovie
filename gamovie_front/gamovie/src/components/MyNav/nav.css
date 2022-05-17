@@ -5,6 +5,11 @@
     padding: 0;
 }
 
+.seacrh-btn{
+    border-radius: 0;
+    background-color: #bbbbbb !important;
+}
+
 @media (max-width:992px) {
     .form{
         padding: 1em;

@@ -8,7 +8,6 @@ import {
   Button,
   ButtonGroup,
   Form,
-  FormControl,
 } from "react-bootstrap";
 import useUser from "hooks/useUser";
 import { useLocation } from "wouter";
@@ -42,14 +41,14 @@ export default function MyNav() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Form className="form w-100" onSubmit={handleSubmit}>
-              <FormControl
-                type="text"
-                placeholder="Busca aquí..."
-                aria-label="Search"
-                value={keyword}
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-              />
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="Busca aquí..." onChange={handleChange}/>
+                <span className="input-group-btn ">
+                  <button className="btn btn-default seacrh-btn" type="submit">
+                    🔍
+                  </button>
+                </span>
+              </div>
             </Form>
             <Nav.Link href="/games">Videojuegos</Nav.Link>
             <Nav.Link href="/movies">Peliculas</Nav.Link>
@@ -74,10 +73,10 @@ export default function MyNav() {
               </NavDropdown>
             ) : (
               <ButtonGroup aria-label="Button group">
-                <Button href="/login" variant="secondary">
+                <Button href="/login" variant="secondary" className="bg-btn">
                   Login
                 </Button>
-                <Button href="/register" variant="secondary">
+                <Button href="/register" variant="secondary" className="bg-btn">
                   Register
                 </Button>
               </ButtonGroup>

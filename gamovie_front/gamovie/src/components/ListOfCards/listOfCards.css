@@ -1,0 +1,18 @@
+.page-link {
+  color: #7313ff;
+  background-color: #e7e7e7 !important;
+  border: 1px solid #7313ff !important;
+  font-weight: bold;
+}
+
+.page-item.active .page-link {
+  background-color: #7313ff !important;
+  border-color: #7313ff !important;
+  color: #fff;
+}
+
+.page-link:hover {
+  color: #fff;
+  background-color: #7313ff !important;
+}
+

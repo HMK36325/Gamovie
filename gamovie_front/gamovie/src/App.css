@@ -4,7 +4,13 @@
 }
 
 body {
-  background-color: #f5f8fa !important;
+  background-color: #e7e7e7 !important;
+}
+
+.bg-btn{
+  background-color: #7313ff !important;
+  color: #fff !important;
+  border: 1px solid #270945 !important;
 }
 
 .loading {
@@ -30,6 +36,11 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 2em;
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .card-link {

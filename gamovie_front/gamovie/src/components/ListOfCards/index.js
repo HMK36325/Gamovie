@@ -5,6 +5,8 @@ import css from "styled-components";
 import ReactPaginate from "react-paginate";
 import Categorys from "components/Categorys";
 
+import './listOfCards.css'
+
 export const Overlay = css.div`
 ${({ loadingNextPage }) => loadingNextPage ? `
   opacity: 0.6;
@@ -22,7 +24,7 @@ export default function ListOfCards({ cards, contentType, setPage, totalPages, p
 
   return (
     <Container className="d-flex flex-column mt-4">
-      <Categorys setCat={setCat} setPage={setPage} contentType={contentType} />
+      <Categorys setCat={setCat} setPage={setPage} contentType={contentType} className="categorys" />
       <Overlay>
         <Row>
           {loadingNextPage ? < Spinner animation="border" className="loading" />

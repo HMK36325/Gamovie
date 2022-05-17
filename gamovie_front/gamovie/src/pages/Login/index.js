@@ -52,7 +52,7 @@ export default function Login() {
             {hasLoginError && (
               <Alert variant="danger">Usuario y contraseña incorrectos!</Alert>
             )}
-            <Button type="submit" className="mt-3 mb-3 w-100 btn-dark">
+            <Button type="submit" className="mt-3 mb-3 w-100 btn-dark bg-btn">
               Login
             </Button>
           </Form>
