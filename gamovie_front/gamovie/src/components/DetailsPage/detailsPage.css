@@ -3,7 +3,12 @@
     max-width: 25%;
   }
 }
-.change-details{
+.change-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.change-details {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +16,26 @@
   margin: 0;
   row-gap: 1em;
 }
-.btn-change-page{
+.btn-change-page {
   margin: 1em;
   color: #7313ff;
   border: 0;
+}
+
+.content-name {
+  text-align: center;
+  width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 576px) {
+  .change-details {
+    max-width: 320px;
+  }
+  .content-name {
+    max-width: 300px;
+    width: 100%;
+  }
 }

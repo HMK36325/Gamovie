@@ -21,6 +21,11 @@
   border-top: 3px solid #212529;
 }
 
+.name{
+  font-weight: bold;
+  font-size: 120%;
+}
+
 @media (max-width:992px) {
   .description-item{
     grid-column: 1/4;

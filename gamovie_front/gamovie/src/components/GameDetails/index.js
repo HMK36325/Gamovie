@@ -5,8 +5,8 @@ export default function GameDetails({ name, category, year, distributor, synopsi
     return (
         <>
             <div className="content first">
-                <p className="description-item">Nombre:</p>
-                <p className="info-item">{name}</p>
+                <p className="description-item name">Nombre:</p>
+                <p className="info-item name">{name}</p>
             </div>
             <div className="content">
                 <p className="description-item">Género:</p>
