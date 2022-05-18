@@ -1,36 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
 import useUser from "hooks/useUser";
 import styledComponents from "styled-components";
+import Modal from "components/Modal";
+import Login from "components/Login";
 
 import './voteCard.css';
 
 const Box = styledComponents.div`
 border: 5px solid #121416;
 background-color: #212529;
-justify-self: center;
-align-self: start !important;
 border-radius: 5px;
 color: #fff;
-max-width:214px;
-
-    select{
-        cursor: pointer;
-        padding: 0.5em;
-    }
-
-@media (max-width: 768px) {
-    max-width:70%;
-    margin-bottom:3em !important;
-}
 
 `;
 
-export default function VoteCard({ url, nVotes, note, id, content, setShowNoti }) {
+export default function VoteCard({ url, nVotes, note, id, content }) {
     const src = url && url.startsWith('http') ? url : '../../images/' + url;
     const [userNote, setUserNote] = useState(0);
     const [voteId, setVoteId] = useState(0);
     const [isVoted, setIsVoted] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [showNoti, setShowNoti] = useState(false);
 
 
     const { isLogged, movieVotes, gameVotes, addVote, updateVote, removeVote } = useUser();
@@ -56,8 +47,25 @@ export default function VoteCard({ url, nVotes, note, id, content, setShowNoti }
 
     }, [id, content, movieVotes, gameVotes, isVoted])
 
+    useEffect(() => {
+        const notiTimeOut = setTimeout(() => {
+            setShowNoti(false)
+        }, 3000)
+
+        return () => clearTimeout(notiTimeOut)
+
+    }, [setShowNoti, userNote])
+
+    const handleClose = () => {
+        setShowModal(false);
+    }
+    const handleLogin = () => {
+        setShowModal(false);
+    }
+
     const handleChange = (e) => {
-        if (!isLogged) return setShowNoti(true);
+        if (!isLogged) return setShowModal(true);
+
         setUserNote(e.target.value);
         if (e.target.value === '0') {
             removeVote({ vote_id: voteId, contentType: content });
@@ -65,19 +73,24 @@ export default function VoteCard({ url, nVotes, note, id, content, setShowNoti }
             ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
             : addVote({ content_id: id, contentType: content, note: e.target.value });
 
+        setShowNoti(true);
+
     }
 
     return (
-        <Box>
-            <img alt={url} src={src} className="img-fluid" />
-            <div className="info">
-                <div className="note">{note}</div>
-                <div className="votes">
-                    <p>Votos</p>
-                    {nVotes}
+        <div className="contenedor">
+            <Box>
+                {isVoted && <span className="votado">✅</span>}
+                <img alt={url} src={src} className="img-fluid" />
+                <div className="info">
+                    <div className="note">{note}</div>
+                    <div className="votes">
+                        <p>Votos</p>
+                        {nVotes}
+                    </div>
                 </div>
-            </div>
-            <Form.Select className="bg-secondary" onChange={handleChange} value={userNote}>
+            </Box>
+            <Form.Select className="bg-light vote-select" onChange={handleChange} value={userNote}>
                 <option value="0">No votado/a</option>
                 <option value="10">10-Excelente</option>
                 <option value="9">9-Muy bueno/a</option>
@@ -90,6 +103,8 @@ export default function VoteCard({ url, nVotes, note, id, content, setShowNoti }
                 <option value="2">2-Malo/a</option>
                 <option value="1">1-Muy malo/a</option>
             </Form.Select>
-        </Box>
+            {showNoti && <Alert variant='success' id="toasts">Voto añadido!</Alert>}
+            {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true} /></Modal>}
+        </div>
     );
 }

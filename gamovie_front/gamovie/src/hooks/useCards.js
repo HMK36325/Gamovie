@@ -1,24 +1,23 @@
 import { useState, useEffect } from "react";
+import { atom, useRecoilState } from "recoil";
 import getCards from "services/getCards";
 
+const defaultCat = atom({
+  key: "defaultCat",
+  default: "not"
+})
 
+const defaultPage = atom({
+  key: "defaultPage",
+  default: 0
+})
 
 export default function useCards({ content }) {
-  const [loading, setLoading] = useState(false);
   const [loadginNextPage, setLoadingNextPage] = useState(false);
   const [cards, setCards] = useState([]);
-  const [cat, setCat] = useState('not');
-  const [page, setPage] = useState(0);
+  const [cat, setCat] = useRecoilState(defaultCat)
+  const [page, setPage] = useRecoilState(defaultPage);
   const [totalPages, setTotalPages] = useState(1);
-
-  useEffect(function () {
-    setLoading(true);
-    getCards({ content }).then(({ cards, totalPages }) => {
-      setCards(cards);
-      setTotalPages(totalPages);
-      setLoading(false);
-    });
-  }, [content]);
 
   useEffect(() => {
     setLoadingNextPage(true)
@@ -29,5 +28,5 @@ export default function useCards({ content }) {
     });
   }, [content, page, cat])
 
-  return { loading, loadginNextPage, cards, totalPages, page, setPage, setCat};
+  return { loadginNextPage, cards, totalPages, page, setPage, setCat };
 }

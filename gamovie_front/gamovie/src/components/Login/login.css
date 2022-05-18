@@ -3,6 +3,8 @@ form {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 1em;
   padding: 1em;
+  max-width: 450px;
+  width: 100%;
 }
 
 label {
@@ -12,8 +14,9 @@ label {
   text-align: center;
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 570px) {
   form {
-    width: 20%;
+    max-width: 320px;
+    margin: 10vh auto;
   }
 }

@@ -1,0 +1,40 @@
+.my-modal {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.my-modal-content {
+  border-radius: 5%;
+  background: #e7e7e7;
+  max-width: 80vh;
+  width: 100%;
+  padding: 10px 20px;
+  height: 80vh;
+  margin: 10vh auto;
+  position: relative;
+}
+
+.my-modal-content .btn {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 32px;
+  font-size: 150%;
+}
+
+.info-modal {
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .info-modal {
+    margin-top: 2em;
+  }
+  .my-modal-content {
+    max-height: 60vh;
+  }
+}

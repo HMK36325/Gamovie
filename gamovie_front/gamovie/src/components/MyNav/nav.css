@@ -4,10 +4,16 @@
     margin: 0;
     padding: 0;
 }
+.search-input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 .seacrh-btn{
     border-radius: 0;
-    background-color: #bbbbbb !important;
+    background-color: #866baf !important;
+    outline: none;
+    box-shadow: 0;
 }
 
 @media (max-width:992px) {

@@ -42,7 +42,7 @@ export default function MyNav() {
           <Nav className="me-auto">
             <Form className="form w-100" onSubmit={handleSubmit}>
               <div className="input-group">
-                <input type="text" className="form-control" placeholder="Busca aquí..." onChange={handleChange}/>
+                <input type="text" className="form-control search-input" placeholder="Busca aquí..." onChange={handleChange}/>
                 <span className="input-group-btn ">
                   <button className="btn btn-default seacrh-btn" type="submit">
                     🔍
@@ -61,14 +61,14 @@ export default function MyNav() {
                 id="collasible-nav-dropdown"
               >
                 <NavDropdown.Item href="/votes">
-                  Mis Votaciones
+                  Mis Votaciones 🎞️
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Mis Reviews
+                  Mis Reviews 📖
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={handleClick}>
-                  LogOut💨
+                  LogOut↩️
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (

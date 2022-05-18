@@ -17,4 +17,28 @@
   margin: 0;
   padding: 0;
 }
+.vote-select {
+  background-color: #594479 !important;
+  color: #fff !important;
+  margin-top: 0.7em;
+  padding: 0.8em;
+  border: 3px solid #121416;
+}
 
+.contenedor{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+.votado{
+  position: absolute;
+  margin-left: 0.2em;
+  z-index: 1;
+  font-size: 200%;
+}
+
+#toasts {
+  margin-top: 1em;
+  text-align: center;
+  font-size: 140%;
+}

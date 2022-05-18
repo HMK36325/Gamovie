@@ -3,3 +3,16 @@
     max-width: 25%;
   }
 }
+.change-details{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  row-gap: 1em;
+}
+.btn-change-page{
+  margin: 1em;
+  color: #7313ff;
+  border: 0;
+}
