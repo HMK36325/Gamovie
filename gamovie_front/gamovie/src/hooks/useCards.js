@@ -3,12 +3,12 @@ import { atom, useRecoilState } from "recoil";
 import getCards from "services/getCards";
 
 const defaultCat = atom({
-  key: "defaultCat",
+  key: "myCat",
   default: "not"
 })
 
 const defaultPage = atom({
-  key: "defaultPage",
+  key: "myPage",
   default: 0
 })
 
@@ -21,7 +21,7 @@ export default function useCards({ content }) {
 
   useEffect(() => {
     setLoadingNextPage(true)
-    getCards({ content, page, cat }).then(({ cards, totalPages }) => {
+    getCards({ content, page, cat }).then(({ cards, totalPages, totalElements }) => {
       setCards(cards);
       setTotalPages(totalPages)
       setLoadingNextPage(false);

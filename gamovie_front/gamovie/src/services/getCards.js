@@ -18,6 +18,7 @@ export default async function getCards({ content, page = 0, cat = 'not' }) {
     .then((response) => {
       const cards = response.content;
       const totalPages = response.totalPages
-      return { cards, totalPages };
+      const totalElements= response.totalElements
+      return { cards, totalPages, totalElements };
     });
 }

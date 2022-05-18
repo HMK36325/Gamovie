@@ -8,17 +8,18 @@ import './detailsPage.css'
 import { Link } from "wouter";
 
 
-export default function DetailsPage({ details, movieOrGame }) {
+export default function DetailsPage({ details, movieOrGame,totalElements }) {
 
     const [nextConent, setNextContent] = useState(details.id + 1)
     const [prevContent, setPrevContent] = useState(details.id - 1)
 
     const handleNextContent = () => {
-        setNextContent(prev => prev + 1)
+        if (nextConent <= totalElements) setNextContent(prev => prev + 1)
     }
     const handlePrevContent = () => {
         if (prevContent > 1) setPrevContent(prev => prev - 1)
     }
+    console.log(totalElements)
     return (
         <>
             <div className="change-details-container">
@@ -33,7 +34,7 @@ export default function DetailsPage({ details, movieOrGame }) {
                         </Link>
                     }
                     <h2 className="content-name">{details.name}</h2>
-                    {
+                    {nextConent <= totalElements &&
                         <Link to={`/${details.content}/${nextConent}`}>
                             <button className="btn-change-page" onClick={handleNextContent}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" className="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
