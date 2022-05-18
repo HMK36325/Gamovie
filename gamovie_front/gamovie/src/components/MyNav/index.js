@@ -26,11 +26,12 @@ export default function MyNav() {
 
   const handleChange = (e) => {
     setKeyword(e.target.value);
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (keyword.length > 0) navigate(`/search/${keyword}`);
+    if (keyword.length > 0 && keyword.trim() !== "") navigate(`/search/${keyword}`);
   };
 
   return (
@@ -42,7 +43,7 @@ export default function MyNav() {
           <Nav className="me-auto">
             <Form className="form w-100" onSubmit={handleSubmit}>
               <div className="input-group">
-                <input type="text" className="form-control search-input" placeholder="Busca aquí..." onChange={handleChange}/>
+                <input type="text" className="form-control search-input" placeholder="Busca aquí..." onChange={handleChange} />
                 <span className="input-group-btn ">
                   <button className="btn btn-default seacrh-btn" type="submit">
                     🔍

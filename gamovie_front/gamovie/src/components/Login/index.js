@@ -2,6 +2,7 @@ import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Form, Button, Alert } from "react-bootstrap";
+import { Link } from "wouter";
 import { useLocation } from "wouter";
 
 import "./login.css";
@@ -59,6 +60,7 @@ export default function Login({ onLogin, isFromPortal }) {
             <Button type="submit" className="mt-3 mb-3 w-100 btn-dark bg-btn">
               Login
             </Button>
+            <p className="text-center">¿No tienes cuenta?<Link to="/register"> Registrate aquí...</Link></p>
           </Form>
         </div>
       )}

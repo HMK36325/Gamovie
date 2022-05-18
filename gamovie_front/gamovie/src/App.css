@@ -12,6 +12,20 @@ body {
   color: #fff !important;
   border: 1px solid #270945 !important;
 }
+.bg-btn[disabled]{
+  opacity: 0.1;
+  pointer-events: none;
+  
+}
+.form-error{
+  color: red;
+  font-size: 90%;
+  margin-left: 0.5em;
+}
+
+form input.error-input{
+  border: 2px solid red;
+}
 
 .loading {
   width: 50px;
