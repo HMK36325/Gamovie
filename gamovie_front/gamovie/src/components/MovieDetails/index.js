@@ -26,7 +26,7 @@ export default function MovieDetails({ name, director, category, distributor, ye
             </div>
             <div className="content">
                 <p className="description-item">Synopsis:</p>
-                <p className="info-item">{synopsis}</p>
+                <p className="info-item sinopsis">{synopsis}</p>
             </div>
 
         </>

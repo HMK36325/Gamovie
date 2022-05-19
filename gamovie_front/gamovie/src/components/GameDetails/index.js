@@ -22,7 +22,7 @@ export default function GameDetails({ name, category, year, distributor, synopsi
             </div>
             <div className="content">
                 <p className="description-item">Descripción:</p>
-                <p className="info-item">{synopsis}</p>
+                <p className="info-item sinopsis">{synopsis}</p>
             </div>
         </>
     );

@@ -5,7 +5,7 @@ import { Link } from "wouter";
 import "./card.css";
 
 const Box = styledComponents.div`
-border: 5px solid #121416;
+border: 4px solid #121416;
 background-color: #212529;
 border-radius: 5px;
 max-width:214px;
@@ -23,7 +23,7 @@ export default function Card({ url, title, year, id, contentType }) {
   return (
     <Box>
       <Link to={`${contentType}/${id}`} className="card-link">
-        <img className='card-img' alt={title} src={src} />
+        <div className="img-container"><img className='card-img' alt={title} src={src}/></div>
         <div className="card-info">
           <p>{title}</p>
           <small>{year}</small>

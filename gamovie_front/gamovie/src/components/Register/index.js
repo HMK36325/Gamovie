@@ -22,8 +22,15 @@ export default function Register() {
                 validate={values => {
                     const errors = {}
 
-                    if (!values.username) errors.username = 'El nombre de usuario es necesario ⚠️'
-                    if(values.username.trim() === "") errors.username = 'Nice try 😎'
+                    if (!values.username || values.username.charAt(0) === '') {
+                        errors.username = 'El nombre de usuario es necesario ⚠️'
+                    } else if (values.username.trim() === "") {
+                        errors.username = 'El nombre de usuario no puede estar en blanco ⚠️'
+                    } else if (values.username.indexOf(" ") < (values.username.length - 1)) {
+                        const index = values.username.indexOf(" ");
+                        if (values.username.charAt(index + 1) === " ") errors.username = 'Solo puede haber un espacio en blanco en el medio ⚠️'
+                    } else if (values.username.trim() === "admin") errors.username = 'Nice try 😎'
+
                     if (!values.email) {
                         errors.email = 'El email es necesario ⚠️';
                     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -37,7 +44,7 @@ export default function Register() {
                         errors.password = 'La longuitud de la contraseña debe ser mayor a 6 ⚠️'
                     } else if (values.password !== values.password2) errors.password = 'Las contraseñas no coinciden ⚠️'
 
-                    if(values.password.trim() === "") errors.password = 'Introduce una contraseña ⚠️'
+                    if (values.password.trim() === "") errors.password = 'Introduce una contraseña ⚠️'
 
                     return errors
 
@@ -45,7 +52,7 @@ export default function Register() {
 
                 onSubmit={(values, { setFieldError }) => {
                     const user = {
-                        username: values.username,
+                        username: values.username.trim(),
                         email: values.email,
                         password: values.password
                     }
@@ -91,19 +98,19 @@ export default function Register() {
                             <div className="input-form mb-3">
                                 <label className="m-2">Password</label>
                                 <Field
-                                    className={`form-control ${errors.password && touched.password ? 'error-input' : ''}`}
+                                    className={`form-control ${errors.password && touched.password2 ? 'error-input' : ''}`}
                                     name="password"
                                     type="password"
                                     placeholder="Introduce una contraseña"
                                 />
                                 <Field
-                                    className={`form-control mt-3 ${errors.password && touched.password ? 'error-input' : ''}`}
+                                    className={`form-control mt-3 ${errors.password && touched.password2 ? 'error-input' : ''}`}
                                     name="password2"
                                     type="password"
                                     placeholder="Vuelve a introducir la contraseña"
                                 />
                             </div>
-                            {errors.password && touched.password ? (
+                            {errors.password && touched.password2 ? (
                                 <span className="form-error">{errors.password}</span>) : null}
                             <Button type="submit" className="mt-3 mb-3 w-100 btn-dark bg-btn" disabled={isSubmitting}>
                                 Registrarse

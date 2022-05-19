@@ -1,11 +1,16 @@
-
-p{
+p {
   padding: 0.2em 0;
   margin-bottom: 1.2em;
 }
 
-.card-img{
+.card-img {
   max-height: 317px;
+}
+.img-container {
+  min-width: 200px;
+  min-height: 274px;
+  max-width: 214px;
+  border-bottom: 4px solid #121416;
 }
 
 small {
@@ -16,10 +21,9 @@ small {
   padding: 0.2em;
 }
 
-.card-info{
+.card-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
