@@ -10,13 +10,13 @@ import {
   Form,
 } from "react-bootstrap";
 import useUser from "hooks/useUser";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import './nav.css';
 
 export default function MyNav() {
   const { isLogged, logout } = useUser();
   const [, navigate] = useLocation();
-  const { currentUser } = useContext(Context);
+  const { isAdmin, currentUser } = useContext(Context);
   const [keyword, setKeyword] = useState("");
 
   const handleClick = (e) => {
@@ -33,7 +33,6 @@ export default function MyNav() {
     e.preventDefault();
     if (keyword.length > 0 && keyword.trim() !== "") navigate(`/search/${keyword}`);
   };
-
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -53,7 +52,7 @@ export default function MyNav() {
             </Form>
             <Nav.Link href="/games">Videojuegos</Nav.Link>
             <Nav.Link href="/movies">Peliculas</Nav.Link>
-            <Nav.Link href="/">Soporte</Nav.Link>
+            <Nav.Link href="/support">Soporte</Nav.Link>
           </Nav>
           <Nav>
             {isLogged ? (
@@ -61,12 +60,15 @@ export default function MyNav() {
                 title={currentUser.username}
                 id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="/votes">
-                  Mis Votaciones 🎞️
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Mis Reviews 📖
-                </NavDropdown.Item>
+                {!isAdmin ? <>
+                  <NavDropdown.Item href="/votes">
+                    Mis Votaciones 🎞️
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Mis Reviews 📖
+                  </NavDropdown.Item>
+                </>
+                  :<Link className="dropdown-item" to="/admin">Admin</Link>}
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={handleClick}>
                   LogOut↩️

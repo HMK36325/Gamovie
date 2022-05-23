@@ -4,7 +4,6 @@ import config from 'config.json';
 
 export default function removeVote({ vote_id, currentUser, contentType }) {
     const ENDPOINT = `${config.apiUrl}votes/${contentType}/${vote_id}`;
-
     return fetch(ENDPOINT, {
         method: 'DELETE',
         headers: {

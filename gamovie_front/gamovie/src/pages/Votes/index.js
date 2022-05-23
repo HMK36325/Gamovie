@@ -15,7 +15,7 @@ export default function Votes() {
 
     return <>
         <div className="change-list-button">
-            <Button variant="secondary" onClick={handleClick}>{
+            <Button variant="secondary" className="bg-btn" onClick={handleClick}>{
                 showContent ? <>Películas</> : <>Juegos</>
             }</Button>
         </div>

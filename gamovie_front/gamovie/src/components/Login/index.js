@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Link } from "wouter";
+import { defaultRegistered } from "components/Register";
 import { useLocation } from "wouter";
+import { useRecoilValue } from "recoil";
 
 import "./login.css";
 
@@ -11,11 +13,11 @@ export default function Login({ onLogin, isFromPortal }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [, navigate] = useLocation();
-  const { isLogged, login, isLoginLoading, hasLoginError } = useUser();
+  const registered = useRecoilValue(defaultRegistered)
+  const { isLogged, login, isLoginLoading, hasLoginError ,isBanned } = useUser();
 
   useEffect(() => {
     if (isLogged) {
-      console.log(isFromPortal)
       if (!isFromPortal) navigate("/");
       onLogin && onLogin()
     }
@@ -29,8 +31,15 @@ export default function Login({ onLogin, isFromPortal }) {
     <>
       {isLoginLoading && <Spinner animation="border" className="loading" />}
       {!isLoginLoading && (
-        <div className="d-flex justify-content-center">
-          <Form onSubmit={handleSubmit} className="mt-5 login-form">
+        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
+          {registered &&
+            <div className="text-center">
+              <h4>
+                Felicidades ✅! Te has registrado correctamente en GAMOVIE!
+              </h4>
+              <p>Inicia sesión, por favor</p>
+            </div>}
+          <Form onSubmit={handleSubmit} className="mt-3 login-form">
             <div className="login-title mt-3 mb-3">
               <h3>Log In</h3>
             </div>
@@ -56,6 +65,9 @@ export default function Login({ onLogin, isFromPortal }) {
             </Form.Group>
             {hasLoginError && (
               <Alert variant="danger">Usuario y contraseña incorrectos!</Alert>
+            )}
+            {isBanned &&(
+              <Alert variant="danger">La cuenta ha sido suspendida!</Alert>
             )}
             <Button type="submit" className="mt-3 mb-3 w-100 btn-dark bg-btn">
               Login

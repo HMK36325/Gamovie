@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.entity.User;
@@ -18,7 +20,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findAll() {
 		// TODO Auto-generated method stub
-		return userRepository.findAll();
+		List<User> result = userRepository.findAll();
+		System.out.println(result);
+		return result;
 	}
 
 	@Override
@@ -41,6 +45,18 @@ public class UserServiceImpl implements UserService {
 	public void deleteBy(int theId) {
 		userRepository.deleteById(theId);
 
+	}
+
+	public Page<User> allUsersWithPagination(int offset, int pageSize) {
+		Page<User> users = userRepository.findAll(PageRequest.of(offset, pageSize));
+		if (!users.isEmpty()) {
+			users.stream().forEach((user) -> {
+				user.setPassword(null);
+			});
+			return users;
+		} else {
+			throw new RuntimeException("Did not found users");
+		}
 	}
 
 }

@@ -94,7 +94,7 @@ public class VoteController {
 		if (theGameVote == null) {
 			throw new RuntimeException("Vote is not found " + id);
 		}
-		movieVoteFacade.deleteById(id);
+		gameVoteFacade.deleteById(id);
 		return "Vote deleted";
 	}
 }

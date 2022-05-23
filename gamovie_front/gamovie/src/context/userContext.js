@@ -7,17 +7,26 @@ const Context = React.createContext();
 export function UserContextProvider({ children }) {
     const [movieVotes, setMovieVotes] = useState([]);
     const [gameVotes, setGameVotes] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [currentUser, setCurrentUser] = useState(
-        () => JSON.parse(window.localStorage.getItem('currentUser')));
+        () => {
+            const theUser = JSON.parse(window.localStorage.getItem('currentUser'));
+            if (theUser) {
+                theUser.accessToken = window.atob(theUser.accessToken)
+                if (theUser.roles.includes('ROLE_ADMIN')) setIsAdmin(true)
+            }
+            return theUser;
+        });
 
     useEffect(() => {
         if (!currentUser) { setGameVotes([]); setMovieVotes([]); return }
         getGameVotes({ currentUser }).then(setGameVotes);
         getMovieVotes({ currentUser }).then(setMovieVotes);
+        if (currentUser.roles.includes('ROLE_ADMIN')) setIsAdmin(true)
 
     }, [currentUser])
 
-    return <Context.Provider value={{ currentUser, movieVotes, gameVotes, setMovieVotes, setGameVotes, setCurrentUser }}>
+    return <Context.Provider value={{ isAdmin, currentUser, movieVotes, gameVotes, setMovieVotes, setGameVotes, setCurrentUser, setIsAdmin }}>
         {children}
     </Context.Provider>
 }

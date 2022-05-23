@@ -3,6 +3,7 @@ package com.gamovie.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,12 @@ public class UserController {
 	@PreAuthorize("hasRole('ADMIN')")
 	public List<UserDTO> getUserDTOList() {
 		return userFacade.getAllUsers();
+	}
+
+	@GetMapping("/{offset}/{pageSize}")
+	@PreAuthorize("hasRole('ADMIN')")
+	public Page<User> getUsersPaginated(@PathVariable int offset, @PathVariable int pageSize) {
+		return userFacade.usersWithPagination(offset, pageSize);
 	}
 
 	/**

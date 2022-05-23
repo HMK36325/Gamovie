@@ -1,6 +1,6 @@
 import config from 'config.json';
 
-const ENDPOINT =  `${config.apiUrl}auth/signin`
+const ENDPOINT = `${config.apiUrl}auth/signin`
 
 export default function login({ username, password }) {
     return fetch(ENDPOINT, {
@@ -10,7 +10,7 @@ export default function login({ username, password }) {
         },
         body: JSON.stringify({ username, password })
     }).then(res => {
-        if (!res.ok) throw new Error('Response is NOT ok');
+        if (!res.ok) throw res;
         return res.json()
     }).then(res => {
         const currentUser = res;

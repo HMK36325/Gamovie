@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.gamovie.app.dto.UserDTO;
@@ -33,6 +34,10 @@ public class UserFacade {
 	 */
 	public List<UserDTO> getAllUsers() {
 		return userService.findAll().stream().map(this::convertToUserDTO).collect(Collectors.toList());
+	}
+	
+	public Page<User> usersWithPagination(int offset, int pageSize){
+		return userService.allUsersWithPagination(offset, pageSize);
 	}
 
 	/**

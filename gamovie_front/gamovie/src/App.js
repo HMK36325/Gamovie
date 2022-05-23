@@ -18,6 +18,7 @@ import Search from "pages/Search";
 import Votes from "pages/Votes";
 import LoginPage from "pages/Login";
 import RegisterPage from "pages/Register";
+import Admin from "pages/Admin";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -33,6 +34,7 @@ function App() {
                 <Route component={HomePage} path="/" />
                 <Route component={LoginPage} path="/login" />
                 <Route component={RegisterPage} path="/register" />
+                <Route component={Admin} path="/admin" />
                 <Route component={Movies} path="/movies" />
                 <Route component={Games} path="/games" />
                 <Route component={Details} path="/games/:id" />

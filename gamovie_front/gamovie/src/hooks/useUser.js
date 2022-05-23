@@ -1,26 +1,29 @@
 import Context from "context/userContext"
 import { useCallback, useContext, useState } from "react";
+import { useLocation } from "wouter";
 import loginService from "services/login"
 import addVoteService from "services/addVote";
 import updateVoteService from "services/updateVote";
 import removeVoteService from "services/removeVote";
 
 export default function useUser() {
-    const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setCurrentUser } = useContext(Context);
-    const [state, setState] = useState({ loading: false, error: false });
+    const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setCurrentUser, setIsAdmin } = useContext(Context);
+    const [, navigate] = useLocation();
+    const [state, setState] = useState({ loading: false, credentiaslError: false, bannedError: false });
 
     const login = useCallback(({ username, password }) => {
         setState({ loading: true, error: false })
         loginService({ username, password })
             .then(currentUser => {
+                currentUser.accessToken = window.btoa(currentUser.accessToken)
                 window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
                 setState({ loading: false, error: false })
                 setCurrentUser(currentUser);
             })
             .catch(err => {
                 window.localStorage.removeItem('currentUser');
-                setState({ loading: false, error: true })
-                console.error(err);
+                if (err.status === 401) setState({ loading: false, credentiaslError: true })
+                if (err.status === 403) setState({ loading: false, bannedError: true })
             })
     }, [setCurrentUser]);
 
@@ -72,7 +75,9 @@ export default function useUser() {
     const logout = useCallback(() => {
         window.localStorage.removeItem('currentUser');
         setCurrentUser(null);
-    }, [setCurrentUser]);
+        setIsAdmin(false);
+        navigate('/');
+    }, [setCurrentUser, setIsAdmin, navigate]);
 
 
     return {
@@ -83,7 +88,8 @@ export default function useUser() {
         gameVotes,
         isLogged: Boolean(currentUser),
         isLoginLoading: state.loading,
-        hasLoginError: state.error,
+        hasLoginError: state.credentiaslError,
+        isBanned: state.bannedError,
         login,
         logout
     };

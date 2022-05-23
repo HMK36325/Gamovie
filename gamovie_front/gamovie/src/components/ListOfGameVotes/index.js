@@ -5,6 +5,7 @@ import { Container, Row, Col} from "react-bootstrap";
 export default function ListOfGameVotes({gameVotes }) {
     return (
         <Container className="d-flex flex-column mt-4">
+            <h2 className="text-center m-3">Votos a Videojuegos</h2>
             <Row>
                 {gameVotes.map(function (vote) {
                     return (
