@@ -5,6 +5,7 @@ import loginService from "services/login"
 import addVoteService from "services/addVote";
 import updateVoteService from "services/updateVote";
 import removeVoteService from "services/removeVote";
+import { cloneDeep } from "lodash";
 
 export default function useUser() {
     const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setCurrentUser, setIsAdmin } = useContext(Context);
@@ -15,10 +16,11 @@ export default function useUser() {
         setState({ loading: true, error: false })
         loginService({ username, password })
             .then(currentUser => {
-                currentUser.accessToken = window.btoa(currentUser.accessToken)
-                window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                setState({ loading: false, error: false })
                 setCurrentUser(currentUser);
+                const theUser = cloneDeep(currentUser)
+                theUser.accessToken = window.btoa(theUser.accessToken)
+                window.localStorage.setItem('currentUser', JSON.stringify(theUser));
+                setState({ loading: false, error: false })
             })
             .catch(err => {
                 window.localStorage.removeItem('currentUser');

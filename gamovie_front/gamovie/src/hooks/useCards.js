@@ -21,7 +21,7 @@ export default function useCards({ content }) {
 
   useEffect(() => {
     setLoadingNextPage(true)
-    getCards({ content, page, cat }).then(({ cards, totalPages, totalElements }) => {
+    getCards({ content, page, cat }).then(({ cards, totalPages }) => {
       setCards(cards);
       setTotalPages(totalPages)
       setLoadingNextPage(false);

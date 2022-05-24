@@ -14,7 +14,8 @@ export default async function getSearchMovies({ keyword }) {
                 : res.json()
         })
         .then((response) => {
-            const cards = response
-            return cards;
+            if (response.length > 10) {
+                return response.slice(0, 8)
+            } else return response
         });
 }

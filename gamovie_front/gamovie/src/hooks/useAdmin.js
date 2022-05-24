@@ -6,10 +6,18 @@ import banUser from "services/Admin/ban";
 export default function useAdmin() {
     const [users, setUsers] = useState([]);
     const { currentUser } = useContext(Context)
+    const [page, setPage] = useState(0)
+    const [loading, setLoading] = useState(false)
+    const [totalPages, setTotalPages] = useState(1)
 
     useEffect(() => {
-        getUsers({ currentUser }).then(res => setUsers(res))
-    }, [currentUser])
+        setLoading(true)
+        getUsers({ currentUser, page }).then(({ users, totalPages }) => {
+            setUsers(users)
+            setTotalPages(totalPages)
+            setLoading(false)
+        })
+    }, [currentUser, page])
 
     const ban = useCallback(({ isBan, id }) => {
         banUser({ currentUser, isBan, id })
@@ -19,5 +27,5 @@ export default function useAdmin() {
         banUser({ currentUser, isBan, id })
     }, [currentUser])
 
-    return { users, ban, unBan }
+    return { users, page, totalPages, loading, setPage, ban, unBan }
 }

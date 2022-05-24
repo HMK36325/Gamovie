@@ -25,7 +25,9 @@ export default function MyNav() {
   };
 
   const handleChange = (e) => {
-    setKeyword(e.target.value);
+    const actualKeyword = e.target.value;
+    setKeyword(actualKeyword);
+    if (actualKeyword.length > 0 && actualKeyword.trim() !== "") navigate(`/search/${actualKeyword}`);
 
   };
 
@@ -68,7 +70,7 @@ export default function MyNav() {
                     Mis Reviews 📖
                   </NavDropdown.Item>
                 </>
-                  :<Link className="dropdown-item" to="/admin">Admin</Link>}
+                  : <Link className="dropdown-item" to="/admin">Admin</Link>}
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#" onClick={handleClick}>
                   LogOut↩️

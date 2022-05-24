@@ -1,0 +1,8 @@
+.infoUser{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.infoUser button{
+    min-width: 72.66px;
+}

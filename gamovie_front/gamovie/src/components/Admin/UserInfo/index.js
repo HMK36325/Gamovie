@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 import useAdmin from "hooks/useAdmin";
+import './userInfo.css'
 
 export default function UserInfo({ id, name, email, roles, banned }) {
     const { ban, unBan } = useAdmin()
@@ -20,11 +21,11 @@ export default function UserInfo({ id, name, email, roles, banned }) {
 
     return (
         <tr>
-            <td>{id}</td>
-            <td>{name}</td>
-            <td>{email}</td>
-            <td>{theUserRoles.join(', ')}</td>
-            <td>{isBanned ? <Button variant="success" onClick={handleUnBan}>Unban</Button> : <Button variant="danger" onClick={handleBan}>Ban</Button>}</td>
+            <th className="infoUser" scope="row">{id}</th>
+            <td className="infoUser">{name}</td>
+            <td className="infoUser">{email}</td>
+            <td className="infoUser">{theUserRoles.join(', ')}</td>
+            <td className="infoUser">{isBanned ? <Button variant="success" onClick={handleUnBan}>Unban</Button> : <Button variant="danger" onClick={handleBan}>Ban</Button>}</td>
         </tr>
     )
 }

@@ -9,7 +9,7 @@ export default function ListOfSearch({ cards }) {
                 {cards.map(function (card) {
                     return (
                         <Col
-                            key={card.id}
+                            key={`${card.id}/${card.image}`}
                             xs="6"
                             sm="6"
                             md="4"
@@ -17,7 +17,7 @@ export default function ListOfSearch({ cards }) {
                             className="d-flex justify-content-center mt-3"
                         >
                             <Card
-                                key={card.id}
+                                key={`${card.id}/${card.image}`}
                                 url={card.image}
                                 year={card.year}
                                 title={card.name}

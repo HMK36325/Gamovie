@@ -13,6 +13,7 @@ export default async function getUsers({ currentUser, page = 0 }) {
         .then((res) => res.json())
         .then((response) => {
             const users = response.content;
-            return users;
+            const totalPages = response.totalPages;
+            return {users, totalPages};
         });
 }

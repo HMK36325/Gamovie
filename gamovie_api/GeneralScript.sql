@@ -7,36 +7,35 @@ INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('raul@gmail.
 INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('jose@gmail.com', 'Jose', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
 INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('carmen@gmail.com', 'Carmen', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
 
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(1,1);
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(2,2);
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(2,3);
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(2,4);
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(2,5);
-INSERT INTO `gamovie`.`users_roles`
-(`role_id`,
-`user_id`)
-VALUES
-(3,5);
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('dani@gmail.com', 'Daniel', '$2a$10$kHjS0/txdcaYqO7m57Npsu0u.9BOih9C9bkoGnLkWE/V479TGLY9K');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('milin@gmail.com', 'Emilio', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lolo@gmail.com', 'Mlolo', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('sergio@gmail.com', 'Sergio', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('luxx@gmail.com', 'luxx', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('ben@gmail.com', 'Ben', '$2a$10$kHjS0/txdcaYqO7m57Npsu0u.9BOih9C9bkoGnLkWE/V479TGLY9K');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('maiwel@gmail.com', 'Miguel', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('marcos@gmail.com', 'Marcos', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lau@gmail.com', 'Laura', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('pau@gmail.com', 'Paula', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(1,1);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,2);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(1,2);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,3);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,4);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,5);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,6);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,7);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,8);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,9);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,10);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,11);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,12);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,13);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,14);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,15);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(3,5);
 
 #MOVIES
 

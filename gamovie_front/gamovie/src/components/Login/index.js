@@ -18,7 +18,9 @@ export default function Login({ onLogin, isFromPortal }) {
 
   useEffect(() => {
     if (isLogged) {
-      if (!isFromPortal) navigate("/");
+      if (!isFromPortal) {
+        navigate("/")
+      }
       onLogin && onLogin()
     }
   }, [isLogged, navigate, isFromPortal, onLogin]);

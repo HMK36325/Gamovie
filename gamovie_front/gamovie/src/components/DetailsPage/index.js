@@ -19,7 +19,7 @@ export default function DetailsPage({ details, movieOrGame,totalElements }) {
     const handlePrevContent = () => {
         if (prevContent > 1) setPrevContent(prev => prev - 1)
     }
-    console.log(totalElements)
+   
     return (
         <>
             <div className="change-details-container">
