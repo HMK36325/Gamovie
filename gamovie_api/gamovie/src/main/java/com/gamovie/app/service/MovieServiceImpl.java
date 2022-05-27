@@ -77,4 +77,11 @@ public class MovieServiceImpl implements MovieService {
 		}
 	}
 
+	@Override
+	public void deleteAllGameVotes(Movie movie) {
+		movieRepository.deleteMovieVotes(movie);
+		movieRepository.deleteMovieReviews(movie);
+		
+	}
+
 }

@@ -73,6 +73,7 @@ public class GameController {
 		if (theGame == null) {
 			throw new RuntimeException("Movie is not found " + id);
 		}
+		gameFacade.deleteGameReviews(theGame);
 		gameFacade.deleteById(id);
 		return "Game deleted";
 	}

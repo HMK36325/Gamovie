@@ -12,23 +12,6 @@ export default function listOfUsers({ users, setPage, totalPages, page, loading 
     return <div className="table-responsive">
         {loading ? <Spinner animation="border" className="loading" />
             : <>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Username</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Roles</th>
-                            <th scope="col">Ban</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users && users.map(user => {
-                            return < UserInfo key={user.id} id={user.id} name={user.name} roles={user.roles} email={user.email} banned={user.banned_at} />
-                        })}
-
-                    </tbody>
-                </Table>
                 <ReactPaginate
                     previousLabel={'Anterior'}
                     nextLabel={'Siguiente'}
@@ -49,7 +32,25 @@ export default function listOfUsers({ users, setPage, totalPages, page, loading 
                     renderOnZeroPageCount={null}
                     eventListener={'onClick'}
                     style={loading ? "display: none" : ""}
-                /></>
+                />
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Roles</th>
+                            <th scope="col">Ban</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users && users.map(user => {
+                            return < UserInfo key={user.id} id={user.id} name={user.name} roles={user.roles} email={user.email} banned={user.banned_at} />
+                        })}
+
+                    </tbody>
+                </Table>
+            </>
         }
     </div>
 }

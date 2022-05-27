@@ -36,7 +36,9 @@
   z-index: 1;
   font-size: 200%;
 }
-
+.imgVote{
+  max-width: 214px;
+}
 #toasts {
   margin-top: 1em;
   text-align: center;

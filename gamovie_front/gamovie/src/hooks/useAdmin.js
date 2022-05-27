@@ -2,6 +2,7 @@ import Context from "context/userContext";
 import { useCallback, useContext, useEffect, useState } from "react"
 import getUsers from 'services/Admin/getUsers'
 import banUser from "services/Admin/ban";
+import deleteContent from "services/Admin/delete";
 
 export default function useAdmin() {
     const [users, setUsers] = useState([]);
@@ -27,5 +28,9 @@ export default function useAdmin() {
         banUser({ currentUser, isBan, id })
     }, [currentUser])
 
-    return { users, page, totalPages, loading, setPage, ban, unBan }
+    const deleteItem = useCallback(({ contentType, id }) => {
+        deleteContent({ currentUser, contentType, id })
+    }, [currentUser])
+
+    return { users, page, totalPages, loading, setPage, ban, unBan, deleteItem }
 }

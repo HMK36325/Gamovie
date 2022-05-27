@@ -6,12 +6,6 @@ p {
 .card-img {
   max-height: 317px;
 }
-.img-container {
-  min-width: 200px;
-  min-height: 274px;
-  max-width: 214px;
-  border-bottom: 4px solid #121416;
-}
 
 small {
   position: absolute;
@@ -26,4 +20,13 @@ small {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width:1200px) {
+  .img-container {
+    min-width: 200px;
+    min-height: 274px;
+    max-width: 214px;
+    border-bottom: 4px solid #121416;
+  }
 }

@@ -11,13 +11,16 @@ import {
 } from "react-bootstrap";
 import useUser from "hooks/useUser";
 import { Link, useLocation } from "wouter";
+import SearchBox from "components/SearchBox";
 import './nav.css';
 
 export default function MyNav() {
   const { isLogged, logout } = useUser();
   const [, navigate] = useLocation();
   const { isAdmin, currentUser } = useContext(Context);
+  const [showSearch, setShowSearch] = useState(false)
   const [keyword, setKeyword] = useState("");
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -27,13 +30,18 @@ export default function MyNav() {
   const handleChange = (e) => {
     const actualKeyword = e.target.value;
     setKeyword(actualKeyword);
-    if (actualKeyword.length > 0 && actualKeyword.trim() !== "") navigate(`/search/${actualKeyword}`);
+    if (actualKeyword.length > 0 && actualKeyword.trim() !== "") {
+      setShowSearch(true)
+    } else setShowSearch(false)
 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (keyword.length > 0 && keyword.trim() !== "") navigate(`/search/${keyword}`);
+    if (keyword.length > 0 && keyword.trim() !== "") {
+      navigate(`/search/${keyword}`)
+      setShowSearch(false)
+    }
   };
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -51,6 +59,7 @@ export default function MyNav() {
                   </button>
                 </span>
               </div>
+              {showSearch && <SearchBox keyword={keyword} setShowSearch={setShowSearch} />}
             </Form>
             <Nav.Link href="/games">Videojuegos</Nav.Link>
             <Nav.Link href="/movies">Peliculas</Nav.Link>

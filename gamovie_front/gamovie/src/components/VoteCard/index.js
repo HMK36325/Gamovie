@@ -81,7 +81,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
         <div className="contenedor">
             <Box>
                 {isVoted && <span className="votado">✅</span>}
-                <img alt={url} src={src} className="img-fluid" />
+                <img alt={url} src={src} className="img-fluid imgVote" />
                 <div className="info">
                     <div className="note">{note}</div>
                     <div className="votes">

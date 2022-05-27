@@ -61,4 +61,9 @@ public class GameFacade {
 		Game game = modelMapper.map(gameDTO, Game.class);
 		return game;
 	}
+	
+	public void deleteGameReviews(GameDTO gameDTO) {
+		Game game = convertToGame(gameDTO);
+		gameService.deleteGameVotesReviews(game);
+	}
 }

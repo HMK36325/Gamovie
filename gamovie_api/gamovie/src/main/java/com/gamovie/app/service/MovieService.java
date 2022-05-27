@@ -41,5 +41,7 @@ public interface MovieService {
 	List<Movie> findByName(String name);
 
 	public Page<Movie> getMoviesWithPagination(int offset, int pageSize);
+	
+	public void deleteAllGameVotes(Movie movie);
 
 }

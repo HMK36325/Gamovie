@@ -61,4 +61,9 @@ public class MovieFacade {
 		Movie movie = modelMapper.map(movieDTO, Movie.class);
 		return movie;
 	}
+	
+	public void deleteMovieVotes(MovieDTO movieDTO) {
+		Movie movie = convertToMovie(movieDTO);
+		movieService.deleteAllGameVotes(movie);
+	}
 }

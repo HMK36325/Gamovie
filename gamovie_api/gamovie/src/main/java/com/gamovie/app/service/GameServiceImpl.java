@@ -77,4 +77,11 @@ public class GameServiceImpl implements GameService {
 		}
 	}
 
+	@Override
+	public void deleteGameVotesReviews(Game game) {
+		gameRepository.deleteGameReview(game);
+		gameRepository.deleteGameVotes(game);
+		
+	}
+
 }

@@ -1,6 +1,6 @@
 import config from "config.json";
 
-export default async function getSearchMovies({ keyword }) {
+export default async function getSearchMovies({ keyword, size = 8 }) {
     const ENDPOINT = `${config.apiUrl}movies/search/${keyword}`;
     return await fetch(ENDPOINT, {
         method: "GET",
@@ -14,8 +14,8 @@ export default async function getSearchMovies({ keyword }) {
                 : res.json()
         })
         .then((response) => {
-            if (response.length > 10) {
-                return response.slice(0, 8)
+            if (response.length > size) {
+                return response.slice(0, size)
             } else return response
         });
 }

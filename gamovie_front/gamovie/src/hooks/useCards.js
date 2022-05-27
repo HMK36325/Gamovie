@@ -12,7 +12,7 @@ const defaultPage = atom({
   default: 0
 })
 
-export default function useCards({ content }) {
+export default function useCards({ content}) {
   const [loadginNextPage, setLoadingNextPage] = useState(false);
   const [cards, setCards] = useState([]);
   const [cat, setCat] = useRecoilState(defaultCat)
@@ -21,7 +21,7 @@ export default function useCards({ content }) {
 
   useEffect(() => {
     setLoadingNextPage(true)
-    getCards({ content, page, cat }).then(({ cards, totalPages }) => {
+    getCards({ content, page, cat}).then(({ cards, totalPages }) => {
       setCards(cards);
       setTotalPages(totalPages)
       setLoadingNextPage(false);

@@ -7,8 +7,8 @@ export default function UserCard({ url, title, id, year, director, contentType, 
     return (
         <div className="user-card">
             <Link to={`${contentType}/${id}`} className="card-body">
-                <div>
-                    <img alt={title} src={src} />
+                <div className="img-div">
+                    <img alt={title} src={src} className="img-card"/>
                 </div>
                 <div className="user-card-info">
                     <div className="info-head">

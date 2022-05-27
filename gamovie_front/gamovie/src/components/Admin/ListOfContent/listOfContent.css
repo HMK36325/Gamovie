@@ -1,0 +1,17 @@
+.show-options{
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-options button{
+    height: 80%;
+}
+
+@media (max-width:576px) {
+    .show-options{
+        flex-direction: column-reverse;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+    }
+}

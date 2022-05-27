@@ -72,6 +72,7 @@ public class MovieController {
 		if (theMovie == null) {
 			throw new RuntimeException("Movie is not found " + id);
 		}
+		movieFacade.deleteMovieVotes(theMovie);
 		movieFacade.deleteById(id);
 		return "Movie deleted";
 	}

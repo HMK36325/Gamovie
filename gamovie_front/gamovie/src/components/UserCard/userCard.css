@@ -43,6 +43,9 @@
   padding-top: 0;
   font-size: 80%;
 }
+.img-card{
+  max-width: 214px;
+}
 
 .info-bot {
   display: flex;

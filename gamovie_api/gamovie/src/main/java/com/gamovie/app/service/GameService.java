@@ -41,4 +41,6 @@ public interface GameService {
 	List<Game> findByName(String name);
 	
 	public Page<Game> getGamesWithPagination(int offset, int pageSize);
+	
+	public void deleteGameVotesReviews(Game game);
 }
