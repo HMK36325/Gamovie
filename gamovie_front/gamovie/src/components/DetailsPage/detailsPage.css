@@ -15,6 +15,8 @@
   padding: 0;
   margin: 0;
   row-gap: 1em;
+  min-width: 80%;
+  max-width: 80%;
 }
 .btn-change-page {
   margin: 1em;
@@ -24,7 +26,7 @@
 
 .content-name {
   text-align: center;
-  width: 320px;
+  min-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,8 +36,5 @@
   .change-details {
     max-width: 320px;
   }
-  .content-name {
-    max-width: 300px;
-    width: 100%;
-  }
 }
+

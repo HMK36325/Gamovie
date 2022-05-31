@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import getSearchGames from "services/getSearchGames";
 import getSearchMovies from "services/getSearchMovies";
 
-export default function useSearch({ keyword, size }) {
+export default function useSearch({ keyword, size, contentType }) {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(false);
     const [notFound, setNotFound] = useState(false);

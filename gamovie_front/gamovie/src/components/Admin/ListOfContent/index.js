@@ -5,13 +5,17 @@ import ReactPaginate from "react-paginate";
 import ContentInfo from "../ContentInfo";
 import './listOfContent.css'
 
-export default function ListOfContent({ contentType }) {
+export default function ListOfContent({ contentType, setContentToShow }) {
 
     const { cards, page, totalPages, loadginNextPage, setPage } = useCards({ content: contentType })
 
     const handlePageClick = (data) => {
         setPage(data.nextSelectedPage);
     }
+    const handleAdd = () => {
+        setContentToShow(`${contentType}Add`)
+    }
+
     return <div className="table-responsive">
         {loadginNextPage ? <Spinner animation="border" className="loading" />
             : <>
@@ -37,7 +41,7 @@ export default function ListOfContent({ contentType }) {
                         eventListener={'onClick'}
                         style={loadginNextPage ? "display: none" : ""}
                     />
-                    <Button variant="success">Añadir {contentType === 'movies' ? <>Película</> : <>Juego</>}</Button>
+                    <Button variant="success" onClick={handleAdd}>Añadir {contentType === 'movies' ? <>Película</> : <>Juego</>}</Button>
                 </div>
                 <Table striped bordered hover>
                     <thead>

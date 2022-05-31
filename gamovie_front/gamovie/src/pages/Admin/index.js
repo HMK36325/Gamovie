@@ -6,6 +6,7 @@ import { Container } from "react-bootstrap";
 import { atom, useRecoilState } from "recoil";
 import ListOfContent from "components/Admin/ListOfContent";
 import './admin.css';
+import AddContent from "components/Admin/addContent";
 
 const defaultContent = atom({
     key: "contentToShow",
@@ -24,20 +25,22 @@ export default function AdminUsers() {
     }
 
     return <Container>
-        <h1 className="text-center m-4">Panel de Administrador</h1>
+        <h1 className="text-center mt-4">Panel de Administrador</h1>
         <div className="contentToShow">
             <div className="m-5 btn-group individual" role="group">
                 <input type="radio" id="users" value="users" name="content" className="form-check-input btn-check" checked={contentToShow === 'users'} onChange={handleClick} />
                 <label className="form-check-label btn btn-outline-primary" htmlFor="users">Usuarios</label>
-                <input type="radio" id="movies" value="movies" name="content" className="form-check-input btn-check" checked={contentToShow === 'movies'} onChange={handleClick} />
+                <input type="radio" id="movies" value="movies" name="content" className="form-check-input btn-check" checked={contentToShow === 'movies' || contentToShow === 'moviesAdd'} onChange={handleClick} />
                 <label className="form-check-label btn btn-outline-primary" htmlFor="movies">Películas</label>
-                <input type="radio" id="games" value="games" name="content" className="form-check-input btn-check" checked={contentToShow === 'games'} onChange={handleClick} />
+                <input type="radio" id="games" value="games" name="content" className="form-check-input btn-check" checked={contentToShow === 'games' || contentToShow === 'gamesAdd'} onChange={handleClick} />
                 <label className="form-check-label btn btn-outline-primary" htmlFor="games">Videojuegos</label>
             </div>
         </div>
         {contentToShow === 'users' ? <Users users={users} totalPages={totalPages} setPage={setPage} page={page} loading={loading} />
-            : contentToShow === 'movies' ? <ListOfContent contentType="movies" />
-                : <ListOfContent contentType="games" />
+            : contentToShow === 'movies' ? <ListOfContent contentType="movies" setContentToShow={setContentToShow} />
+                : contentToShow === 'games' ? <ListOfContent contentType="games" setContentToShow={setContentToShow} />
+                    : contentToShow === 'moviesAdd' ? <AddContent contentType="movies" />
+                        : <AddContent contentType="games" />
         }
     </Container>
 }

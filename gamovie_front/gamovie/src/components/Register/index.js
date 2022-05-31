@@ -7,14 +7,14 @@ import { atom, useRecoilState } from "recoil";
 import register from "services/register";
 
 export const defaultRegistered = atom({
-    key : "registered",
-    default : false
+    key: "registered",
+    default: false
 })
 
 export default function Register() {
 
     const [registered, setRegistered] = useRecoilState(defaultRegistered)
-    const [, navigate]= useLocation();
+    const [, navigate] = useLocation();
 
     if (registered) {
         navigate("/login")
@@ -31,10 +31,11 @@ export default function Register() {
                     errors.username = 'El nombre de usuario es necesario ⚠️'
                 } else if (values.username.trim() === "") {
                     errors.username = 'El nombre de usuario no puede estar en blanco ⚠️'
-                } else if (values.username.indexOf(" ") < (values.username.length - 1)) {
+                } else if (values.username === "admin") { errors.username = 'Nice try 😎' }
+                else if (values.username.indexOf(" ") < (values.username.length - 1)) {
                     const index = values.username.indexOf(" ");
                     if (values.username.charAt(index + 1) === " ") errors.username = 'Solo puede haber un espacio en blanco en el medio ⚠️'
-                } else if (values.username.trim() === "admin") errors.username = 'Nice try 😎'
+                }
 
                 if (!values.email) {
                     errors.email = 'El email es necesario ⚠️';
@@ -66,8 +67,8 @@ export default function Register() {
                         setRegistered(true)
                     })
                     .catch((err) => {
-                        if(err.message.includes('Username')) setFieldError('username', 'El usuario no es valido');
-                        if(err.message.includes('Email')) setFieldError('email', 'El email no es valido');
+                        if (err.message.includes('Username')) setFieldError('username', 'El usuario no es valido');
+                        if (err.message.includes('Email')) setFieldError('email', 'El email no es valido');
                     })
             }}
         >

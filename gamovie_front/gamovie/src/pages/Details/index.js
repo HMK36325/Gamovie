@@ -8,13 +8,13 @@ export default function Details() {
     const [path,] = useLocation();
     const movieOrGame = path.includes('movies')
     const apiRoute = path.split('/').slice(-2);
-    const { loading, details, totalElements } = useDetails({ path: `${apiRoute[0]}/${apiRoute[1]}` })
+    const { loading, details, totalElements, cardsIds } = useDetails({ path: `${apiRoute[0]}/${apiRoute[1]}` })
 
     return (
         <>
             {loading
                 ? <Spinner animation="border" className="loading" />
-                : <DetailsPage details={details} movieOrGame={movieOrGame} totalElements={totalElements}/>
+                : <DetailsPage details={details} movieOrGame={movieOrGame} totalElements={totalElements} cardsIds={cardsIds} />
             }
         </>
     );

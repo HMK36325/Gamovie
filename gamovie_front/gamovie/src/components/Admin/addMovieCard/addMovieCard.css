@@ -1,0 +1,19 @@
+.movie-card {
+  max-width: 214px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  min-height: 390px;
+}
+.movie-card-name {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0;
+
+}
+.movie-card-year {
+  margin: 0;
+}
+.card-info-movie{
+    text-align: center;
+}
