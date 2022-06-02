@@ -3,11 +3,11 @@ import VoteCard from "components/VoteCard";
 import MovieDetails from "components/MovieDetails";
 import { Container, Row, Col } from "react-bootstrap";
 import GameDetails from "components/GameDetails";
+import Reviews from "components/Reviews";
 
 import './detailsPage.css'
 import { Link } from "wouter";
 import { useLocation } from "wouter";
-import ReviewCard from "components/ReviewCard";
 
 
 export default function DetailsPage({ details, movieOrGame, cardsIds, reviews }) {
@@ -77,16 +77,7 @@ export default function DetailsPage({ details, movieOrGame, cardsIds, reviews })
                             synopsis={details.synopsis} />
                     }
                 </Col>
-                {reviews.length > 0 && <>
-                    <Col xs="12">
-                        <h2 className="content">Reviews</h2>
-                    </Col>
-                    {reviews.map((review) => {
-                        return <Col>
-                            <ReviewCard username={review.user.name} review={review.review} reviewedAt={review.reviewed_at} />
-                        </Col>
-                    })}
-                </>}
+                <Reviews reviews={reviews} />
             </Row>
         </Container>
     );
