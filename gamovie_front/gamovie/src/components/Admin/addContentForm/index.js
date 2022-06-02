@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Formik, Form, Field } from 'formik'
+import Admin from "hooks/useAdmin";
 
-
-export default function addContentForm({ name, year, synopsis = '', contentType }) {
-
+export default function addContentForm({ name, year, synopsis = '', contentType, setShowModal }) {
+    const { addItem } = Admin()
 
     return <div className="d-flex justify-content-center">
         <Formik
@@ -23,7 +23,7 @@ export default function addContentForm({ name, year, synopsis = '', contentType 
                     if (values.name.charAt(index + 1) === " ") errors.name = 'Solo puede haber un espacio en blanco en el medio ⚠️'
                 }
 
-                if (!values.director) {
+                if (contentType === 'movies' && !values.director) {
                     errors.director = 'El director es necesario ⚠️';
                 }
 
@@ -43,13 +43,62 @@ export default function addContentForm({ name, year, synopsis = '', contentType 
                     errors.category = '⚠️'
                 }
 
+                if (!values.image) {
+                    errors.image = '⚠️'
+                }
+                else if (values.image.type !== 'image/jpeg' && values.image.type !== 'image/jpg') {
+                    errors.image = 'Solo se admite .jpg/.jpeg ⚠️'
+                } else if (values.image.size > 50000) {
+                    errors.image = 'Máximo 50KB ⚠️'
+                }
+
 
                 return errors
 
             }}
 
             onSubmit={(values, { setFieldError }) => {
-                console.log(values)
+
+                const image = values.image
+                const imgName = `${Date.now()}${values.image.name}`
+                console.log(image)
+
+                const content = contentType === 'movies' ? {
+                    name: values.name,
+                    director: values.director,
+                    year: values.year,
+                    distributor: values.distributor,
+                    category: values.category,
+                    synopsis: values.synopsis,
+                    image: imgName,
+                    n_votes: 10,
+                    note: values.note,
+                    content: contentType
+                }
+                    : {
+                        name: values.name,
+                        year: values.year,
+                        distributor: values.distributor,
+                        category: values.category,
+                        synopsis: values.synopsis,
+                        image: imgName,
+                        n_votes: 10,
+                        note: values.note,
+                        content: contentType
+                    }
+
+
+                return addItem({ contentType, content }).then((res) => {
+                    const formData = new FormData();
+                    formData.append('file', image);
+                    setShowModal(false);
+
+                    fetch(`http://localhost:8080/auth/upload-images/${imgName}`, {
+                        method: "POST",
+                        body: formData
+                    }).then(res => console.log(res))
+                }).catch((err) => setFieldError('name', 'Este nombre ya existe'));
+
             }}
         >
             {
@@ -86,7 +135,7 @@ export default function addContentForm({ name, year, synopsis = '', contentType 
                                 className={`form-control ${errors.distributor && touched.distributor ? 'error-input' : ''}`}
                                 name="distributor"
                                 type="distributor"
-                                placeholder="Introduce una contraseña"
+                                placeholder="Introduce una Productora"
                             />
                         </div>
                         {errors.distributor && touched.distributor ? (
@@ -188,5 +237,5 @@ export default function addContentForm({ name, year, synopsis = '', contentType 
                     </Form>
             }
         </Formik>
-    </div>
+    </div >
 }

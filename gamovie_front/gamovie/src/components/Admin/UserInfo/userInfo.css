@@ -1,6 +1,7 @@
 .infoUser{
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 55px;
 }
 
 .infoUser button{

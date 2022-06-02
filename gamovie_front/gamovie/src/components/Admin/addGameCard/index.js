@@ -24,6 +24,6 @@ export default function AddGameCard({ img, name, year }) {
             <p className="card-text">{year}</p>
             <Button variant="success" className="card-btn" onClick={handleClick}>Añadir</Button>
         </div>
-        {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="games" name={name} year={year} /></AddContentModal>}
+        {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="games" name={name} year={year} setShowModal={setShowModal} /></AddContentModal>}
     </div>
 }

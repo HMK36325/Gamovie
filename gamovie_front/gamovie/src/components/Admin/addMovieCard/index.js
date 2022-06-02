@@ -24,7 +24,7 @@ export default function AddMovieCard({ img, name, year, synopsis }) {
                 </div>
             </div>
             <Button variant="success" className="card-btn mb-3" onClick={handleClick}>Añadir</Button>
-            {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="movies" name={name} year={year} synopsis={synopsis} /></AddContentModal>}
+            {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="movies" name={name} year={year} synopsis={synopsis} setShowModal={setShowModal}/></AddContentModal>}
         </div>
     );
 }

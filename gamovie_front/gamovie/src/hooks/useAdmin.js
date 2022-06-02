@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from "react"
 import getUsers from 'services/Admin/getUsers'
 import banUser from "services/Admin/ban";
 import deleteContent from "services/Admin/delete";
+import addContent from "services/Admin/add";
 
 export default function useAdmin() {
     const [users, setUsers] = useState([]);
@@ -32,5 +33,9 @@ export default function useAdmin() {
         deleteContent({ currentUser, contentType, id })
     }, [currentUser])
 
-    return { users, page, totalPages, loading, setPage, ban, unBan, deleteItem }
+    const addItem = useCallback(({ contentType, content }) => {
+       return addContent({ currentUser, contentType, content })
+    }, [currentUser])
+
+    return { users, page, totalPages, loading, setPage, ban, unBan, deleteItem, addItem }
 }

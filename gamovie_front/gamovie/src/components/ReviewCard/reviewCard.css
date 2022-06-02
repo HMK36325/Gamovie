@@ -1,0 +1,7 @@
+.review{
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+.review-body{
+    background-color: #e7e7e7 !important;
+    color: #000000 !important;
+}

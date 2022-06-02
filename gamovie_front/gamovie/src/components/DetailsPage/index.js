@@ -7,9 +7,10 @@ import GameDetails from "components/GameDetails";
 import './detailsPage.css'
 import { Link } from "wouter";
 import { useLocation } from "wouter";
+import ReviewCard from "components/ReviewCard";
 
 
-export default function DetailsPage({ details, movieOrGame, totalElements, cardsIds }) {
+export default function DetailsPage({ details, movieOrGame, cardsIds, reviews }) {
 
     const [nextConent, setNextContent] = useState(cardsIds.indexOf(details.id) + 1)
     const [prevContent, setPrevContent] = useState(cardsIds.indexOf(details.id) - 1)
@@ -23,12 +24,11 @@ export default function DetailsPage({ details, movieOrGame, totalElements, cards
 
     if (details.error) navigate('/404');
 
-
     return (
 
         <Container className="mt-2">
             <Row>
-                <Col lg={{ span: 9, offset: 3 }}>
+                <Col lg={{ span: 9, offset: 3 }} md="12" className="d-flex justify-content-center">
                     <div className="change-details-container">
                         <div className="change-details">
                             {prevContent >= 0 &&
@@ -77,6 +77,16 @@ export default function DetailsPage({ details, movieOrGame, totalElements, cards
                             synopsis={details.synopsis} />
                     }
                 </Col>
+                {reviews.length > 0 && <>
+                    <Col xs="12">
+                        <h2 className="content">Reviews</h2>
+                    </Col>
+                    {reviews.map((review) => {
+                        return <Col>
+                            <ReviewCard username={review.user.name} review={review.review} reviewedAt={review.reviewed_at} />
+                        </Col>
+                    })}
+                </>}
             </Row>
         </Container>
     );

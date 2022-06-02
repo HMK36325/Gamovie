@@ -25,7 +25,7 @@ export default function UserInfo({ id, name, email, roles, banned }) {
             <td className="infoUser">{name}</td>
             <td className="infoUser">{email}</td>
             <td className="infoUser">{theUserRoles.join(', ')}</td>
-            <td className="infoUser">{isBanned ? <Button variant="success" onClick={handleUnBan}>Unban</Button> : <Button variant="danger" onClick={handleBan}>Ban</Button>}</td>
-        </tr>
+            <td className="infoUser">{!theUserRoles.includes('ROLE_ADMIN') && (isBanned ? <Button variant="success" onClick={handleUnBan}>Unban</Button> : <Button variant="danger" onClick={handleBan}>Ban</Button>)}</td>
+        </tr >
     )
 }
