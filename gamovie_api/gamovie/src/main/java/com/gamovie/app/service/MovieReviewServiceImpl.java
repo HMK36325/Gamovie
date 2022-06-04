@@ -21,10 +21,6 @@ public class MovieReviewServiceImpl implements MovieReviewService {
 	public MovieReview findById(int theId) {
 		Optional<MovieReview> result = movieReviewRepository.findById(theId);
 		if (result.isPresent()) {
-			result.stream().forEach((element) -> {
-				element.getUser().setPassword(null);
-				element.getUser().setEmail(null);
-			});
 			return result.get();
 		} else {
 			throw new RuntimeException("Did not found the Review with the id: " + theId);

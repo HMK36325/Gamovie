@@ -21,10 +21,6 @@ public class GameReviewServiceImpl implements GameReviewService {
 	public GameReview findById(int theId) {
 		Optional<GameReview> result = gameReviewRepository.findById(theId);
 		if (result.isPresent()) {
-			result.stream().forEach((element) -> {
-				element.getUser().setPassword(null);
-				element.getUser().setEmail(null);
-			});
 			return result.get();
 		} else {
 			throw new RuntimeException("Did not found the Review with the id: " + theId);

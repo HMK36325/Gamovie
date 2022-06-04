@@ -5,3 +5,9 @@
     background-color: #e7e7e7 !important;
     color: #000000 !important;
 }
+.blockquote{
+    text-align: justify !important;
+}
+.review-text{
+    padding: 0.8em;
+}

@@ -36,6 +36,7 @@ INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,13);
 INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,14);
 INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,15);
 INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(3,5);
+INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(3,4);
 
 #MOVIES
 
@@ -210,7 +211,9 @@ INSERT INTO `gamovie`.`games` (`category`, `content`, `date`, `distributor`, `sy
 INSERT INTO `gamovie`.`games` (`category`, `content`, `date`, `distributor`, `synopsis`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Shooter, RPG', 'games', '2022-05-05', 'Bethesda', 'Bethesda Game Studios le da la bienvenida al mundo de Fallout 4, su juego más ambicioso hasta la fecha y la próxima generación de juegos de mundo abierto. Como único sobreviviente del Refugio 111, ingresas a un mundo destruido por una guerra nuclear. Cada segundo es una lucha por la supervivencia, y cada elección es tuya. Solo tú puedes reconstruir y determinar el destino de Wasteland. Bienvenido a casa.', 'fallout4.jpg', '10', 'Fallout 4', '6.8', '2015');
 INSERT INTO `gamovie`.`games` (`category`, `content`, `date`, `distributor`, `synopsis`, `image_address`, `n_votes`, `name`, `note`, `year`) VALUES ('Zombis', 'games', '2022-05-05', 'Capcom', 'Jill Valentine es una de las últimas personas que quedan en Raccoon City en presenciar las atrocidades cometidas por Umbrella. Para detenerla, Umbrella desata su última arma secreta: ¡Némesis! También incluye Resident Evil Resistance, un nuevo juego multijugador en línea de 1 contra 4 ambientado en el universo de Resident Evil.', 'resident3.jpg', '10', 'Resident Evil 3', '7.9', '2020');
 
-
+#REVIEWS
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Un espectáculo cromático en negro y rojo apabullante y dotado de una imaginería visual propia en la que se dinamitan las reglas del blockbuster convencional.','2022-05-05',1,5);
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Tiene algo perversamente atractivo, que no te suelta, que te sumerge en una pesadilla de bases pesadas, luces estroboscópicas y estupefacientes. Y Batman, como el café, cuanto más oscuro, mejor.','2022-05-05',1,4);
 
 
 

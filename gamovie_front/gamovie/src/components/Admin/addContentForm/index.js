@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Formik, Form, Field } from 'formik'
 import Admin from "hooks/useAdmin";
+import config from 'config.json';
 
 export default function addContentForm({ name, year, synopsis = '', contentType, setShowModal }) {
     const { addItem } = Admin()
 
-    return <div className="d-flex justify-content-center">
+    return <div className="d-flex justify-content-center mt-0">
         <Formik
             initialValues={{ name: name, director: '', distributor: '', synopsis: synopsis, year: year, category: '-', image: '', note: '-' }}
 
@@ -93,7 +94,7 @@ export default function addContentForm({ name, year, synopsis = '', contentType,
                     formData.append('file', image);
                     setShowModal(false);
 
-                    fetch(`http://localhost:8080/auth/upload-images/${imgName}`, {
+                    fetch(`${config.apiUrl}auth/upload-images/${imgName}`, {
                         method: "POST",
                         body: formData
                     }).then(res => console.log(res))

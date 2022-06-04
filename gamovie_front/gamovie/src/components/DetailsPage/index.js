@@ -77,7 +77,7 @@ export default function DetailsPage({ details, movieOrGame, cardsIds, reviews })
                             synopsis={details.synopsis} />
                     }
                 </Col>
-                <Reviews reviews={reviews} />
+                <Reviews reviews={reviews} movieOrGame={movieOrGame} contentId={details.id} />
             </Row>
         </Container>
     );

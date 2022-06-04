@@ -144,7 +144,7 @@ public class AuthController {
 
 	    String fileName = file_name;
 	    try {
-	      file.transferTo( new File("D:\\Gamovie\\gamovie_front\\gamovie\\public\\" + fileName));
+	      file.transferTo( new File("D:\\Gamovie\\gamovie_front\\gamovie\\public\\images\\" + fileName));
 	    } catch (Exception e) {
 	      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 	    } 

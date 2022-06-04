@@ -29,13 +29,13 @@ public class MovieVote {
 	private int id;
 	
 	/** The movie_id. */
-	@ManyToOne(fetch=FetchType.LAZY,cascade= CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
 	@JoinColumn(name="movie_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Movie movie;
 	
 	/** The user_id. */
-	@ManyToOne(fetch=FetchType.LAZY,cascade= CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
 	@JoinColumn(name="user_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private User  user;

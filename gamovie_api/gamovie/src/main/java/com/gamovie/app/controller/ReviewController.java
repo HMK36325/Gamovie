@@ -61,6 +61,7 @@ public class ReviewController {
 		if (theMovieReview == null) {
 			throw new RuntimeException("Movie is not found " + id);
 		}
+		movieReviewFacade.deleteById(id);
 		return "Review deleted";
 	}
 
@@ -96,6 +97,7 @@ public class ReviewController {
 		if (theGameReview == null) {
 			throw new RuntimeException("Game is not found " + id);
 		}
+		gameReviewFacade.deleteById(id);
 		return "Review deleted";
 	}
 }

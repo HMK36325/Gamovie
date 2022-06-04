@@ -104,7 +104,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
                 <option value="1">1-Muy malo/a</option>
             </Form.Select>
             {showNoti && <Alert variant='success' id="toasts">Voto añadido!</Alert>}
-            {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true} /></Modal>}
+            {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true}/></Modal>}
         </div>
     );
 }

@@ -33,7 +33,7 @@ export default function Login({ onLogin, isFromPortal }) {
     <>
       {isLoginLoading && <Spinner animation="border" className="loading" />}
       {!isLoginLoading && (
-        <div className="d-flex justify-content-center align-items-center flex-column mt-5">
+        <div className="d-flex justify-content-center align-items-center flex-column mt-0">
           {registered &&
             <div className="text-center">
               <h4>

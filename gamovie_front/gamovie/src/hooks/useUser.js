@@ -5,10 +5,13 @@ import loginService from "services/login"
 import addVoteService from "services/addVote";
 import updateVoteService from "services/updateVote";
 import removeVoteService from "services/removeVote";
+import addReviewService from "services/addReview";
+import updateReviewService from "services/updateReview";
+import deleteReviewService from "services/deleteReview";
 import { cloneDeep } from "lodash";
 
 export default function useUser() {
-    const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setCurrentUser, setIsAdmin } = useContext(Context);
+    const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setMovieReviews, setGameReviews, setCurrentUser, setIsAdmin, setIsPremium } = useContext(Context);
     const [, navigate] = useLocation();
     const [state, setState] = useState({ loading: false, credentiaslError: false, bannedError: false });
 
@@ -74,18 +77,58 @@ export default function useUser() {
 
     //-----------------REVIEWS FUNCTIONS--------------//
 
+    const addReview = useCallback(({ contentId, movieOrGame, review }) => {
+        addReviewService({ contentId, currentUser, movieOrGame, review })
+            .then((review) => {
+                movieOrGame ?
+                    setMovieReviews(prevReviews => prevReviews.concat(review))
+                    : setGameReviews(prevReviews => prevReviews.concat(review))
+            })
+    }, [currentUser, setMovieReviews, setGameReviews])
+
+    const updateReview = useCallback(({ contentId, movieOrGame, review }) => {
+        updateReviewService({ contentId, currentUser, movieOrGame, review })
+            .then((review) => {
+                movieOrGame ?
+                    setMovieReviews(prevReviews => {
+                        prevReviews.filter(prevReview => prevReview.id !== review.id)
+                        return prevReviews.concat(review)
+                    })
+                    : setGameReviews(prevReviews => {
+                        prevReviews.filter(prevReview => prevReview.id !== review.id)
+                        return prevReviews.concat(review)
+                    })
+            })
+    }, [currentUser, setMovieReviews, setGameReviews])
+
+    const deleteReview = useCallback(({ contentId, movieOrGame }) => {
+        deleteReviewService({ currentUser, contentId, movieOrGame })
+            .then(() => {
+                movieOrGame ?
+                    setMovieReviews(prevReviews => prevReviews.filter(prevReview => prevReview.id !== contentId))
+                    : setGameReviews(prevReviews => prevReviews.filter(prevReview => prevReview.id !== contentId))
+            })
+    }, [currentUser, setMovieReviews, setGameReviews])
+
     const logout = useCallback(() => {
         window.localStorage.removeItem('currentUser');
         setCurrentUser(null);
         setIsAdmin(false);
+        setMovieReviews([]);
+        setGameReviews([]);
+        setIsPremium(false)
         navigate('/');
-    }, [setCurrentUser, setIsAdmin, navigate]);
+
+    }, [setCurrentUser, setIsAdmin, navigate, setGameReviews, setMovieReviews, setIsPremium]);
 
 
     return {
         addVote,
         updateVote,
         removeVote,
+        addReview,
+        updateReview,
+        deleteReview,
         movieVotes,
         gameVotes,
         isLogged: Boolean(currentUser),
