@@ -75,7 +75,7 @@ export default function MyNav() {
                   <NavDropdown.Item href="/votes">
                     Mis Votaciones 🎞️
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item href="/reviews">
                     Mis Reviews 📖
                   </NavDropdown.Item>
                 </>

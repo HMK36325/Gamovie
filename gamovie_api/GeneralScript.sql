@@ -214,6 +214,6 @@ INSERT INTO `gamovie`.`games` (`category`, `content`, `date`, `distributor`, `sy
 #REVIEWS
 INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Un espectáculo cromático en negro y rojo apabullante y dotado de una imaginería visual propia en la que se dinamitan las reglas del blockbuster convencional.','2022-05-05',1,5);
 INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Tiene algo perversamente atractivo, que no te suelta, que te sumerge en una pesadilla de bases pesadas, luces estroboscópicas y estupefacientes. Y Batman, como el café, cuanto más oscuro, mejor.','2022-05-05',1,4);
-
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Titubeante y ampulosa, nunca acaba de encontrar su lugar en el imaginario del personaje.Intoxicada por sus elevadas pretensiones es mucho más atractiva sobre el papel que proyectada en una pantalla.','2022-05-05',1,10);
 
 

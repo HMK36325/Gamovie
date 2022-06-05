@@ -20,6 +20,7 @@ import LoginPage from "pages/Login";
 import RegisterPage from "pages/Register";
 import Admin from "pages/Admin";
 import Error404 from "components/Errors/404";
+import Reviews from "pages/Reviews";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -44,6 +45,7 @@ function App() {
                 <Route component={Details} path="/search/movies/:id" />
                 <Route component={Search} path="/search/:keyword" />
                 <Route component={Votes} path="/votes" />
+                <Route component={Reviews} path="/reviews" />
                 <Route component={Error404} path="/:rest" />
               </Switch>
             </RecoilRoot>

@@ -13,7 +13,11 @@ export default function ReviewAddingCard({ theUserReview, movieOrGame, contentId
 
     const handeleChange = (e) => {
         setReview(e.target.value)
-        if (review.trim().length > 20) setError(null)
+        if (e.target.value.length <= 20) {
+            setError('Al menos 20 caracteres ⚠️')
+        } else if (e.target.value.length > 255) {
+            setError('Máximo 255 caracteres ⚠️')
+        } else if (e.target.value.length > 20 && e.target.value.length <= 255) setError(null)
     }
 
     const handeleDelete = () => {
@@ -25,13 +29,15 @@ export default function ReviewAddingCard({ theUserReview, movieOrGame, contentId
     }
 
     const handleClick = () => {
-        if (!theUserReview.review && review.trim().length > 20) {
-            addReview({ contentId, movieOrGame, review })
-            setShowNoti(true)
-        } else if (theUserReview.review !== review && review.trim().length > 20) {
-            updateReview({ contentId: theUserReview.id, movieOrGame, review })
-            setShowNoti(true)
-        } else setError('Al menos 20 caracteres ⚠️')
+        if (!error) {
+            if (!theUserReview.review && review.trim().length > 20) {
+                addReview({ contentId, movieOrGame, review })
+                setShowNoti(true)
+            } else if (theUserReview.review !== review && review.trim().length > 20) {
+                updateReview({ contentId: theUserReview.id, movieOrGame, review })
+                setShowNoti(true)
+            }
+        }
     }
 
     useEffect(() => {
@@ -50,6 +56,7 @@ export default function ReviewAddingCard({ theUserReview, movieOrGame, contentId
         return () => clearTimeout(notiTimeOut)
 
     }, [setShowNoti, review])
+
 
     return <div className="form-floating add-review">
         <textarea className="form-control" placeholder="Leave a review" id="floatingTextarea" value={review} onChange={handeleChange}></textarea>

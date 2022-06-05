@@ -11,7 +11,7 @@ import deleteReviewService from "services/deleteReview";
 import { cloneDeep } from "lodash";
 
 export default function useUser() {
-    const { movieVotes, gameVotes, currentUser, setMovieVotes, setGameVotes, setMovieReviews, setGameReviews, setCurrentUser, setIsAdmin, setIsPremium } = useContext(Context);
+    const { movieVotes, gameVotes, movieReviews, gameReviews, currentUser, isPremium, setMovieVotes, setGameVotes, setMovieReviews, setGameReviews, setCurrentUser, setIsAdmin, setIsPremium } = useContext(Context);
     const [, navigate] = useLocation();
     const [state, setState] = useState({ loading: false, credentiaslError: false, bannedError: false });
 
@@ -91,11 +91,11 @@ export default function useUser() {
             .then((review) => {
                 movieOrGame ?
                     setMovieReviews(prevReviews => {
-                        prevReviews.filter(prevReview => prevReview.id !== review.id)
+                        prevReviews = prevReviews.filter(prevReview => prevReview.id !== review.id)
                         return prevReviews.concat(review)
                     })
                     : setGameReviews(prevReviews => {
-                        prevReviews.filter(prevReview => prevReview.id !== review.id)
+                        prevReviews = prevReviews.filter(prevReview => prevReview.id !== review.id)
                         return prevReviews.concat(review)
                     })
             })
@@ -129,8 +129,11 @@ export default function useUser() {
         addReview,
         updateReview,
         deleteReview,
+        movieReviews,
+        gameReviews,
         movieVotes,
         gameVotes,
+        isPremium,
         isLogged: Boolean(currentUser),
         isLoginLoading: state.loading,
         hasLoginError: state.credentiaslError,
