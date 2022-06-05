@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UserInfo from "../UserInfo";
-import { Spinner, Table } from 'react-bootstrap'
+import { Spinner, Table, Alert } from 'react-bootstrap'
 import ReactPaginate from "react-paginate";
 
-export default function listOfUsers({ users, setPage, totalPages, page, loading }) {
+export default function ListOfUsers({ users, setPage, totalPages, page, loading }) {
+    const [showNoti, setShowNoti] = useState({ show: false, isBan: false });
+
+    useEffect(() => {
+        const notiTimeOut = setTimeout(() => {
+            setShowNoti({ show: false, isBan: false })
+        }, 3000)
+
+        return () => clearTimeout(notiTimeOut)
+
+    }, [setShowNoti, showNoti])
 
     const handlePageClick = (data) => {
         setPage(data.nextSelectedPage);
     }
-
     return <div className="table-responsive">
         {loading ? <Spinner animation="border" className="loading" />
             : <>
@@ -45,11 +54,12 @@ export default function listOfUsers({ users, setPage, totalPages, page, loading 
                     </thead>
                     <tbody>
                         {users && users.map(user => {
-                            return < UserInfo key={user.id} id={user.id} name={user.name} roles={user.roles} email={user.email} banned={user.banned_at} />
+                            return < UserInfo key={user.id} id={user.id} name={user.name} roles={user.roles} email={user.email} banned={user.banned_at} setShowNoti={setShowNoti} />
                         })}
 
                     </tbody>
                 </Table>
+                {showNoti.show && <Alert variant={showNoti.isBan ? 'danger' : 'success'} className="review-noti">{showNoti.isBan ? 'Usuario baneado!' : 'Usuario desbaneado!'}</Alert>}
             </>
         }
     </div>

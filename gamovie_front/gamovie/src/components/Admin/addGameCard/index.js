@@ -4,7 +4,7 @@ import AddContentModal from "components/Admin/addContentModal"
 import AddContentForm from "../addContentForm";
 import './addGameCard.css'
 
-export default function AddGameCard({ img, name, year }) {
+export default function AddGameCard({ img, name, year, setShowNoti }) {
     const [showModal, setShowModal] = useState(false)
 
     const handleClose = () => {
@@ -24,6 +24,6 @@ export default function AddGameCard({ img, name, year }) {
             <p className="card-text">{year}</p>
             <Button variant="success" className="card-btn" onClick={handleClick}>Añadir</Button>
         </div>
-        {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="games" name={name} year={year} setShowModal={setShowModal} /></AddContentModal>}
+        {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="games" name={name} year={year} setShowModal={setShowModal} setShowNoti={setShowNoti} /></AddContentModal>}
     </div>
 }

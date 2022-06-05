@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useAdmin from "hooks/useAdmin";
 import './userInfo.css'
 
-export default function UserInfo({ id, name, email, roles, banned }) {
+export default function UserInfo({ id, name, email, roles, banned, setShowNoti }) {
     const { ban, unBan } = useAdmin()
     const [isBanned, setIsBanned] = useState(() => banned ? true : false)
     const theUserRoles = roles.map(rol => rol.name)
@@ -11,12 +11,14 @@ export default function UserInfo({ id, name, email, roles, banned }) {
     const handleUnBan = () => {
         setIsBanned(false)
         unBan({ isBan: false, id })
+        setShowNoti({ show: true, isBan: false })
 
     }
 
     const handleBan = () => {
         setIsBanned(true)
         ban({ isBan: true, id })
+        setShowNoti({ show: true, isBan: true })
     }
 
     return (

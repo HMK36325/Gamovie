@@ -25,3 +25,13 @@
   box-shadow: none !important;
   z-index: 3;
 }
+
+.review-noti{
+  position: fixed;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 20vh;
+  margin-top: 4.5em;
+  margin-left: 1em;
+}

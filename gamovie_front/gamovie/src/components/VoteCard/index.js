@@ -21,6 +21,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
     const [voteId, setVoteId] = useState(0);
     const [isVoted, setIsVoted] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [isDeleted, setIsDeleted] = useState(false)
     const [showNoti, setShowNoti] = useState(false);
 
 
@@ -50,6 +51,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
     useEffect(() => {
         const notiTimeOut = setTimeout(() => {
             setShowNoti(false)
+            setIsDeleted(false)
         }, 3000)
 
         return () => clearTimeout(notiTimeOut)
@@ -69,9 +71,13 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
         setUserNote(e.target.value);
         if (e.target.value === '0') {
             removeVote({ vote_id: voteId, contentType: content });
-        } else isVoted
-            ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
-            : addVote({ content_id: id, contentType: content, note: e.target.value });
+            setIsDeleted(true)
+        } else {
+            setIsDeleted(false)
+            isVoted && userNote !== '0'
+                ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
+                : addVote({ content_id: id, contentType: content, note: e.target.value });
+        }
 
         setShowNoti(true);
 
@@ -103,8 +109,8 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
                 <option value="2">2-Malo/a</option>
                 <option value="1">1-Muy malo/a</option>
             </Form.Select>
-            {showNoti && <Alert variant='success' id="toasts">Voto añadido!</Alert>}
-            {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true}/></Modal>}
+            {showNoti && <Alert variant={isDeleted ? 'danger' : 'success'} id="toasts">{isDeleted ? 'Voto eliminado!' : 'Voto añadido!'}</Alert>}
+            {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true} /></Modal>}
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import useCards from "hooks/useCards";
-import React from "react";
-import { Spinner, Table, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Spinner, Table, Button, Alert } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import ContentInfo from "../ContentInfo";
 import './listOfContent.css'
@@ -8,6 +8,16 @@ import './listOfContent.css'
 export default function ListOfContent({ contentType, setContentToShow }) {
 
     const { cards, page, totalPages, loadginNextPage, setPage } = useCards({ content: contentType })
+    const [showNoti, setShowNoti] = useState(false);
+
+    useEffect(() => {
+        const notiTimeOut = setTimeout(() => {
+            setShowNoti(false)
+        }, 3000)
+
+        return () => clearTimeout(notiTimeOut)
+
+    }, [setShowNoti, showNoti])
 
     const handlePageClick = (data) => {
         setPage(data.nextSelectedPage);
@@ -55,11 +65,12 @@ export default function ListOfContent({ contentType, setContentToShow }) {
                     </thead>
                     <tbody>
                         {cards && cards.map(content => {
-                            return < ContentInfo key={content.id} id={content.id} name={content.name} productora={content.distributor} img={content.image} contentType={contentType} />
+                            return < ContentInfo key={content.id} id={content.id} name={content.name} productora={content.distributor} img={content.image} contentType={contentType} setShowNoti={setShowNoti} />
                         })}
 
                     </tbody>
                 </Table>
+                {showNoti && <Alert variant='danger' className="review-noti">{contentType === 'movies' ? 'Película eliminada!' : 'Juego eliminado!'}</Alert>}
             </>
         }
     </div>

@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik'
 import Admin from "hooks/useAdmin";
 import config from 'config.json';
 
-export default function addContentForm({ name, year, synopsis = '', contentType, setShowModal }) {
+export default function addContentForm({ name, year, synopsis = '', contentType, setShowModal, setShowNoti }) {
     const { addItem } = Admin()
 
     return <div className="d-flex justify-content-center mt-0">
@@ -97,7 +97,7 @@ export default function addContentForm({ name, year, synopsis = '', contentType,
                     fetch(`${config.apiUrl}auth/upload-images/${imgName}`, {
                         method: "POST",
                         body: formData
-                    }).then(res => console.log(res))
+                    }).then(res => setShowNoti(true))
                 }).catch((err) => setFieldError('name', 'Este nombre ya existe'));
 
             }}

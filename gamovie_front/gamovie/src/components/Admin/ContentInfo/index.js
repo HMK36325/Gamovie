@@ -2,7 +2,7 @@ import useAdmin from "hooks/useAdmin";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export default function ContentInfo({ id, name, productora, img, contentType }) {
+export default function ContentInfo({ id, name, productora, img, contentType, setShowNoti }) {
 
     const [isDeleted, setDelete] = useState(false)
     const { deleteItem } = useAdmin()
@@ -10,6 +10,7 @@ export default function ContentInfo({ id, name, productora, img, contentType }) 
     const hadnleDelete = () => {
         deleteItem({ contentType, id })
         setDelete(true);
+        setShowNoti(true)
     }
     return (<>
         {!isDeleted && <tr>

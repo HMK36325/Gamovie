@@ -4,7 +4,7 @@ import AddContentModal from 'components/Admin/addContentModal';
 import AddContentForm from "../addContentForm";
 import './addMovieCard.css'
 
-export default function AddMovieCard({ img, name, year, synopsis }) {
+export default function AddMovieCard({ img, name, year, synopsis, setShowNoti }) {
     const [showModal, setShowModal] = useState(false)
 
     const handleClose = () => {
@@ -24,7 +24,7 @@ export default function AddMovieCard({ img, name, year, synopsis }) {
                 </div>
             </div>
             <Button variant="success" className="card-btn mb-3" onClick={handleClick}>Añadir</Button>
-            {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="movies" name={name} year={year} synopsis={synopsis} setShowModal={setShowModal}/></AddContentModal>}
+            {showModal && <AddContentModal onClose={handleClose}><AddContentForm contentType="movies" name={name} year={year} synopsis={synopsis} setShowModal={setShowModal} setShowNoti={setShowNoti} /></AddContentModal>}
         </div>
     );
 }
