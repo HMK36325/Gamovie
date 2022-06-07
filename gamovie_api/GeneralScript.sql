@@ -1,23 +1,23 @@
 USE `gamovie`;
 INSERT INTO `roles` VALUES (1,'ROLE_ADMIN'),(3,'ROLE_PREMIUM'),(2,'ROLE_USER');
 
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('admin@gmail.com', 'Admin', '$2a$10$kHjS0/txdcaYqO7m57Npsu0u.9BOih9C9bkoGnLkWE/V479TGLY9K');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('ivan@gmail.com', 'Ivan', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('raul@gmail.com', 'Raul', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('jose@gmail.com', 'Jose', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('carmen@gmail.com', 'Carmen', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('admin@gmail.com', 'Admin', '$2a$10$78bM3ZVjwwxbJ2j4rXBDF.sF1WA.GAkvYqz3qUmGHAOGHlY2XtQfC');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('ivan@gmail.com', 'Ivan', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('raul@gmail.com', 'Raul', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('jose@gmail.com', 'Jose', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('carmen@gmail.com', 'Carmen', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
 
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('dani@gmail.com', 'Daniel', '$2a$10$kHjS0/txdcaYqO7m57Npsu0u.9BOih9C9bkoGnLkWE/V479TGLY9K');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('milin@gmail.com', 'Emilio', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lolo@gmail.com', 'Mlolo', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('sergio@gmail.com', 'Sergio', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('luxx@gmail.com', 'luxx', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('dani@gmail.com', 'Daniel', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('milin@gmail.com', 'Emilio', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lolo@gmail.com', 'Mlolo', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('sergio@gmail.com', 'Sergio', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('luxx@gmail.com', 'luxx', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
 
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('ben@gmail.com', 'Ben', '$2a$10$kHjS0/txdcaYqO7m57Npsu0u.9BOih9C9bkoGnLkWE/V479TGLY9K');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('maiwel@gmail.com', 'Miguel', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('marcos@gmail.com', 'Marcos', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lau@gmail.com', 'Laura', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
-INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('pau@gmail.com', 'Paula', '$2a$10$4FYqaCBAtGuukqhX0tMlc.uhBI.AQLBTt.abFEXASr5U4KNsEqHr2');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('ben@gmail.com', 'Ben', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('maiwel@gmail.com', 'Miguel', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('marcos@gmail.com', 'Marcos', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('lau@gmail.com', 'Laura', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
+INSERT INTO `gamovie`.`users` (`email`, `name`, `password`) VALUES ('pau@gmail.com', 'Paula', '$2a$10$5wSepjikmwLF/a7KS5G4POgNFk3SC0w5ZwmEi.DHvcUv2m5TQ31Me');
 
 INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(1,1);
 INSERT INTO `gamovie`.`users_roles`(`role_id`,`user_id`)VALUES(2,2);
@@ -214,6 +214,14 @@ INSERT INTO `gamovie`.`games` (`category`, `content`, `date`, `distributor`, `sy
 #REVIEWS
 INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Un espectáculo cromático en negro y rojo apabullante y dotado de una imaginería visual propia en la que se dinamitan las reglas del blockbuster convencional.','2022-05-05',1,5);
 INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Tiene algo perversamente atractivo, que no te suelta, que te sumerge en una pesadilla de bases pesadas, luces estroboscópicas y estupefacientes. Y Batman, como el café, cuanto más oscuro, mejor.','2022-05-05',1,4);
-INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Titubeante y ampulosa, nunca acaba de encontrar su lugar en el imaginario del personaje.Intoxicada por sus elevadas pretensiones es mucho más atractiva sobre el papel que proyectada en una pantalla.','2022-05-05',1,10);
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Titubeante y ampulosa, nunca acaba de encontrar su lugar en el imaginario del personaje.Intoxicada por sus elevadas pretensiones es mucho más atractiva sobre el papel que proyectada en una pantalla.','2022-05-05',1,9);
+
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Mendes, para transmitir esta historia de miedo, de barro y mugre, ha inventado un impresionante lenguaje con su cámara. MacKay y Chapman son los que llevan el peso absoluto en esta película angustiosa y sorprendente.','2022-05-05',25,5);
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('Asombrosa, impresionante y magistral película. Uno se pregunta cómo Sam Mendes ha podido conjugar la impresionante maquinaria de la puesta en escena con la intimidad de las interpretaciones.','2022-05-05',25,9);
+INSERT INTO `gamovie`.`movie_reviews`(`review`,`reviewed_at`,`movie_id`,`user_id`) VALUES ('El virtuosismo técnico de Sam Mendes comunica la sensación de congoja del combatiente en tiempo real.','2022-05-05',25,4);
+
+INSERT INTO `gamovie`.`game_reviews`(`review`,`reviewed_at`,`game_id`,`user_id`)VALUES('Este es el mejor juego que obtendrás en cualquier próxima consola de juegos y puedo ver que es mi juego del año. Si tienes una PS4, no hay ninguna razón para no correr y obtener este juego lo antes posible. Fantástico juego. Una verdadera joya!!','2022-05-05',27,5);
+INSERT INTO `gamovie`.`game_reviews`(`review`,`reviewed_at`,`game_id`,`user_id`)VALUES('Su elegancia, precisión, humor y desafío hacen que Bloodborne sea irresistible. En última instancia, el horror es secundario; maravilla es la verdadera transfusión que se ofrece aquí.','2022-05-05',27,4);
+INSERT INTO `gamovie`.`game_reviews`(`review`,`reviewed_at`,`game_id`,`user_id`)VALUES('Una aventura oscura y atractiva, con un excelente sistema de combate, una dosis ideal de innovación y exploración fascinante.','2022-05-05',27,9);
 
 

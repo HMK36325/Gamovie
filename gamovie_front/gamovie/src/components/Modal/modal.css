@@ -14,7 +14,7 @@
   background: #e7e7e7;
   max-width: 80vh;
   width: 100%;
-  margin: 0 auto;
+  margin: 10vh auto;
   position: relative;
 }
 
@@ -38,5 +38,11 @@
   }
   .my-modal-content {
     max-height: 60vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .my-modal-content {
+    margin: 0 auto;
   }
 }
