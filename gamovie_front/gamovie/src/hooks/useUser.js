@@ -8,6 +8,7 @@ import removeVoteService from "services/removeVote";
 import addReviewService from "services/addReview";
 import updateReviewService from "services/updateReview";
 import deleteReviewService from "services/deleteReview";
+import addPremiumService from "services/addPremium"
 import { cloneDeep } from "lodash";
 
 export default function useUser() {
@@ -31,6 +32,10 @@ export default function useUser() {
                 if (err.status === 403) setState({ loading: false, bannedError: true })
             })
     }, [setCurrentUser]);
+
+    const addPremium = useCallback(() => {
+        addPremiumService({ currentUser }).then(() => setIsPremium(true))
+    }, [currentUser, setIsPremium])
 
     //-----------------VOTES FUNCTIONS----------------//
 
@@ -129,6 +134,7 @@ export default function useUser() {
         addReview,
         updateReview,
         deleteReview,
+        addPremium,
         movieReviews,
         gameReviews,
         movieVotes,

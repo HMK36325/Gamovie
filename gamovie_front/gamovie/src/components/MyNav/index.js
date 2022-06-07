@@ -17,7 +17,7 @@ import './nav.css';
 export default function MyNav() {
   const { isLogged, logout } = useUser();
   const [, navigate] = useLocation();
-  const { isAdmin, currentUser } = useContext(Context);
+  const { isAdmin, currentUser, isPremium } = useContext(Context);
   const [showSearch, setShowSearch] = useState(false)
   const [keyword, setKeyword] = useState("");
 
@@ -75,9 +75,14 @@ export default function MyNav() {
                   <NavDropdown.Item href="/votes">
                     Mis Votaciones 🎞️
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/reviews">
-                    Mis Reviews 📖
-                  </NavDropdown.Item>
+                  {isPremium ?
+                    <NavDropdown.Item href="/reviews">
+                      Mis Reviews 📖
+                    </NavDropdown.Item>
+                    : <NavDropdown.Item href="/premium">
+                      Premium
+                    </NavDropdown.Item>
+                  }
                 </>
                   : <Link className="dropdown-item" to="/admin">Admin</Link>}
                 <NavDropdown.Divider />

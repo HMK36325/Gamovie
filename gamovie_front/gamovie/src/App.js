@@ -21,6 +21,8 @@ import RegisterPage from "pages/Register";
 import Admin from "pages/Admin";
 import Error404 from "components/Errors/404";
 import Reviews from "pages/Reviews";
+import SupportPage from "pages/Support";
+import PremiumPage from "pages/Premium";
 
 const HomePage = React.lazy(() => import("./pages/Home"));
 
@@ -46,6 +48,8 @@ function App() {
                 <Route component={Search} path="/search/:keyword" />
                 <Route component={Votes} path="/votes" />
                 <Route component={Reviews} path="/reviews" />
+                <Route component={SupportPage} path="/support" />
+                <Route component={PremiumPage} path="/premium" />
                 <Route component={Error404} path="/:rest" />
               </Switch>
             </RecoilRoot>
