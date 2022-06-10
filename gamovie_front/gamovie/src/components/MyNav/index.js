@@ -62,7 +62,7 @@ export default function MyNav() {
               {showSearch && <SearchBox keyword={keyword} setShowSearch={setShowSearch} />}
             </Form>
             <Nav.Link href="/games">Videojuegos</Nav.Link>
-            <Nav.Link href="/movies">Peliculas</Nav.Link>
+            <Nav.Link href="/movies">Películas</Nav.Link>
             <Nav.Link href="/support">Soporte</Nav.Link>
           </Nav>
           <Nav>

@@ -59,7 +59,7 @@ export default function ListOfUsers({ users, setPage, totalPages, page, loading 
 
                     </tbody>
                 </Table>
-                {showNoti.show && <Alert variant={showNoti.isBan ? 'danger' : 'success'} className="review-noti">{showNoti.isBan ? 'Usuario baneado!' : 'Usuario desbaneado!'}</Alert>}
+                {showNoti.show && <Alert variant={showNoti.isBan ? 'warning' : 'success'} className="review-noti">{showNoti.isBan ? 'Usuario baneado!' : 'Usuario desbaneado!'}</Alert>}
             </>
         }
     </div>

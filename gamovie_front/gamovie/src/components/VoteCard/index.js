@@ -87,7 +87,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
         <div className="contenedor">
             <Box>
                 {isVoted && <span className="votado">✅</span>}
-                <img alt={url} src={src} className="img-fluid imgVote" />
+                <div className="img-container"><img alt={url} src={src} className="img-fluid imgVote" /></div>
                 <div className="info">
                     <div className="note">{note}</div>
                     <div className="votes">
@@ -109,7 +109,7 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
                 <option value="2">2-Malo/a</option>
                 <option value="1">1-Muy malo/a</option>
             </Form.Select>
-            {showNoti && <Alert variant={isDeleted ? 'danger' : 'success'} id="toasts">{isDeleted ? 'Voto eliminado!' : 'Voto añadido!'}</Alert>}
+            {showNoti && <Alert variant={isDeleted ? 'warning' : 'success'} id="toasts">{isDeleted ? 'Voto eliminado!' : 'Voto añadido!'}</Alert>}
             {showModal && <Modal onClose={handleClose}><Login onLogin={handleLogin} isFromPortal={true} /></Modal>}
         </div>
     );

@@ -34,8 +34,15 @@ export default function useUser() {
     }, [setCurrentUser]);
 
     const addPremium = useCallback(() => {
-        addPremiumService({ currentUser }).then(() => setIsPremium(true))
-    }, [currentUser, setIsPremium])
+        addPremiumService({ currentUser }).then(() => {
+            setIsPremium(true)
+            const auxUser = currentUser;
+            auxUser.roles.push('ROLE_PREMIUM')
+            setCurrentUser(auxUser)
+            auxUser.accessToken = window.btoa(auxUser.accessToken)
+            window.localStorage.setItem('currentUser', JSON.stringify(auxUser));
+        })
+    }, [currentUser, setIsPremium, setCurrentUser])
 
     //-----------------VOTES FUNCTIONS----------------//
 
@@ -135,6 +142,7 @@ export default function useUser() {
         updateReview,
         deleteReview,
         addPremium,
+        currentUser,
         movieReviews,
         gameReviews,
         movieVotes,

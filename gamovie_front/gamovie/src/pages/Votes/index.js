@@ -3,11 +3,14 @@ import useUser from "hooks/useUser";
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 import ListOfGameVotes from "components/ListOfGameVotes";
+import { useLocation } from "wouter";
 
 export default function Votes() {
-    const { movieVotes, gameVotes } = useUser()
-
+    const { movieVotes, gameVotes, currentUser } = useUser()
+    const [, navigate] = useLocation()
     const [showContent, setShowContent] = useState(false);
+
+    if (!currentUser) return navigate('/')
 
     const handleClick = () => {
         showContent ? setShowContent(false) : setShowContent(true);

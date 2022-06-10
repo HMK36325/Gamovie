@@ -7,7 +7,7 @@ export default function ListOfGameVotes({gameVotes }) {
         <Container className="d-flex flex-column mt-4">
             <h2 className="text-center m-3">Votos a Videojuegos</h2>
             <Row>
-                {gameVotes.map(function (vote) {
+                {gameVotes.length > 0 ? gameVotes.map(function (vote) {
                     return (
                         <Col
                             key={vote.id}
@@ -29,7 +29,7 @@ export default function ListOfGameVotes({gameVotes }) {
                             />
                         </Col>
                     );
-                })}
+                }) : <h3 className="text-center mt-5">Aún no has votado ningún juego.</h3>}
             </Row>
         </Container>
     );

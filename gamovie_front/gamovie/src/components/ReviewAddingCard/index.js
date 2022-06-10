@@ -62,7 +62,7 @@ export default function ReviewAddingCard({ theUserReview, movieOrGame, contentId
         <textarea className="form-control" placeholder="Leave a review" id="floatingTextarea" value={review} onChange={handeleChange}></textarea>
         <label htmlFor="floatingTextarea">Tú review</label>
         <button className="btn btn-success" onClick={handleClick}>Añadir</button>
-        {showNoti && <Alert variant={isDeleted ? 'danger' : 'success'} className="review-noti">{isDeleted ? 'Review eliminada!' : 'Review añadida!'}</Alert>}
+        {showNoti && <Alert variant={isDeleted ? 'warning' : 'success'} className="review-noti">{isDeleted ? 'Review eliminada!' : 'Review añadida!'}</Alert>}
         {showDelete && <button className="btn close-btn" onClick={handeleDelete}>❌</button>}
         {error && <span className="review-error form-error">{error}</span>}
     </div>

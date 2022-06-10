@@ -70,7 +70,7 @@ export default function ListOfContent({ contentType, setContentToShow }) {
 
                     </tbody>
                 </Table>
-                {showNoti && <Alert variant='danger' className="review-noti">{contentType === 'movies' ? 'Película eliminada!' : 'Juego eliminado!'}</Alert>}
+                {showNoti && <Alert variant='warning' className="review-noti">{contentType === 'movies' ? 'Película eliminada!' : 'Juego eliminado!'}</Alert>}
             </>
         }
     </div>

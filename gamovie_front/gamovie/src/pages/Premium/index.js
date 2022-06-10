@@ -30,10 +30,8 @@ export default function PremiumPage() {
                     ]
                 })
             },
-            onApprove: async (data, actions) => {
-                const order = await actions.order.capture()
-                console.log(order)
-                addPremium();
+            onApprove: async () => {
+                addPremium()
             },
             onError: (err) => {
                 console.log(err)

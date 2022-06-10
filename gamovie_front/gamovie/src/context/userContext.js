@@ -36,6 +36,7 @@ export function UserContextProvider({ children }) {
 
     }, [currentUser])
 
+
     return <Context.Provider value={{ isAdmin, currentUser, movieVotes, gameVotes, isPremium, movieReviews, gameReviews, setMovieVotes, setGameVotes, setCurrentUser, setMovieReviews, setGameReviews, setIsAdmin, setIsPremium }}>
         {children}
     </Context.Provider>

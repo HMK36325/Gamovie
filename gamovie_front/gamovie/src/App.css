@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+*{
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .App-content {
   margin-bottom: 5%;
   min-height: 76.7vh;
@@ -70,3 +76,5 @@ body {
   text-align: center;
   margin-top: 2em;
 }
+
+

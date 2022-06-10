@@ -7,7 +7,7 @@ export default function ListOfReviews({ contentType, reviews }) {
     return <Container>
         <Row>
             <h2 className="text-center m-3">Reviews a {contentType === 'movies' ? 'películas' : 'juegos'}</h2>
-            {reviews && reviews.map((review) => {
+            {reviews.length > 0 ? reviews.map((review) => {
                 return <Col key={review.id} xs="12">
                     <UserReview
                         key={review.id}
@@ -19,7 +19,7 @@ export default function ListOfReviews({ contentType, reviews }) {
                         review={review.review}
                     />
                 </Col>
-            })}
+            }) : <h3 className="text-center mt-5">Aún no tienes reviews.</h3>}
         </Row>
     </Container>
 }

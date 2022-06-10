@@ -14,7 +14,6 @@ export default function SearchBox({ keyword, setShowSearch }) {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (ref.current && !ref.current.contains(event.target)) {
-
                 setShowSearch(false)
             }
         };
