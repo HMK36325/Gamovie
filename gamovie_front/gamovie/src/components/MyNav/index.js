@@ -51,7 +51,7 @@ export default function MyNav() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Form className="form w-100" onSubmit={handleSubmit}>
-              <div className="input-group">
+              <div className="input-group nav-group">
                 <input type="text" className="form-control search-input" placeholder="Busca aquí..." onChange={handleChange} />
                 <span className="input-group-btn ">
                   <button className="btn btn-default seacrh-btn" type="submit">

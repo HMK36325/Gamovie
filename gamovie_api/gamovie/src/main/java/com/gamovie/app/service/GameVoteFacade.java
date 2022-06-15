@@ -56,12 +56,29 @@ public class GameVoteFacade {
 
 	public GameVote updateGameVote(int id, int user_note) {
 		GameVote theGameVote = gameVoteService.findById(id);
+		float oldNote = theGameVote.getVote();
+		Game theGame = gameService.findById(theGameVote.getGame().getId());
+		long n_votes = theGame.getN_votes();
+		double gameNote = theGame.getNote();
+		double reset_note = (n_votes * gameNote - oldNote) / (n_votes - 1);
+		double new_note = ((n_votes - 1) * reset_note + user_note) / (n_votes);
+		theGame.setNote((double) Math.round(new_note * 10) / 10);
+		gameService.save(theGame);
 		theGameVote.setVote(user_note);
 		gameVoteService.save(theGameVote);
 		return theGameVote;
 	}
 
 	public void deleteById(int id) {
+		GameVote theGameVote = gameVoteService.findById(id);
+		float oldNote = theGameVote.getVote();
+		Game theGame = gameService.findById(theGameVote.getGame().getId());
+		long n_votes = theGame.getN_votes();
+		double gameNote = theGame.getNote();
+		double reset_note = (n_votes * gameNote - oldNote) / (n_votes - 1);
+		theGame.setNote((double) Math.round(reset_note * 10) / 10);
+		theGame.setN_votes(n_votes - 1);
+		gameService.save(theGame);
 		gameVoteService.deleteBy(id);
 	}
 
@@ -72,7 +89,7 @@ public class GameVoteFacade {
 		gameVoteDto.setGame(gameVote.getGame());
 		gameVoteDto.setNote(gameVote.getVote());
 		gameVoteDto.setVoted_at(gameVote.getVoted_at());
-		
+
 		return gameVoteDto;
 	}
 

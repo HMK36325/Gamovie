@@ -9,6 +9,7 @@ import addReviewService from "services/addReview";
 import updateReviewService from "services/updateReview";
 import deleteReviewService from "services/deleteReview";
 import addPremiumService from "services/addPremium"
+import { updateNotes } from "services/voteFunctions";
 import { cloneDeep } from "lodash";
 
 export default function useUser() {
@@ -46,18 +47,19 @@ export default function useUser() {
 
     //-----------------VOTES FUNCTIONS----------------//
 
-    const addVote = useCallback(({ content_id, contentType, note }) => {
+    const addVote = useCallback(({ content_id, contentType, note, path, setContentNote, setContentNvotes }) => {
         addVoteService({ content_id, currentUser, contentType, note })
             .then(vote => {
                 contentType === 'movies' ? setMovieVotes(prevVotes => prevVotes.concat(vote))
                     : setGameVotes(prevVotes => prevVotes.concat(vote))
+                updateNotes({ path, setContentNote, setContentNvotes })
             })
             .catch(err => {
                 console.error(err);
             })
     }, [currentUser, setMovieVotes, setGameVotes])
 
-    const updateVote = useCallback(({ vote_id, contentType, note }) => {
+    const updateVote = useCallback(({ vote_id, contentType, note, path, setContentNote, setContentNvotes }) => {
         updateVoteService({ vote_id, currentUser, contentType, note })
             .then(vote => {
                 contentType === 'movies' ?
@@ -69,10 +71,11 @@ export default function useUser() {
                         prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote.id);
                         return prevVotes.concat(vote);
                     })
+                updateNotes({ path, setContentNote, setContentNvotes })
             })
     }, [currentUser, setGameVotes, setMovieVotes])
 
-    const removeVote = useCallback(({ vote_id, contentType }) => {
+    const removeVote = useCallback(({ vote_id, contentType, path, setContentNote, setContentNvotes }) => {
         removeVoteService({ vote_id, contentType, currentUser })
             .then(res => {
                 contentType === 'movies' ?
@@ -82,6 +85,7 @@ export default function useUser() {
                     : setGameVotes((prevVotes) => {
                         return prevVotes = prevVotes.filter(prevVote => prevVote.id !== vote_id);
                     })
+                updateNotes({ path, setContentNote, setContentNvotes })
             });
     }, [currentUser, setMovieVotes, setGameVotes])
 

@@ -59,12 +59,30 @@ public class MovieVoteFacade {
 	
 	public MovieVote updateMovieVote(int id, int user_note) {
 		MovieVote theMovieVote= movieVoteService.findById(id);
+		float oldNote = theMovieVote.getVote();
+		Movie theMovie = movieService.findById(theMovieVote.getMovie().getId());
+		long n_votes = theMovie.getN_votes();
+		double movieNote = theMovie.getNote();
+		double reset_note = (n_votes * movieNote - oldNote) / (n_votes - 1);
+		double new_note = ((n_votes - 1) * reset_note + user_note) / (n_votes);
+		theMovie.setNote((double) Math.round(new_note * 10) / 10);
+		System.out.println(reset_note);
+		movieService.save(theMovie);
 		theMovieVote.setVote(user_note);
 		movieVoteService.save(theMovieVote);
 		return theMovieVote;
 	}
 	
 	public void deleteById(int id) {
+		MovieVote theMovieVote= movieVoteService.findById(id);
+		float oldNote = theMovieVote.getVote();
+		Movie theMovie = movieService.findById(theMovieVote.getMovie().getId());
+		long n_votes = theMovie.getN_votes();
+		double movieNote = theMovie.getNote();
+		double reset_note = (n_votes * movieNote - oldNote) / (n_votes - 1);
+		theMovie.setNote((double) Math.round(reset_note * 10) / 10);
+		theMovie.setN_votes(n_votes -1 );
+		movieService.save(theMovie);
 		movieVoteService.deleteBy(id);
 	}
 	

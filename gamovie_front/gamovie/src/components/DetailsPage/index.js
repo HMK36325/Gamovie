@@ -10,7 +10,7 @@ import { Link } from "wouter";
 import { useLocation } from "wouter";
 
 
-export default function DetailsPage({ details, movieOrGame, cardsIds, reviews }) {
+export default function DetailsPage({ details, movieOrGame, cardsIds, reviews, path }) {
 
     const [nextConent, setNextContent] = useState(cardsIds.indexOf(details.id) + 1)
     const [prevContent, setPrevContent] = useState(cardsIds.indexOf(details.id) - 1)
@@ -58,7 +58,8 @@ export default function DetailsPage({ details, movieOrGame, cardsIds, reviews })
                         nVotes={details.n_votes}
                         note={details.note}
                         content={details.content}
-                        id={details.id} />
+                        id={details.id}
+                        path={path} />
                 </Col>
                 <Col xs="12" md="8" lg="9">
                     {movieOrGame

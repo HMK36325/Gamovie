@@ -35,6 +35,9 @@
   gap: 5em;
   padding: 1em;
 }
+.footer a{
+  color: #fff;
+}
 
 @media (max-width: 766px) {
   .social,

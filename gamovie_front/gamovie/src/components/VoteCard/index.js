@@ -15,9 +15,11 @@ color: #fff;
 
 `;
 
-export default function VoteCard({ url, nVotes, note, id, content }) {
+export default function VoteCard({ url, nVotes, note, id, content, path }) {
     const src = url && url.startsWith('http') ? url : '../../images/' + url;
     const [userNote, setUserNote] = useState(0);
+    const [contentNote, setContentNote] = useState(note)
+    const [contentNvotes, setContentNvotes] = useState(nVotes)
     const [voteId, setVoteId] = useState(0);
     const [isVoted, setIsVoted] = useState(false);
     const [showModal, setShowModal] = useState(false);
@@ -70,17 +72,18 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
 
         setUserNote(e.target.value);
         if (e.target.value === '0') {
-            removeVote({ vote_id: voteId, contentType: content });
+            removeVote({ vote_id: voteId, contentType: content, path, setContentNote, setContentNvotes });
             setIsDeleted(true)
         } else {
             setIsDeleted(false)
-            isVoted && userNote !== '0'
-                ? updateVote({ vote_id: voteId, contentType: content, note: e.target.value })
-                : addVote({ content_id: id, contentType: content, note: e.target.value });
+            if (isVoted && userNote !== '0') {
+                updateVote({ vote_id: voteId, contentType: content, note: e.target.value, path, setContentNote, setContentNvotes })
+            } else {
+                addVote({ content_id: id, contentType: content, note: e.target.value, path, setContentNote, setContentNvotes })
+            }
+
         }
-
         setShowNoti(true);
-
     }
 
     return (
@@ -89,10 +92,10 @@ export default function VoteCard({ url, nVotes, note, id, content }) {
                 {isVoted && <span className="votado">✅</span>}
                 <div className="img-container"><img alt={url} src={src} className="img-fluid imgVote" /></div>
                 <div className="info">
-                    <div className="note">{note}</div>
+                    <div className="note">{contentNote}</div>
                     <div className="votes">
                         <p>Votos</p>
-                        {nVotes}
+                        {contentNvotes}
                     </div>
                 </div>
             </Box>

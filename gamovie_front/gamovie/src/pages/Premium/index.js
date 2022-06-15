@@ -48,15 +48,15 @@ export default function PremiumPage() {
                 <div className="row">
                     <div className="col-lg-4">
                         <h2 className="text-center">Reviews</h2>
-                        <p className="text-justify">Como usuario premium prodrás, a diferencia de los usuarios normales, dejar reviews en tus películas y juegos favoritos.</p>
+                        <p className="text-center">Como usuario premium prodrás, a diferencia de los usuarios normales, dejar reviews en tus películas y juegos favoritos.</p>
                     </div>
                     <div className="col-lg-4">
                         <h2 className="text-center">Cine</h2>
-                        <p className="text-justify">Disponemos de promociones, las cuales cambian temporalmente, con los cines mas famosos para obtener descuentos en entradas de cine.</p>
+                        <p className="text-center">Disponemos de promociones, las cuales cambian temporalmente, con los cines mas famosos para obtener descuentos en entradas de cine.</p>
                     </div>
                     <div className="col-lg-4">
                         <h2 className="text-center">Videojuegos</h2>
-                        <p className="text-justify">Al igual que con las películas los Videojuegos tambien disponen de promociones con páginas como Eneba para obtener keys a un precio inigualable.</p>
+                        <p className="text-center">Al igual que con las películas los Videojuegos tambien disponen de promociones con páginas como Eneba para obtener keys a un precio inigualable.</p>
                     </div>
                 </div>
             </div>
