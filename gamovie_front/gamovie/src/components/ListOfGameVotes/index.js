@@ -11,10 +11,12 @@ export default function ListOfGameVotes({gameVotes }) {
                     return (
                         <Col
                             key={vote.id}
-                            xs="6"
-                            sm="6"
-                            md="6"
-                            lg="4"
+                            xs="12"
+                            sm="12"
+                            md="12"
+                            lg="6"
+                            xl="6"
+                            xxl="4"
                             className="d-flex justify-content-center mt-3"
                         >
                             <UserCard
