@@ -66,10 +66,10 @@ export default function Login({ onLogin, isFromPortal }) {
               />
             </Form.Group>
             {hasLoginError && (
-              <Alert variant="danger">Usuario y contraseña incorrectos!</Alert>
+              <Alert variant="warning">Usuario y contraseña incorrectos!</Alert>
             )}
             {isBanned &&(
-              <Alert variant="danger">La cuenta ha sido suspendida!</Alert>
+              <Alert variant="warning">La cuenta ha sido suspendida!</Alert>
             )}
             <Button type="submit" className="mt-3 mb-3 w-100 btn-dark bg-btn">
               Login
